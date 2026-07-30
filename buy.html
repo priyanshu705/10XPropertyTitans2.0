@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buy Property — Luxe Estates | Premium Real Estate</title>
+  <meta name="description" content="Buy luxury apartments, villas, penthouses and plots from India's top builders. Filter by location, budget, BHK, and property type." />
+  <meta name="keywords" content="buy property India, luxury apartments, villas for sale, penthouses, buy flat" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    /* Page Hero */
+    .page-hero {
+      padding: calc(var(--header-h) + var(--space-3xl)) 0 var(--space-3xl);
+      background: linear-gradient(180deg, #050608, var(--bg-secondary));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+    }
+
+    .page-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.3) brightness(0.4);
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+      letter-spacing: -0.02em;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 550px;
+    }
+
+    /* Layout */
+    .buy-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    /* Sidebar Filters */
+    .filter-sidebar {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      position: sticky;
+      top: calc(var(--header-h) + 20px);
+    }
+
+    .filter-section {
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .filter-section:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .filter-section-title {
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-md);
+    }
+
+    .filter-checkboxes {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .filter-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      transition: color var(--duration-fast);
+    }
+
+    .filter-checkbox:hover { color: var(--text-primary); }
+
+    .filter-checkbox input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--gold);
+      cursor: none;
+    }
+
+    /* Results header */
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    .results-count {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .results-count strong { color: var(--text-primary); font-size: 1.1rem; }
+
+    .sort-select {
+      padding: 10px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-full);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+    }
+
+    /* Property Grid */
+    .buy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: var(--space-2xl);
+    }
+
+    .page-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--glass-border);
+      background: var(--card-bg);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all var(--duration-med) var(--ease-spring);
+    }
+
+    .page-btn.active {
+      background: var(--grad-gold);
+      border-color: transparent;
+      color: #0D0D0D;
+    }
+
+    .page-btn:hover:not(.active) {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    @media (max-width: 1100px) {
+      .buy-layout { grid-template-columns: 1fr; }
+      .filter-sidebar { position: static; }
+      .buy-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .buy-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+
+<!-- Header (same as index) -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">L</div>
+      <div class="logo-text">
+        <span class="logo-name">Luxe Estates</span>
+        <span class="logo-tagline">Premium Real Estate</span>
+      </div>
+    </a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link active">Buy</a></div>
+      <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
+      <div class="nav-item"><a href="sell.html" class="nav-link">Sell</a></div>
+      <div class="nav-item"><a href="projects.html" class="nav-link">New Projects</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link">Luxury</a></div>
+      <div class="nav-item"><a href="commercial.html" class="nav-link">Commercial</a></div>
+      <div class="nav-item"><a href="builders.html" class="nav-link">Builders</a></div>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2"/></svg>
+      </button>
+      <a href="login.html" class="header-btn-login">Login</a>
+      <a href="sell.html" class="header-btn-post">+ Post Property</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <button class="mobile-nav-close" id="mobile-nav-close">✕</button>
+  <a href="buy.html" class="mobile-nav-link">Buy Property</a>
+  <a href="rent.html" class="mobile-nav-link">Rent Property</a>
+  <a href="sell.html" class="mobile-nav-link">Sell Property</a>
+  <a href="projects.html" class="mobile-nav-link">New Projects</a>
+  <a href="luxury.html" class="mobile-nav-link">Luxury</a>
+  <a href="commercial.html" class="mobile-nav-link">Commercial</a>
+  <a href="builders.html" class="mobile-nav-link">Builders</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <a href="login.html" class="mobile-nav-link">Login / Register</a>
+</nav>
+
+<main>
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="page-hero-bg">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=60" alt="" aria-hidden="true" />
+    </div>
+    <div class="container page-hero-content">
+      <nav aria-label="Breadcrumb" class="breadcrumb" style="margin-bottom:var(--space-md);">
+        <a href="index.html">Home</a>
+        <span class="sep">›</span>
+        <span class="active">Buy Property</span>
+      </nav>
+      <h1 class="page-title">Buy <span class="text-gold">Premium Properties</span></h1>
+      <p class="page-subtitle">50,000+ verified luxury properties across India's most coveted addresses.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Quick filter pills -->
+      <div class="flex gap-sm" style="flex-wrap:wrap;margin-bottom:var(--space-xl);">
+        <button class="filter-pill active" data-filter="all" id="qf-all">All</button>
+        <button class="filter-pill" data-filter="apartment" id="qf-apartment">Apartments</button>
+        <button class="filter-pill" data-filter="villa" id="qf-villa">Villas</button>
+        <button class="filter-pill" data-filter="penthouse" id="qf-penthouse">Penthouse</button>
+        <button class="filter-pill" data-filter="plot" id="qf-plot">Plots</button>
+        <button class="filter-pill" data-filter="farmhouse" id="qf-farmhouse">Farm Houses</button>
+        <button class="filter-pill" data-filter="duplex" id="qf-duplex">Duplex</button>
+      </div>
+
+      <div class="buy-layout">
+
+        <!-- Sidebar -->
+        <aside class="filter-sidebar" aria-label="Property Filters">
+
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-lg);">
+            <span style="font-family:var(--font-sans);font-weight:700;font-size:1rem;">Filters</span>
+            <button style="font-size:0.78rem;color:var(--gold);font-family:var(--font-accent);" id="clear-filters">Clear All</button>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Location</div>
+            <div class="input-wrap">
+              <svg class="input-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <input type="text" class="form-input" placeholder="City, locality..." data-location-search id="filter-location" />
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Budget (₹)</div>
+            <div style="display:flex;gap:8px;margin-bottom:12px;">
+              <select class="form-select" style="flex:1;" id="budget-min" aria-label="Minimum budget">
+                <option value="">Min</option>
+                <option value="5000000">50 Lakh</option>
+                <option value="10000000">1 Cr</option>
+                <option value="30000000">3 Cr</option>
+                <option value="50000000">5 Cr</option>
+                <option value="100000000">10 Cr</option>
+              </select>
+              <select class="form-select" style="flex:1;" id="budget-max" aria-label="Maximum budget">
+                <option value="">Max</option>
+                <option value="10000000">1 Cr</option>
+                <option value="30000000">3 Cr</option>
+                <option value="50000000">5 Cr</option>
+                <option value="100000000">10 Cr</option>
+                <option value="999999999">No Limit</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">BHK Type</div>
+            <div class="flex" style="flex-wrap:wrap;gap:6px;">
+              <button class="filter-pill" data-group="bhk" id="bhk-1">1 RK</button>
+              <button class="filter-pill" data-group="bhk" id="bhk-2">1 BHK</button>
+              <button class="filter-pill active" data-group="bhk" id="bhk-3">2 BHK</button>
+              <button class="filter-pill" data-group="bhk" id="bhk-4">3 BHK</button>
+              <button class="filter-pill" data-group="bhk" id="bhk-5">4 BHK</button>
+              <button class="filter-pill" data-group="bhk" id="bhk-6">5+ BHK</button>
+              <button class="filter-pill" data-group="bhk" id="bhk-7">Villa</button>
+              <button class="filter-pill" data-group="bhk" id="bhk-8">Penthouse</button>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Property Status</div>
+            <div class="filter-checkboxes">
+              <label class="filter-checkbox"><input type="checkbox" checked id="chk-ready" /> Ready to Move</label>
+              <label class="filter-checkbox"><input type="checkbox" id="chk-construction" /> Under Construction</label>
+              <label class="filter-checkbox"><input type="checkbox" id="chk-rera" /> RERA Approved</label>
+              <label class="filter-checkbox"><input type="checkbox" id="chk-verified" /> Verified Properties</label>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Possession By</div>
+            <select class="form-select" id="possession-filter" aria-label="Possession timeline">
+              <option value="">Any Time</option>
+              <option value="2024">Ready Now</option>
+              <option value="2025">By 2025</option>
+              <option value="2026">By 2026</option>
+              <option value="2027">By 2027</option>
+              <option value="2028">By 2028+</option>
+            </select>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Area (sq.ft)</div>
+            <div style="display:flex;gap:8px;">
+              <input type="number" class="form-input" placeholder="Min sqft" id="area-min" style="width:50%;" />
+              <input type="number" class="form-input" placeholder="Max sqft" id="area-max" style="width:50%;" />
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Amenities</div>
+            <div class="filter-checkboxes">
+              <label class="filter-checkbox"><input type="checkbox" id="chk-pool" /> Swimming Pool</label>
+              <label class="filter-checkbox"><input type="checkbox" id="chk-gym" /> Gym</label>
+              <label class="filter-checkbox"><input type="checkbox" id="chk-parking" /> Parking</label>
+              <label class="filter-checkbox"><input type="checkbox" id="chk-garden" /> Garden</label>
+              <label class="filter-checkbox"><input type="checkbox" id="chk-security" /> 24/7 Security</label>
+              <label class="filter-checkbox"><input type="checkbox" id="chk-club" /> Clubhouse</label>
+            </div>
+          </div>
+
+          <button class="btn btn-gold" style="width:100%;" id="apply-filters">Apply Filters</button>
+
+        </aside>
+
+        <!-- Results -->
+        <div>
+          <div class="results-header">
+            <div class="results-count">
+              Showing <strong>2,450</strong> properties
+            </div>
+            <select class="sort-select" id="sort-properties" aria-label="Sort properties">
+              <option>Sort: Relevance</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Newest First</option>
+              <option>Most Popular</option>
+            </select>
+          </div>
+
+          <div class="buy-grid" id="properties-grid">
+
+            <!-- Properties — same card pattern as index but more -->
+            <article class="property-card reveal" data-tilt data-category="villa,luxury">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=80" alt="Sky Villa Bandra West" loading="lazy" />
+                <div class="card-badges"><span class="badge badge-gold">✦ Ultra Luxury</span><span class="badge badge-success">RERA</span></div>
+                <div class="card-actions">
+                  <button class="card-action-btn" data-wishlist="b-001" aria-label="Wishlist" id="bwish-001"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                </div>
+                <div class="card-price-overlay"><div class="card-price-label">Starting Price</div><div class="card-price">₹8.5 Cr</div></div>
+              </div>
+              <div class="card-glow"></div>
+              <div class="card-body">
+                <a href="property-details.html?id=b-001"><h3 class="card-title">Sky Villa — Bandra West, Mumbai</h3></a>
+                <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Bandra West, Mumbai</div>
+                <div class="card-specs">
+                  <div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>5 BHK</strong></div>
+                  <div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>4200 sq.ft</strong></div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="card-builder"><div class="card-builder-logo">LH</div><span class="card-builder-name">Lodha Group</span></div>
+                <a href="property-details.html?id=b-001" class="btn btn-gold btn-sm" id="bview-001">View</a>
+              </div>
+            </article>
+
+            <article class="property-card reveal delay-1" data-tilt data-category="penthouse,luxury">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Penthouse Worli" loading="lazy" />
+                <div class="card-badges"><span class="badge badge-gold">✦ Penthouse</span></div>
+                <div class="card-actions">
+                  <button class="card-action-btn" data-wishlist="b-002" aria-label="Wishlist" id="bwish-002"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                </div>
+                <div class="card-price-overlay"><div class="card-price-label">Starting Price</div><div class="card-price">₹22 Cr</div></div>
+              </div>
+              <div class="card-glow"></div>
+              <div class="card-body">
+                <a href="property-details.html?id=b-002"><h3 class="card-title">Sky Penthouse — Worli Sea View</h3></a>
+                <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Worli, Mumbai</div>
+                <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>6 BHK</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>8500 sq.ft</strong></div></div>
+              </div>
+              <div class="card-footer">
+                <div class="card-builder"><div class="card-builder-logo">GS</div><span class="card-builder-name">Godrej Properties</span></div>
+                <a href="property-details.html?id=b-002" class="btn btn-gold btn-sm" id="bview-002">View</a>
+              </div>
+            </article>
+
+            <article class="property-card reveal delay-2" data-tilt data-category="villa">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=700&q=80" alt="Golf Estate Gurgaon" loading="lazy" />
+                <div class="card-badges"><span class="badge badge-gold">✦ Golf View</span><span class="badge badge-success">Ready</span></div>
+                <div class="card-actions">
+                  <button class="card-action-btn" data-wishlist="b-003" aria-label="Wishlist" id="bwish-003"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                </div>
+                <div class="card-price-overlay"><div class="card-price-label">Starting Price</div><div class="card-price">₹12 Cr</div></div>
+              </div>
+              <div class="card-glow"></div>
+              <div class="card-body">
+                <a href="property-details.html?id=b-003"><h3 class="card-title">Golf Estate Villa — DLF Phase 5</h3></a>
+                <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>DLF Phase 5, Gurgaon</div>
+                <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>5 BHK</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>6800 sq.ft</strong></div></div>
+              </div>
+              <div class="card-footer">
+                <div class="card-builder"><div class="card-builder-logo">DL</div><span class="card-builder-name">DLF Limited</span></div>
+                <a href="property-details.html?id=b-003" class="btn btn-gold btn-sm" id="bview-003">View</a>
+              </div>
+            </article>
+
+            <article class="property-card reveal delay-3" data-tilt data-category="apartment">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80" alt="Prestige Lake Resort" loading="lazy" />
+                <div class="card-badges"><span class="badge badge-gold">✦ Lake View</span></div>
+                <div class="card-actions">
+                  <button class="card-action-btn" data-wishlist="b-004" aria-label="Wishlist" id="bwish-004"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                </div>
+                <div class="card-price-overlay"><div class="card-price-label">Starting Price</div><div class="card-price">₹2.8 Cr</div></div>
+              </div>
+              <div class="card-glow"></div>
+              <div class="card-body">
+                <a href="property-details.html?id=b-004"><h3 class="card-title">Prestige Lake Resort — Whitefield</h3></a>
+                <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Whitefield, Bangalore</div>
+                <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>3 BHK</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>1850 sq.ft</strong></div></div>
+              </div>
+              <div class="card-footer">
+                <div class="card-builder"><div class="card-builder-logo">PR</div><span class="card-builder-name">Prestige Group</span></div>
+                <a href="property-details.html?id=b-004" class="btn btn-gold btn-sm" id="bview-004">View</a>
+              </div>
+            </article>
+
+            <article class="property-card reveal delay-4" data-tilt data-category="farmhouse">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80" alt="Farmhouse Chattarpur" loading="lazy" />
+                <div class="card-badges"><span class="badge badge-gold">✦ Farm Villa</span></div>
+                <div class="card-actions">
+                  <button class="card-action-btn" data-wishlist="b-005" aria-label="Wishlist" id="bwish-005"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                </div>
+                <div class="card-price-overlay"><div class="card-price-label">Starting Price</div><div class="card-price">₹6 Cr</div></div>
+              </div>
+              <div class="card-glow"></div>
+              <div class="card-body">
+                <a href="property-details.html?id=b-005"><h3 class="card-title">Luxury Farmhouse — Chattarpur Hills</h3></a>
+                <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Chattarpur, Delhi</div>
+                <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>6 BHK</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>1 Acre</strong></div></div>
+              </div>
+              <div class="card-footer">
+                <div class="card-builder"><div class="card-builder-logo">EM</div><span class="card-builder-name">Emaar India</span></div>
+                <a href="property-details.html?id=b-005" class="btn btn-gold btn-sm" id="bview-005">View</a>
+              </div>
+            </article>
+
+            <article class="property-card reveal delay-5" data-tilt data-category="plot">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?w=700&q=80" alt="NA Plot Alibag" loading="lazy" />
+                <div class="card-badges"><span class="badge badge-gold">✦ Beachfront</span><span class="badge badge-success">NA Plot</span></div>
+                <div class="card-actions">
+                  <button class="card-action-btn" data-wishlist="b-006" aria-label="Wishlist" id="bwish-006"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                </div>
+                <div class="card-price-overlay"><div class="card-price-label">Starting Price</div><div class="card-price">₹4.5 Cr</div></div>
+              </div>
+              <div class="card-glow"></div>
+              <div class="card-body">
+                <a href="property-details.html?id=b-006"><h3 class="card-title">Beachfront NA Plot — Alibag</h3></a>
+                <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Alibag, Maharashtra</div>
+                <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="1"/></svg><strong>5000 sq.ft</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><strong>Clear Title</strong></div></div>
+              </div>
+              <div class="card-footer">
+                <div class="card-builder"><div class="card-builder-logo">MA</div><span class="card-builder-name">Mahindra Lifespace</span></div>
+                <a href="property-details.html?id=b-006" class="btn btn-gold btn-sm" id="bview-006">View</a>
+              </div>
+            </article>
+
+          </div><!-- .buy-grid -->
+
+          <!-- Pagination -->
+          <div class="pagination">
+            <button class="page-btn" aria-label="Previous page">‹</button>
+            <button class="page-btn active" id="page-1">1</button>
+            <button class="page-btn" id="page-2">2</button>
+            <button class="page-btn" id="page-3">3</button>
+            <button class="page-btn" id="page-4">4</button>
+            <button class="page-btn" id="page-5">5</button>
+            <span style="color:var(--text-muted);padding:0 4px;">...</span>
+            <button class="page-btn" id="page-50">50</button>
+            <button class="page-btn" aria-label="Next page">›</button>
+          </div>
+
+        </div><!-- results -->
+      </div><!-- buy-layout -->
+    </div>
+  </section>
+</main>
+
+<!-- Footer (abbreviated) -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="index.html" class="footer-bottom-link">Home</a>
+        <a href="contact.html" class="footer-bottom-link">Contact</a>
+        <a href="about.html" class="footer-bottom-link">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="float-btns">
+  <a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+  </a>
+</div>
+<button id="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<script src="js/utils.js"></script>
+<script src="js/main.js"></script>
+<script src="js/header.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/search.js"></script>
+<script>
+  document.getElementById('clear-filters') && document.getElementById('clear-filters').addEventListener('click', () => {
+    document.querySelectorAll('.filter-sidebar input[type=checkbox]').forEach(cb => cb.checked = false);
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    if (window.LuxeCards) LuxeCards.showToast('Filters cleared');
+  });
+
+  document.querySelectorAll('.page-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sell Your Property — Get Maximum Price | Luxe Estates</title>
+  <meta name="description" content="Sell your property at the best price with Luxe Estates. Post free listing, get 50,000+ genuine buyers, AI pricing insights, and dedicated relationship manager." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .sell-hero { min-height: 60vh; display: flex; align-items: center; background: linear-gradient(135deg, #050608 0%, #0D1828 60%, #07090D 100%); padding: calc(var(--header-h) + var(--space-3xl)) 0 var(--space-3xl); position: relative; overflow: hidden; }
+    .sell-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(212,175,55,0.07), transparent); }
+    .sell-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); margin: var(--space-2xl) 0; }
+    .sell-step { text-align: center; }
+    .sell-step-num { width: 60px; height: 60px; border-radius: 50%; background: rgba(212,175,55,0.1); border: 2px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.5rem; font-weight: 800; color: var(--gold); margin: 0 auto var(--space-md); }
+    .sell-form-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-2xl); padding: var(--space-2xl); }
+    .sell-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+    .sell-feature { display: flex; gap: var(--space-md); align-items: flex-start; }
+    .sell-feature-icon { width: 48px; height: 48px; border-radius: var(--radius-md); background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    @media (max-width: 1000px) { .sell-steps { grid-template-columns: repeat(2, 1fr); } .sell-features { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .sell-steps { grid-template-columns: 1fr 1fr; } .sell-features { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link">Buy</a></div>
+      <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
+      <div class="nav-item"><a href="sell.html" class="nav-link active">Sell</a></div>
+      <div class="nav-item"><a href="projects.html" class="nav-link">New Projects</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link">Luxury</a></div>
+      <div class="nav-item"><a href="builders.html" class="nav-link">Builders</a></div>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></button>
+      <a href="login.html" class="header-btn-login">Login</a>
+      <a href="sell.html" class="header-btn-post">+ Post Property</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" id="mobile-nav-close">✕</button><a href="buy.html" class="mobile-nav-link">Buy</a><a href="sell.html" class="mobile-nav-link">Sell</a><a href="contact.html" class="mobile-nav-link">Contact</a></nav>
+
+<main>
+  <div class="sell-hero">
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="grid-2" style="align-items:center;">
+        <div>
+          <div class="section-label reveal">For Property Owners</div>
+          <h1 class="page-title reveal delay-1" style="font-size:clamp(2.2rem,4vw,3.8rem);">Sell at the<br/><span class="text-gold">Best Price</span></h1>
+          <p class="page-subtitle reveal delay-2" style="margin-bottom:var(--space-xl);">Access 50,000+ genuine luxury buyers. AI-powered pricing. Zero brokerage for direct sales. Dedicated relationship manager.</p>
+          <div class="flex gap-md reveal delay-3" style="flex-wrap:wrap;">
+            <a href="#post-property" class="btn btn-gold btn-lg" id="sell-hero-cta">Post Property Free</a>
+            <a href="contact.html" class="btn btn-glass btn-lg" id="sell-consult">Talk to Expert</a>
+          </div>
+          <div class="flex gap-xl reveal delay-4" style="margin-top:var(--space-xl);flex-wrap:wrap;">
+            <div><span class="counter-num" data-target="50000" style="font-family:var(--font-serif);font-size:1.8rem;font-weight:800;color:var(--gold);">50K+</span><br/><span style="color:var(--text-muted);font-size:0.8rem;">Active Buyers</span></div>
+            <div><span style="font-family:var(--font-serif);font-size:1.8rem;font-weight:800;color:var(--gold);">₹0</span><br/><span style="color:var(--text-muted);font-size:0.8rem;">Listing Fee</span></div>
+            <div><span style="font-family:var(--font-serif);font-size:1.8rem;font-weight:800;color:var(--gold);">48hrs</span><br/><span style="color:var(--text-muted);font-size:0.8rem;">First Response</span></div>
+          </div>
+        </div>
+        <div class="reveal delay-3">
+          <!-- Quick Post Card -->
+          <div class="sell-form-card">
+            <div style="font-family:var(--font-serif);font-size:1.4rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-lg);">Get Free Property Valuation</div>
+            <form id="valuation-form">
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Your Name" required id="val-name" />
+              </div>
+              <div class="form-group">
+                <input type="tel" class="form-input" placeholder="Mobile Number" required id="val-phone" />
+              </div>
+              <div class="form-group">
+                <select class="form-select" id="val-city" required>
+                  <option value="">Select City</option>
+                  <option>Mumbai</option>
+                  <option>Delhi NCR</option>
+                  <option>Bangalore</option>
+                  <option>Hyderabad</option>
+                  <option>Pune</option>
+                  <option>Chennai</option>
+                  <option>Kolkata</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Locality / Area" id="val-locality" />
+              </div>
+              <div class="form-group">
+                <select class="form-select" id="val-type" required>
+                  <option value="">Property Type</option>
+                  <option>Apartment</option>
+                  <option>Villa</option>
+                  <option>Penthouse</option>
+                  <option>Plot</option>
+                  <option>Farmhouse</option>
+                  <option>Commercial</option>
+                </select>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <select class="form-select" style="flex:1;" id="val-bhk">
+                  <option value="">BHK</option>
+                  <option>1 BHK</option>
+                  <option>2 BHK</option>
+                  <option>3 BHK</option>
+                  <option>4 BHK</option>
+                  <option>5+ BHK</option>
+                </select>
+                <input type="number" class="form-input" style="flex:1;" placeholder="Area (sq.ft)" id="val-area" />
+              </div>
+              <button type="submit" class="btn btn-gold" style="width:100%;margin-top:var(--space-md);" id="val-submit">Get Free Valuation</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal" style="justify-content:center;">Process</div>
+        <h2 class="section-title reveal delay-1">How Selling <span class="text-gold">Works</span></h2>
+      </div>
+
+      <div class="sell-steps">
+        <div class="sell-step reveal">
+          <div class="sell-step-num">1</div>
+          <h3 style="font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Post Property</h3>
+          <p style="color:var(--text-muted);font-size:0.875rem;line-height:1.7;">List your property for free in under 5 minutes. Add photos, specs, and asking price.</p>
+        </div>
+        <div class="sell-step reveal delay-1">
+          <div class="sell-step-num">2</div>
+          <h3 style="font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Reach Buyers</h3>
+          <p style="color:var(--text-muted);font-size:0.875rem;line-height:1.7;">Your property is showcased to 50,000+ verified premium buyers across our platform.</p>
+        </div>
+        <div class="sell-step reveal delay-2">
+          <div class="sell-step-num">3</div>
+          <h3 style="font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Manage Enquiries</h3>
+          <p style="color:var(--text-muted);font-size:0.875rem;line-height:1.7;">Track all buyer inquiries from your dashboard. Schedule site visits seamlessly.</p>
+        </div>
+        <div class="sell-step reveal delay-3">
+          <div class="sell-step-num">4</div>
+          <h3 style="font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Close & Celebrate</h3>
+          <p style="color:var(--text-muted);font-size:0.875rem;line-height:1.7;">Finalize the deal with full legal & documentation support from our expert team.</p>
+        </div>
+      </div>
+
+      <!-- Why Sell With Us -->
+      <div class="section-header" style="margin-top:var(--space-2xl);">
+        <div class="section-label reveal" style="justify-content:center;">Why Choose Us</div>
+        <h2 class="section-title reveal delay-1">Why India's Elite <span class="text-gold">Trust Us</span></h2>
+      </div>
+
+      <div class="sell-features">
+        <div class="sell-feature reveal"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Verified Buyers Only</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">All buyers on Luxe Estates are KYC-verified HNI clients — no time-wasters.</p></div></div>
+        <div class="sell-feature reveal delay-1"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Sell 3x Faster</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Our AI-powered matching connects you with serious buyers in under 48 hours.</p></div></div>
+        <div class="sell-feature reveal delay-2"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Best Price Guarantee</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Our pricing experts analyze 500+ data points to ensure maximum property value.</p></div></div>
+        <div class="sell-feature reveal"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Dedicated Manager</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">A personal relationship manager handles everything from listing to registration.</p></div></div>
+        <div class="sell-feature reveal delay-1"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Professional Photography</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Free professional photo shoot, 3D floor plans, and virtual tour for all premium listings.</p></div></div>
+        <div class="sell-feature reveal delay-2"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Legal & Documentation</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">End-to-end legal support, title verification, and agreement drafting at zero extra cost.</p></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Post Property Form -->
+  <section class="section" id="post-property" style="background:var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal" style="justify-content:center;">Free Listing</div>
+        <h2 class="section-title reveal delay-1">Post Your <span class="text-gold">Property</span></h2>
+      </div>
+
+      <div style="max-width:800px;margin:0 auto;">
+        <div class="sell-form-card reveal">
+          <form id="post-property-form">
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label" for="pp-owner">Owner Name *</label>
+                <input type="text" class="form-input" required id="pp-owner" placeholder="Full name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pp-phone">Mobile *</label>
+                <input type="tel" class="form-input" required id="pp-phone" placeholder="+91 XXXXX XXXXX" />
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label" for="pp-email">Email</label>
+                <input type="email" class="form-input" id="pp-email" placeholder="your@email.com" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pp-ptype">Property Type *</label>
+                <select class="form-select" required id="pp-ptype">
+                  <option value="">Select</option>
+                  <option>Apartment</option>
+                  <option>Villa</option>
+                  <option>Penthouse</option>
+                  <option>Plot</option>
+                  <option>Farm House</option>
+                  <option>Commercial Office</option>
+                  <option>Retail Space</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label" for="pp-city">City *</label>
+                <input type="text" class="form-input" required id="pp-city" placeholder="Mumbai, Delhi, etc." />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pp-locality">Locality *</label>
+                <input type="text" class="form-input" required id="pp-locality" placeholder="Bandra West, DLF Phase 5..." />
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label" for="pp-area">Area (sq.ft) *</label>
+                <input type="number" class="form-input" required id="pp-area" placeholder="e.g. 2500" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pp-price">Expected Price (₹) *</label>
+                <input type="number" class="form-input" required id="pp-price" placeholder="e.g. 15000000" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pp-description">Property Description</label>
+              <textarea class="form-textarea" id="pp-description" rows="4" placeholder="Describe your property — unique features, renovation, view, nearby landmarks..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Upload Photos (max 20)</label>
+              <div style="border:2px dashed rgba(212,175,55,0.3);border-radius:var(--radius-md);padding:var(--space-2xl);text-align:center;background:rgba(212,175,55,0.03);cursor:pointer;" id="photo-upload-zone">
+                <div style="font-size:2rem;margin-bottom:8px;">📷</div>
+                <div style="color:var(--text-muted);font-size:0.875rem;">Drag & drop photos here, or <span style="color:var(--gold);">click to browse</span></div>
+                <div style="font-size:0.72rem;color:var(--text-muted);margin-top:4px;">JPG, PNG, WEBP — max 10MB each</div>
+                <input type="file" id="pp-photos" accept="image/*" multiple style="display:none;" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-gold btn-lg" style="width:100%;" id="pp-submit">Submit Property Listing</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a><a href="buy.html" class="footer-bottom-link">Buy</a><a href="contact.html" class="footer-bottom-link">Contact</a></div></div></div></footer>
+<div class="float-btns"><a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></a></div>
+<button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/header.js"></script><script src="js/animations.js"></script>
+<script>
+  document.getElementById('photo-upload-zone').addEventListener('click', () => document.getElementById('pp-photos').click());
+  document.getElementById('valuation-form').addEventListener('submit', e => { e.preventDefault(); if(window.LuxeCards)LuxeCards.showToast('✓ Valuation request received! Our expert will call you in 2 hours.'); e.target.reset(); });
+  document.getElementById('post-property-form').addEventListener('submit', e => { e.preventDefault(); if(window.LuxeCards)LuxeCards.showToast('✓ Property listed successfully! ID: LE' + Date.now().toString().slice(-6)); e.target.reset(); });
+</script>
+</body>
+</html>

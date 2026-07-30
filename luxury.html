@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxury Collection — Ultra Premium Properties | Luxe Estates</title>
+  <meta name="description" content="India's most exclusive ultra-luxury properties — sky villas, beach residences, golf villas, penthouses. Curated for high-net-worth individuals." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .luxury-hero {
+      position: relative;
+      height: 70vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding-top: var(--header-h);
+    }
+
+    .luxury-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .luxury-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    .luxury-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,9,13,0.7) 0%, rgba(7,9,13,0.4) 50%, rgba(7,9,13,0.9) 100%);
+    }
+
+    .luxury-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 var(--space-lg);
+    }
+
+    .luxury-categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .luxury-cat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: none;
+      transition: all var(--duration-slow) var(--ease-luxury);
+      text-decoration: none;
+      display: block;
+    }
+
+    .luxury-cat-card:hover {
+      border-color: rgba(212,175,55,0.3);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .luxury-cat-img {
+      height: 180px;
+      overflow: hidden;
+    }
+
+    .luxury-cat-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration-slower) var(--ease-luxury);
+    }
+
+    .luxury-cat-card:hover .luxury-cat-img img { transform: scale(1.1); }
+
+    .luxury-cat-body {
+      padding: var(--space-md);
+    }
+
+    .luxury-cat-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .luxury-cat-count {
+      font-size: 0.78rem;
+      color: var(--gold-light);
+    }
+
+    .luxury-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    @media (max-width: 1100px) {
+      .luxury-categories { grid-template-columns: repeat(2, 1fr); }
+      .luxury-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .luxury-categories { grid-template-columns: 1fr; }
+      .luxury-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link">Buy</a></div>
+      <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
+      <div class="nav-item"><a href="sell.html" class="nav-link">Sell</a></div>
+      <div class="nav-item"><a href="projects.html" class="nav-link">New Projects</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link active">Luxury</a></div>
+      <div class="nav-item"><a href="commercial.html" class="nav-link">Commercial</a></div>
+      <div class="nav-item"><a href="builders.html" class="nav-link">Builders</a></div>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2"/></svg></button>
+      <a href="login.html" class="header-btn-login">Login</a>
+      <a href="sell.html" class="header-btn-post">+ Post Property</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <button class="mobile-nav-close" id="mobile-nav-close">✕</button>
+  <a href="buy.html" class="mobile-nav-link">Buy Property</a>
+  <a href="rent.html" class="mobile-nav-link">Rent Property</a>
+  <a href="luxury.html" class="mobile-nav-link">Luxury Collection</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+</nav>
+
+<main>
+  <div class="luxury-hero">
+    <div class="luxury-hero-bg"><img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=1600&q=80" alt="Ultra Luxury Real Estate" /></div>
+    <div class="luxury-hero-overlay"></div>
+    <div class="luxury-hero-content">
+      <div class="section-label reveal" style="justify-content:center;">The Pinnacle Collection</div>
+      <h1 class="section-title reveal delay-1" style="font-size:clamp(2.5rem,6vw,5rem);margin-top:var(--space-md);">
+        Ultra <span class="text-gold">Luxury</span> Living
+      </h1>
+      <p class="section-subtitle reveal delay-2">Properties that transcend ordinary living — exclusively curated for India's most discerning high-net-worth individuals.</p>
+      <div class="flex-center gap-md reveal delay-3" style="flex-wrap:wrap;margin-top:var(--space-xl);">
+        <a href="#luxury-listings" class="btn btn-gold btn-lg" id="luxury-explore">Explore Collection</a>
+        <a href="contact.html" class="btn btn-glass btn-lg" id="luxury-consult">Private Consultation</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal">Browse By Type</div>
+        <h2 class="section-title reveal delay-1">Luxury <span class="text-gold">Categories</span></h2>
+      </div>
+
+      <div class="luxury-categories">
+        <a href="buy.html?type=sky-villa" class="luxury-cat-card reveal" id="lcat-sky">
+          <div class="luxury-cat-img"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=80" alt="Sky Villas" loading="lazy" /></div>
+          <div class="luxury-cat-body">
+            <div class="luxury-cat-title">Sky Villas</div>
+            <div class="luxury-cat-count">240+ Properties</div>
+          </div>
+        </a>
+        <a href="buy.html?type=beach-villa" class="luxury-cat-card reveal delay-1" id="lcat-beach">
+          <div class="luxury-cat-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&q=80" alt="Beach Villas" loading="lazy" /></div>
+          <div class="luxury-cat-body">
+            <div class="luxury-cat-title">Beach Villas</div>
+            <div class="luxury-cat-count">180+ Properties</div>
+          </div>
+        </a>
+        <a href="buy.html?type=penthouse" class="luxury-cat-card reveal delay-2" id="lcat-pent">
+          <div class="luxury-cat-img"><img src="https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?w=500&q=80" alt="Penthouses" loading="lazy" /></div>
+          <div class="luxury-cat-body">
+            <div class="luxury-cat-title">Penthouses</div>
+            <div class="luxury-cat-count">320+ Properties</div>
+          </div>
+        </a>
+        <a href="buy.html?type=golf-villa" class="luxury-cat-card reveal delay-3" id="lcat-golf">
+          <div class="luxury-cat-img"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=500&q=80" alt="Golf Villas" loading="lazy" /></div>
+          <div class="luxury-cat-body">
+            <div class="luxury-cat-title">Golf Villas</div>
+            <div class="luxury-cat-count">95+ Properties</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Luxury Listings -->
+      <div id="luxury-listings">
+        <div class="section-header">
+          <div class="section-label reveal">Exclusives</div>
+          <h2 class="section-title reveal delay-1">Featured <span class="text-gold">Ultra-Luxury Properties</span></h2>
+        </div>
+
+        <div class="luxury-grid">
+          <article class="property-card" data-tilt aria-label="Antilia-Style Sky Villa">
+            <div class="card-image" style="height:300px;">
+              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=80" alt="Antilia Style Villa" loading="lazy" />
+              <div class="card-badges"><span class="badge badge-gold">✦ Trophy Asset</span></div>
+              <div class="card-actions"><button class="card-action-btn" data-wishlist="lux-001" aria-label="Wishlist" id="lwish-001"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button></div>
+              <div class="card-price-overlay"><div class="card-price-label">Starting at</div><div class="card-price">₹85 Cr</div></div>
+            </div>
+            <div class="card-glow"></div>
+            <div class="card-body">
+              <a href="property-details.html?id=lux-001"><h3 class="card-title">Antilia-Style 9-Storey Private Villa</h3></a>
+              <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Altamount Road, Mumbai</div>
+              <div class="card-specs">
+                <div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>12 BHK</strong></div>
+                <div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>22,000 sq.ft</strong></div>
+              </div>
+            </div>
+            <div class="card-footer"><div class="card-builder"><div class="card-builder-logo">KR</div><span class="card-builder-name">K Raheja Corp</span></div><a href="property-details.html?id=lux-001" class="btn btn-gold btn-sm" id="lview-001">View Details</a></div>
+          </article>
+
+          <article class="property-card" data-tilt aria-label="Beachfront Alibaug Villa">
+            <div class="card-image" style="height:300px;">
+              <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=700&q=80" alt="Beachfront Villa Alibaug" loading="lazy" />
+              <div class="card-badges"><span class="badge badge-gold">✦ Beachfront</span></div>
+              <div class="card-actions"><button class="card-action-btn" data-wishlist="lux-002" aria-label="Wishlist" id="lwish-002"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button></div>
+              <div class="card-price-overlay"><div class="card-price-label">Starting at</div><div class="card-price">₹35 Cr</div></div>
+            </div>
+            <div class="card-glow"></div>
+            <div class="card-body">
+              <a href="property-details.html?id=lux-002"><h3 class="card-title">Private Beachfront Estate — Alibaug</h3></a>
+              <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Mandwa Beach, Alibaug</div>
+              <div class="card-specs">
+                <div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>8 BHK</strong></div>
+                <div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>2 Acres</strong></div>
+              </div>
+            </div>
+            <div class="card-footer"><div class="card-builder"><div class="card-builder-logo">LH</div><span class="card-builder-name">Lodha Group</span></div><a href="property-details.html?id=lux-002" class="btn btn-gold btn-sm" id="lview-002">View Details</a></div>
+          </article>
+
+          <article class="property-card" data-tilt aria-label="Golf Estate Delhi NCR">
+            <div class="card-image" style="height:300px;">
+              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=700&q=80" alt="Golf Estate Delhi" loading="lazy" />
+              <div class="card-badges"><span class="badge badge-gold">✦ Golf View</span><span class="badge badge-success">Ready</span></div>
+              <div class="card-actions"><button class="card-action-btn" data-wishlist="lux-003" aria-label="Wishlist" id="lwish-003"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button></div>
+              <div class="card-price-overlay"><div class="card-price-label">Starting at</div><div class="card-price">₹18 Cr</div></div>
+            </div>
+            <div class="card-glow"></div>
+            <div class="card-body">
+              <a href="property-details.html?id=lux-003"><h3 class="card-title">Golf Course Estate — DLF 6</h3></a>
+              <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>DLF Phase 6, Gurgaon</div>
+              <div class="card-specs">
+                <div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>6 BHK</strong></div>
+                <div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>8,500 sq.ft</strong></div>
+              </div>
+            </div>
+            <div class="card-footer"><div class="card-builder"><div class="card-builder-logo">DL</div><span class="card-builder-name">DLF Limited</span></div><a href="property-details.html?id=lux-003" class="btn btn-gold btn-sm" id="lview-003">View Details</a></div>
+          </article>
+
+          <article class="property-card" data-tilt aria-label="Sky Penthouse Worli">
+            <div class="card-image" style="height:300px;">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Sky Penthouse" loading="lazy" />
+              <div class="card-badges"><span class="badge badge-gold">✦ Penthouse</span></div>
+              <div class="card-actions"><button class="card-action-btn" data-wishlist="lux-004" aria-label="Wishlist" id="lwish-004"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button></div>
+              <div class="card-price-overlay"><div class="card-price-label">Starting at</div><div class="card-price">₹42 Cr</div></div>
+            </div>
+            <div class="card-glow"></div>
+            <div class="card-body">
+              <a href="property-details.html?id=lux-004"><h3 class="card-title">Iconic Sky Penthouse — Worli</h3></a>
+              <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Worli, Mumbai</div>
+              <div class="card-specs">
+                <div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>7 BHK</strong></div>
+                <div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>12,000 sq.ft</strong></div>
+              </div>
+            </div>
+            <div class="card-footer"><div class="card-builder"><div class="card-builder-logo">GS</div><span class="card-builder-name">Godrej Properties</span></div><a href="property-details.html?id=lux-004" class="btn btn-gold btn-sm" id="lview-004">View Details</a></div>
+          </article>
+
+          <article class="property-card" data-tilt aria-label="Luxury Farm Villa Delhi">
+            <div class="card-image" style="height:300px;">
+              <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80" alt="Luxury Farm Villa" loading="lazy" />
+              <div class="card-badges"><span class="badge badge-gold">✦ Farm Villa</span></div>
+              <div class="card-actions"><button class="card-action-btn" data-wishlist="lux-005" aria-label="Wishlist" id="lwish-005"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button></div>
+              <div class="card-price-overlay"><div class="card-price-label">Starting at</div><div class="card-price">₹28 Cr</div></div>
+            </div>
+            <div class="card-glow"></div>
+            <div class="card-body">
+              <a href="property-details.html?id=lux-005"><h3 class="card-title">Ultra-Luxury Farm Villa — Chhatarpur</h3></a>
+              <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Chhatarpur, Delhi</div>
+              <div class="card-specs">
+                <div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>8 BHK</strong></div>
+                <div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>5 Acres</strong></div>
+              </div>
+            </div>
+            <div class="card-footer"><div class="card-builder"><div class="card-builder-logo">EM</div><span class="card-builder-name">Emaar India</span></div><a href="property-details.html?id=lux-005" class="btn btn-gold btn-sm" id="lview-005">View Details</a></div>
+          </article>
+
+          <article class="property-card" data-tilt aria-label="Lake View Villa Hyderabad">
+            <div class="card-image" style="height:300px;">
+              <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80" alt="Lake View Villa" loading="lazy" />
+              <div class="card-badges"><span class="badge badge-gold">✦ Lake View</span></div>
+              <div class="card-actions"><button class="card-action-btn" data-wishlist="lux-006" aria-label="Wishlist" id="lwish-006"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button></div>
+              <div class="card-price-overlay"><div class="card-price-label">Starting at</div><div class="card-price">₹15 Cr</div></div>
+            </div>
+            <div class="card-glow"></div>
+            <div class="card-body">
+              <a href="property-details.html?id=lux-006"><h3 class="card-title">Lake View Manor — Jubilee Hills</h3></a>
+              <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Jubilee Hills, Hyderabad</div>
+              <div class="card-specs">
+                <div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>6 BHK</strong></div>
+                <div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>9,800 sq.ft</strong></div>
+              </div>
+            </div>
+            <div class="card-footer"><div class="card-builder"><div class="card-builder-logo">PR</div><span class="card-builder-name">Prestige Group</span></div><a href="property-details.html?id=lux-006" class="btn btn-gold btn-sm" id="lview-006">View Details</a></div>
+          </article>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-section" style="margin-top:var(--space-3xl);">
+        <div class="section-label reveal" style="justify-content:center;">Private Service</div>
+        <h2 class="section-title reveal delay-1" style="font-size:clamp(1.8rem,3.5vw,3rem);max-width:600px;margin:var(--space-md) auto;">
+          Looking for Something<br/><span class="text-gold">Truly Exclusive?</span>
+        </h2>
+        <p class="section-subtitle reveal delay-2">Our private luxury real estate consultants have access to off-market, unlisted ultra-premium properties that never appear online.</p>
+        <div class="flex-center gap-md reveal delay-3" style="flex-wrap:wrap;margin-top:var(--space-xl);">
+          <a href="contact.html" class="btn btn-gold btn-lg" data-magnetic="0.3" id="luxury-cta">Request Private Listing</a>
+          <a href="tel:+919999988888" class="btn btn-glass btn-lg" data-magnetic="0.3" id="luxury-call">Call +91 99999 88888</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="index.html" class="footer-bottom-link">Home</a>
+        <a href="buy.html" class="footer-bottom-link">Buy</a>
+        <a href="contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="float-btns">
+  <a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  </a>
+</div>
+<button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+
+<script src="js/utils.js"></script>
+<script src="js/main.js"></script>
+<script src="js/header.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/cards.js"></script>
+</body>
+</html>

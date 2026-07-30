@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Luxe Estates | India's Premier Luxury Real Estate Platform</title>
+  <meta name="description" content="Luxe Estates is India's most trusted luxury real estate platform with 15+ years of excellence, ₹12,000+ Cr transactions, and 50,000+ happy homeowners." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .about-hero { min-height: 70vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: var(--header-h); }
+    .about-hero-video { position: absolute; inset: 0; }
+    .about-hero-video img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35) saturate(0.5); }
+    .about-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(7,9,13,0.85) 0%, rgba(7,9,13,0.4) 60%, rgba(7,9,13,0.7) 100%); }
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); }
+    .team-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: var(--space-lg); text-align: center; transition: all var(--duration-med) var(--ease-spring); cursor: none; }
+    .team-card:hover { border-color: rgba(212,175,55,0.3); transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+    .team-photo { width: 90px; height: 90px; border-radius: 50%; margin: 0 auto var(--space-md); border: 3px solid rgba(212,175,55,0.3); overflow: hidden; }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); }
+    .value-card { text-align: center; }
+    .value-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(212,175,55,0.1); border: 2px solid rgba(212,175,55,0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md); }
+    .value-icon svg { width: 28px; height: 28px; stroke: var(--gold); fill: none; }
+    .timeline { position: relative; padding-left: 40px; }
+    .timeline::before { content: ''; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--gold), transparent); }
+    .timeline-item { position: relative; margin-bottom: var(--space-xl); }
+    .timeline-dot { position: absolute; left: -33px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--gold); border: 3px solid rgba(7,9,13,0.8); }
+    .timeline-year { font-family: var(--font-accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .timeline-title { font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .timeline-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
+    @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .values-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr 1fr; } .values-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link">Buy</a></div>
+      <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
+      <div class="nav-item"><a href="sell.html" class="nav-link">Sell</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link">Luxury</a></div>
+      <div class="nav-item"><a href="builders.html" class="nav-link">Builders</a></div>
+      <div class="nav-item"><a href="about.html" class="nav-link active">About</a></div>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></button>
+      <a href="login.html" class="header-btn-login">Login</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" id="mobile-nav-close">✕</button><a href="buy.html" class="mobile-nav-link">Buy</a><a href="about.html" class="mobile-nav-link">About</a><a href="contact.html" class="mobile-nav-link">Contact</a></nav>
+
+<main>
+  <!-- Hero -->
+  <div class="about-hero">
+    <div class="about-hero-video"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80" alt="" aria-hidden="true" /></div>
+    <div class="about-hero-overlay"></div>
+    <div class="container" style="position:relative;z-index:2;">
+      <div style="max-width:700px;">
+        <div class="section-label reveal" style="justify-content:flex-start;">Our Story</div>
+        <h1 class="section-title reveal delay-1" style="font-size:clamp(2.5rem,5vw,4.5rem);text-align:left;max-width:none;">
+          Redefining<br/><span class="text-gold">Luxury Living</span><br/>Since 2009
+        </h1>
+        <p class="section-subtitle reveal delay-2" style="text-align:left;max-width:600px;">Luxe Estates was founded with a singular mission — to make India's finest real estate accessible to those who appreciate true quality. We don't sell homes. We curate lifestyles.</p>
+        <div class="flex gap-lg reveal delay-3" style="margin-top:var(--space-2xl);flex-wrap:wrap;">
+          <div><div class="stat-number">15+</div><div class="stat-label">Years of Excellence</div></div>
+          <div><div class="stat-number">₹12K Cr+</div><div class="stat-label">Transactions Closed</div></div>
+          <div><div class="stat-number">50,000+</div><div class="stat-label">Happy Homeowners</div></div>
+          <div><div class="stat-number">5 ★</div><div class="stat-label">Industry Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="align-items:center;gap:var(--space-3xl);">
+        <div class="reveal">
+          <div class="section-label" style="justify-content:flex-start;">Our Mission</div>
+          <h2 class="section-title" style="text-align:left;font-size:2.2rem;max-width:none;margin-bottom:var(--space-lg);">More Than Real Estate. <br/><span class="text-gold">We Create Legacy.</span></h2>
+          <p style="color:var(--text-secondary);line-height:1.9;margin-bottom:var(--space-md);">At Luxe Estates, we believe a home is a reflection of one's life philosophy. It's not just four walls — it's the stage where memories are made, generations are raised, and legacies are built.</p>
+          <p style="color:var(--text-muted);line-height:1.9;margin-bottom:var(--space-xl);">Founded in 2009 in Mumbai, we grew from a boutique luxury property consultancy to India's most comprehensive premium real estate platform. Today, we operate across 25 cities, partner with 1,200+ builders, and serve India's most distinguished clientele — from entrepreneurs and CXOs to NRIs and institutional investors.</p>
+          <a href="contact.html" class="btn btn-gold" data-magnetic="0.3" id="about-cta">Work With Us</a>
+        </div>
+        <div class="reveal delay-2">
+          <div style="position:relative;border-radius:var(--radius-xl);overflow:hidden;height:500px;">
+            <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&q=85" alt="Luxe Estates Team" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(7,9,13,0.8) 0%, transparent 60%);"></div>
+            <div style="position:absolute;bottom:var(--space-xl);left:var(--space-xl);">
+              <div style="font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:#fff;">Our Heritage</div>
+              <div style="color:var(--gold-light);font-size:0.875rem;">15 Years. 25 Cities. One Standard.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section" style="background:var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal" style="justify-content:center;">What We Stand For</div>
+        <h2 class="section-title reveal delay-1">Our Core <span class="text-gold">Values</span></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-sm);">Integrity First</h3><p style="color:var(--text-muted);font-size:0.875rem;line-height:1.8;">We never compromise on honesty. Every property we represent is legally vetted, RERA verified, and transparently presented.</p></div>
+        <div class="value-card reveal delay-1"><div class="value-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-sm);">Excellence Always</h3><p style="color:var(--text-muted);font-size:0.875rem;line-height:1.8;">Whether it's a ₹50 Lakh flat or a ₹200 Crore penthouse, we deliver the same white-glove service to every client.</p></div>
+        <div class="value-card reveal delay-2"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-sm);">Client-Centric</h3><p style="color:var(--text-muted);font-size:0.875rem;line-height:1.8;">Your dream is our mission. We invest time, resources, and expertise to understand exactly what you need.</p></div>
+        <div class="value-card reveal"><div class="value-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-sm);">Innovation</h3><p style="color:var(--text-muted);font-size:0.875rem;line-height:1.8;">AI pricing, 3D virtual tours, and smart match technology — we pioneer real estate technology in India.</p></div>
+        <div class="value-card reveal delay-1"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-sm);">Discretion</h3><p style="color:var(--text-muted);font-size:0.875rem;line-height:1.8;">Your privacy is sacred. HNI transactions are handled with the utmost confidentiality and discretion at all times.</p></div>
+        <div class="value-card reveal delay-2"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-sm);">Legacy Building</h3><p style="color:var(--text-muted);font-size:0.875rem;line-height:1.8;">We think in generations, not transactions. Every property we help you buy is an investment in your family's future.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Team -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal" style="justify-content:center;">Leadership</div>
+        <h2 class="section-title reveal delay-1">Meet the <span class="text-gold">Visionaries</span></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal"><div class="team-photo"><img src="https://images.unsplash.com/photo-1560250097-0dc05ae19c9a?w=200&q=80" alt="Rahul Sharma - Founder" loading="lazy" /></div><div class="builder-name">Rahul Sharma</div><div style="color:var(--gold-light);font-size:0.78rem;margin-bottom:var(--space-sm);">Founder & CEO</div><div style="color:var(--text-muted);font-size:0.78rem;line-height:1.6;">25 years in premium real estate. Ex-Goldman Sachs. IIT Bombay & IIM Ahmedabad alumni.</div></div>
+        <div class="team-card reveal delay-1"><div class="team-photo"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt="Priya Mehta - COO" loading="lazy" /></div><div class="builder-name">Priya Mehta</div><div style="color:var(--gold-light);font-size:0.78rem;margin-bottom:var(--space-sm);">Co-Founder & COO</div><div style="color:var(--text-muted);font-size:0.78rem;line-height:1.6;">Former VP at CBRE India. Pioneer of luxury leasing in the Indian market. Harvard Business School.</div></div>
+        <div class="team-card reveal delay-2"><div class="team-photo"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Arjun Kapoor - CTO" loading="lazy" /></div><div class="builder-name">Arjun Kapoor</div><div style="color:var(--gold-light);font-size:0.78rem;margin-bottom:var(--space-sm);">Chief Technology Officer</div><div style="color:var(--text-muted);font-size:0.78rem;line-height:1.6;">Ex-Palantir. Built AI pricing engine that processes 500+ data points per property. MIT graduate.</div></div>
+        <div class="team-card reveal delay-3"><div class="team-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt="Ananya Joshi - CFO" loading="lazy" /></div><div class="builder-name">Ananya Joshi</div><div style="color:var(--gold-light);font-size:0.78rem;margin-bottom:var(--space-sm);">Chief Financial Officer</div><div style="color:var(--text-muted);font-size:0.78rem;line-height:1.6;">Ex-JP Morgan. Structured ₹5,000+ Cr in real estate deals. CA & CFA. XLRI Jamshedpur alumni.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section" style="background:var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal" style="justify-content:center;">Our Journey</div>
+        <h2 class="section-title reveal delay-1">15 Years of <span class="text-gold">Excellence</span></h2>
+      </div>
+      <div style="max-width:700px;margin:0 auto;" class="reveal">
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2009</div><div class="timeline-title">Founded in Mumbai</div><div class="timeline-desc">Started as a boutique luxury consultancy with 3 people and a vision to redefine premium real estate.</div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2012</div><div class="timeline-title">First ₹100 Cr Milestone</div><div class="timeline-desc">Crossed ₹100 Crore in transaction value. Expanded to Delhi NCR and launched the digital platform.</div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-title">NRI Desk Launch</div><div class="timeline-year">2015</div><div class="timeline-desc">Launched dedicated NRI services desk. Handled first NRI portfolio investment worth ₹45 Crore.</div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2018</div><div class="timeline-title">AI Pricing Engine</div><div class="timeline-desc">Launched proprietary AI pricing tool — first in India to predict luxury property prices with 94% accuracy.</div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2021</div><div class="timeline-title">Series B Funding</div><div class="timeline-desc">Raised ₹500 Crore in Series B from top investors. Expanded to 25 cities across India.</div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2025</div><div class="timeline-title">India's #1 Luxury Platform</div><div class="timeline-desc">Ranked India's #1 luxury real estate platform with ₹12,000+ Cr in cumulative transactions and 50K+ families served.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label reveal" style="justify-content:center;">Recognition</div>
+        <h2 class="section-title reveal delay-1">Awards & <span class="text-gold">Accolades</span></h2>
+      </div>
+      <div class="grid-2">
+        <div class="reveal">
+          <div style="display:flex;flex-direction:column;gap:var(--space-md);">
+            <div style="display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md);background:var(--card-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);">
+              <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(212,175,55,0.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">🏆</div>
+              <div><div style="font-weight:700;color:var(--text-primary);">Best Luxury Portal — ET Real Estate Awards 2024</div><div style="color:var(--text-muted);font-size:0.78rem;">Economic Times, New Delhi</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md);background:var(--card-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);">
+              <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(212,175,55,0.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">⭐</div>
+              <div><div style="font-weight:700;color:var(--text-primary);">#1 NRI Real Estate Platform — NRI Achievers 2024</div><div style="color:var(--text-muted);font-size:0.78rem;">NRI Achievers Awards, Dubai</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md);background:var(--card-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);">
+              <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(212,175,55,0.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">🎖️</div>
+              <div><div style="font-weight:700;color:var(--text-primary);">India's Most Trusted Realtor — CREDAI 2023</div><div style="color:var(--text-muted);font-size:0.78rem;">CREDAI National Conference, Hyderabad</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md);background:var(--card-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);">
+              <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(212,175,55,0.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">💎</div>
+              <div><div style="font-weight:700;color:var(--text-primary);">Top PropTech Startup — India PropTech 2022</div><div style="color:var(--text-muted);font-size:0.78rem;">India PropTech Awards, Mumbai</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal delay-2" style="display:flex;align-items:center;">
+          <div style="text-align:center;width:100%;">
+            <div class="cta-section" style="padding:var(--space-2xl);border:1px solid rgba(212,175,55,0.2);border-radius:var(--radius-xl);background:rgba(212,175,55,0.03);">
+              <div class="section-label" style="justify-content:center;">Join Our Journey</div>
+              <h3 style="font-family:var(--font-serif);font-size:1.8rem;font-weight:700;color:var(--text-primary);margin:var(--space-md) 0;">Ready to Find<br/><span class="text-gold">Your Legacy Home?</span></h3>
+              <p style="color:var(--text-muted);margin-bottom:var(--space-xl);font-size:0.9rem;">Join 50,000+ distinguished families who trust Luxe Estates for their most important investment.</p>
+              <a href="buy.html" class="btn btn-gold btn-lg" style="width:100%;margin-bottom:var(--space-md);" id="about-explore">Explore Properties</a>
+              <a href="contact.html" class="btn btn-glass btn-lg" style="width:100%;" id="about-talk">Talk to an Expert</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a><a href="contact.html" class="footer-bottom-link">Contact</a></div></div></div></footer>
+<div class="float-btns"><a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></a></div>
+<button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/header.js"></script><script src="js/animations.js"></script>
+</body>
+</html>

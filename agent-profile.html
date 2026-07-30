@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arjun Mehta — Luxury Real Estate Consultant | Luxe Estates</title>
+  <meta name="description" content="View Arjun Mehta's profile, a Senior Luxury Consultant at Luxe Estates specializing in Mumbai ultra-luxury properties. View current listings and past deals." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .profile-hero { padding: calc(var(--header-h) + var(--space-3xl)) 0 var(--space-2xl); background: linear-gradient(180deg, #050608, var(--bg-secondary)); position: relative; }
+    .profile-layout { display: grid; grid-template-columns: 350px 1fr; gap: var(--space-3xl); align-items: start; max-width: 1200px; margin: 0 auto; }
+    .profile-sidebar { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: var(--space-2xl); text-align: center; position: sticky; top: calc(var(--header-h) + 20px); }
+    .profile-avatar { width: 160px; height: 160px; border-radius: 50%; border: 4px solid rgba(212,175,55,0.3); margin: 0 auto var(--space-lg); overflow: hidden; position: relative; }
+    .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .profile-verified { position: absolute; bottom: 8px; right: 8px; width: 32px; height: 32px; background: #22C55E; border-radius: 50%; border: 3px solid var(--bg-primary); display: flex; align-items: center; justify-content: center; font-size: 14px; color: white; }
+    .profile-name { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .profile-title { font-size: 0.9rem; color: var(--gold-light); margin-bottom: var(--space-md); }
+    .profile-rating { display: flex; align-items: center; justify-content: center; gap: 4px; color: var(--gold); margin-bottom: var(--space-xl); }
+    .profile-stat-box { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); padding-bottom: var(--space-xl); margin-bottom: var(--space-xl); border-bottom: 1px solid var(--glass-border); }
+    .p-stat { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: var(--space-md); }
+    .p-stat-val { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin-bottom: 4px; }
+    .p-stat-lbl { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact-methods { display: flex; flex-direction: column; gap: var(--space-sm); }
+    
+    .profile-content-section { margin-bottom: var(--space-3xl); }
+    .section-heading { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-lg); padding-bottom: var(--space-sm); border-bottom: 1px solid var(--glass-border); }
+    .about-text { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: var(--space-lg); }
+    .spec-tags { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-bottom: var(--space-xl); }
+    
+    .listings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); }
+    
+    @media (max-width: 1000px) { .profile-layout { grid-template-columns: 1fr; } .profile-sidebar { position: static; } }
+    @media (max-width: 600px) { .listings-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link">Buy</a></div>
+      <div class="nav-item"><a href="agents.html" class="nav-link active">Agents</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link">Luxury</a></div>
+    </nav>
+    <div class="header-actions"><button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></button><a href="login.html" class="header-btn-login">Login</a></div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" id="mobile-nav-close">✕</button><a href="agents.html" class="mobile-nav-link">Agents</a><a href="contact.html" class="mobile-nav-link">Contact</a></nav>
+
+<main>
+  <div class="profile-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom:var(--space-md);"><a href="index.html">Home</a><span class="sep">›</span><a href="agents.html">Agents</a><span class="sep">›</span><span class="active">Arjun Mehta</span></nav>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="profile-layout">
+        
+        <!-- Sidebar Profile Card -->
+        <aside class="profile-sidebar reveal">
+          <div class="profile-avatar"><img src="https://images.unsplash.com/photo-1560250097-0dc05ae19c9a?w=400&q=80" alt="Arjun Mehta" /><div class="profile-verified">✓</div></div>
+          <h1 class="profile-name">Arjun Mehta</h1>
+          <div class="profile-title">Senior Luxury Consultant, Mumbai</div>
+          <div class="profile-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span> <span style="font-size:0.8rem;color:var(--text-muted);margin-left:4px;">4.9 (128 Reviews)</span></div>
+          
+          <div class="profile-stat-box">
+            <div class="p-stat"><div class="p-stat-val">15</div><div class="p-stat-lbl">Years Exp.</div></div>
+            <div class="p-stat"><div class="p-stat-val">280+</div><div class="p-stat-lbl">Deals Closed</div></div>
+            <div class="p-stat" style="grid-column: 1 / -1;"><div class="p-stat-val">₹850 Cr</div><div class="p-stat-lbl">Total Transaction Volume</div></div>
+          </div>
+
+          <div class="contact-methods">
+            <a href="https://wa.me/919999988888" class="btn btn-gold" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+              WhatsApp Me
+            </a>
+            <a href="tel:+919999988888" class="btn btn-glass" style="display:flex;align-items:center;justify-content:center;gap:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.16a16 16 0 006.93 6.93l1.52-1.52a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              Call +91 99999 88888
+            </a>
+            <a href="mailto:arjun@luxeestates.in" class="btn btn-glass" style="display:flex;align-items:center;justify-content:center;gap:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email Agent
+            </a>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div>
+          <div class="profile-content-section reveal delay-1">
+            <h2 class="section-heading">About Arjun</h2>
+            <p class="about-text">With over 15 years of experience navigating the complex ultra-luxury real estate market of South Mumbai and Bandra, Arjun Mehta is renowned for his discretion, negotiation skills, and unparalleled market knowledge. He specializes in serving High Net Worth Individuals (HNIs), celebrities, and corporate leaders.</p>
+            <p class="about-text">Arjun holds a record for closing one of the most expensive penthouse deals in Worli in 2024. His approach is client-first, ensuring every transaction is seamless, transparent, and financially sound.</p>
+            
+            <h3 style="font-family:var(--font-sans);font-size:0.9rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-primary);margin-bottom:12px;">Specializations</h3>
+            <div class="spec-tags">
+              <span class="badge badge-gold">Ultra Luxury Apartments</span>
+              <span class="badge badge-glass">Penthouses</span>
+              <span class="badge badge-glass">Sea View Properties</span>
+              <span class="badge badge-glass">Off-Market Deals</span>
+              <span class="badge badge-glass">NRI Investments</span>
+            </div>
+            
+            <h3 style="font-family:var(--font-sans);font-size:0.9rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-primary);margin-bottom:12px;">Service Areas</h3>
+            <div class="spec-tags">
+              <span class="badge badge-glass">Worli</span>
+              <span class="badge badge-glass">Bandra West</span>
+              <span class="badge badge-glass">Malabar Hill</span>
+              <span class="badge badge-glass">Juhu</span>
+              <span class="badge badge-glass">Lower Parel</span>
+            </div>
+          </div>
+
+          <div class="profile-content-section reveal delay-2">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-lg);border-bottom:1px solid var(--glass-border);padding-bottom:var(--space-sm);">
+              <h2 class="section-heading" style="margin-bottom:0;border:none;padding:0;">Current Listings (12)</h2>
+            </div>
+
+            <div class="listings-grid">
+              <!-- Listing 1 -->
+              <article class="property-card" data-tilt>
+                <div class="card-image" style="height:220px;"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Worli Sea Face" loading="lazy" /><div class="card-badges"><span class="badge badge-gold">✦ Premium</span></div><div class="card-price-overlay"><div class="card-price-label">Price</div><div class="card-price">₹18 Cr</div></div></div>
+                <div class="card-body" style="padding:var(--space-md);"><a href="property-details.html?id=l-001"><h3 class="card-title" style="font-size:1.1rem;">4 BHK Sea View — Worli</h3></a><div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Worli Sea Face, Mumbai</div></div>
+              </article>
+              <!-- Listing 2 -->
+              <article class="property-card" data-tilt>
+                <div class="card-image" style="height:220px;"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Bandra Penthouse" loading="lazy" /><div class="card-badges"><span class="badge badge-gold">✦ Penthouse</span></div><div class="card-price-overlay"><div class="card-price-label">Price</div><div class="card-price">₹35 Cr</div></div></div>
+                <div class="card-body" style="padding:var(--space-md);"><a href="property-details.html?id=l-002"><h3 class="card-title" style="font-size:1.1rem;">Ultra Luxury Penthouse — Bandra</h3></a><div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Pali Hill, Bandra West</div></div>
+              </article>
+            </div>
+            <a href="#" class="btn btn-glass" style="width:100%;text-align:center;margin-top:var(--space-lg);">View All Listings by Arjun</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a><a href="agents.html" class="footer-bottom-link">Agents</a></div></div></div></footer>
+<script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/header.js"></script><script src="js/animations.js"></script><script src="js/cards.js"></script>
+</body>
+</html>

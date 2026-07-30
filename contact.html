@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Luxe Estates | Premium Real Estate India</title>
+  <meta name="description" content="Contact Luxe Estates for buying, selling, renting or investing in luxury real estate. Reach us via phone, WhatsApp, email or visit our offices across India." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .contact-hero { padding: calc(var(--header-h) + var(--space-3xl)) 0 var(--space-3xl); background: linear-gradient(180deg, #050608, var(--bg-secondary)); position: relative; }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: var(--space-2xl); align-items: start; }
+    .contact-info-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: var(--space-xl); }
+    .contact-info-item { display: flex; align-items: flex-start; gap: var(--space-md); padding: var(--space-md) 0; border-bottom: 1px solid var(--glass-border); }
+    .contact-info-item:last-child { border-bottom: none; }
+    .contact-info-icon { width: 48px; height: 48px; border-radius: var(--radius-md); background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-info-icon svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; }
+    .offices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); margin-top: var(--space-2xl); }
+    .office-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: var(--space-lg); transition: all var(--duration-med) var(--ease-spring); }
+    .office-card:hover { border-color: rgba(212,175,55,0.3); transform: translateY(-4px); }
+    .office-city { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    @media (max-width: 1000px) { .contact-layout { grid-template-columns: 1fr; } .offices-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .offices-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link">Buy</a></div>
+      <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
+      <div class="nav-item"><a href="sell.html" class="nav-link">Sell</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link">Luxury</a></div>
+      <div class="nav-item"><a href="builders.html" class="nav-link">Builders</a></div>
+      <div class="nav-item"><a href="about.html" class="nav-link">About</a></div>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></button>
+      <a href="login.html" class="header-btn-login">Login</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" id="mobile-nav-close">✕</button><a href="buy.html" class="mobile-nav-link">Buy</a><a href="sell.html" class="mobile-nav-link">Sell</a><a href="about.html" class="mobile-nav-link">About</a><a href="contact.html" class="mobile-nav-link">Contact</a></nav>
+
+<main>
+  <div class="contact-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom:var(--space-md);"><a href="index.html">Home</a><span class="sep">›</span><span class="active">Contact</span></nav>
+      <h1 class="page-title">Let's <span class="text-gold">Talk</span></h1>
+      <p class="page-subtitle">Our luxury real estate consultants are available 7 days a week to assist you.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Info Sidebar -->
+        <div>
+          <div class="contact-info-card reveal">
+            <div style="font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-lg);">Get in Touch</div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.16a16 16 0 006.93 6.93l1.52-1.52a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+              <div>
+                <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Phone</div>
+                <a href="tel:+919999988888" style="color:var(--gold-light);display:block;margin-bottom:2px;">+91 99999 88888</a>
+                <a href="tel:+911146464646" style="color:var(--text-muted);font-size:0.875rem;">+91 11 4646 4646</a>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <div>
+                <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Email</div>
+                <a href="mailto:hello@luxeestates.in" style="color:var(--gold-light);display:block;margin-bottom:2px;">hello@luxeestates.in</a>
+                <a href="mailto:luxury@luxeestates.in" style="color:var(--text-muted);font-size:0.875rem;">luxury@luxeestates.in</a>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div>
+                <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Head Office</div>
+                <div style="color:var(--text-muted);font-size:0.875rem;line-height:1.7;">1201, One BKC, Bandra Kurla Complex,<br/>Bandra East, Mumbai — 400 051</div>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div>
+                <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Business Hours</div>
+                <div style="color:var(--text-muted);font-size:0.875rem;line-height:1.7;">Monday – Saturday: 9 AM – 8 PM<br/>Sunday: 10 AM – 6 PM</div>
+              </div>
+            </div>
+
+            <!-- Social -->
+            <div style="padding-top:var(--space-md);">
+              <div style="font-family:var(--font-accent);font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:var(--space-md);">Follow Us</div>
+              <div class="flex gap-sm">
+                <a href="#" class="social-icon-btn" id="social-ig" aria-label="Instagram" style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--duration-med);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                </a>
+                <a href="#" class="social-icon-btn" id="social-fb" aria-label="Facebook" style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--duration-med);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                </a>
+                <a href="#" class="social-icon-btn" id="social-li" aria-label="LinkedIn" style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--duration-med);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://wa.me/919999988888" class="social-icon-btn" id="social-wa" aria-label="WhatsApp" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);display:flex;align-items:center;justify-content:center;color:#25D366;transition:all var(--duration-med);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="reveal delay-2">
+          <div class="contact-info-card">
+            <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-lg);">Send Us a Message</div>
+            <form id="contact-form">
+              <div class="grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="ct-name">Full Name *</label>
+                  <input type="text" class="form-input" required id="ct-name" placeholder="Your full name" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="ct-phone">Mobile *</label>
+                  <input type="tel" class="form-input" required id="ct-phone" placeholder="+91 XXXXX XXXXX" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ct-email">Email Address</label>
+                <input type="email" class="form-input" id="ct-email" placeholder="your@email.com" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ct-purpose">I'm Interested In</label>
+                <select class="form-select" id="ct-purpose">
+                  <option>Buying Property</option>
+                  <option>Selling Property</option>
+                  <option>Renting Property</option>
+                  <option>New Project Launch</option>
+                  <option>Investment Advice</option>
+                  <option>NRI Services</option>
+                  <option>Home Loan Assistance</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ct-budget">Budget Range</label>
+                <select class="form-select" id="ct-budget">
+                  <option>Up to 1 Crore</option>
+                  <option>1–3 Crore</option>
+                  <option>3–5 Crore</option>
+                  <option>5–10 Crore</option>
+                  <option>10–25 Crore</option>
+                  <option>25 Crore+</option>
+                  <option>Not Specified</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ct-msg">Message</label>
+                <textarea class="form-textarea" id="ct-msg" rows="5" placeholder="Tell us more about your requirements..."></textarea>
+              </div>
+              <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;">
+                <button type="submit" class="btn btn-gold btn-lg" style="flex:1;" id="ct-submit">Send Message</button>
+                <a href="https://wa.me/919999988888" class="btn btn-lg" style="flex:1;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;" target="_blank" rel="noopener" id="ct-wa">Chat on WhatsApp</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Office Locations -->
+      <div style="margin-top:var(--space-3xl);">
+        <div class="section-header">
+          <div class="section-label reveal" style="justify-content:center;">Offices</div>
+          <h2 class="section-title reveal delay-1">Our <span class="text-gold">Locations</span></h2>
+        </div>
+
+        <div class="offices-grid">
+          <div class="office-card reveal"><div class="office-city">Mumbai HQ</div><div style="color:var(--gold-light);font-size:0.78rem;font-family:var(--font-accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-sm);">Head Office</div><div style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">1201, One BKC, Bandra Kurla Complex, Mumbai — 400 051</div><a href="tel:+912246464646" style="display:block;margin-top:var(--space-md);color:var(--gold);font-size:0.875rem;">+91 22 4646 4646</a></div>
+          <div class="office-card reveal delay-1"><div class="office-city">Delhi NCR</div><div style="color:var(--gold-light);font-size:0.78rem;font-family:var(--font-accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-sm);">North India</div><div style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Tower B, DLF Corporate Park, MG Road, Gurgaon — 122 002</div><a href="tel:+911246464646" style="display:block;margin-top:var(--space-md);color:var(--gold);font-size:0.875rem;">+91 124 646 4646</a></div>
+          <div class="office-card reveal delay-2"><div class="office-city">Bangalore</div><div style="color:var(--gold-light);font-size:0.78rem;font-family:var(--font-accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-sm);">South India</div><div style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Prestige Meridian II, M.G. Road, Bangalore — 560 001</div><a href="tel:+918046464646" style="display:block;margin-top:var(--space-md);color:var(--gold);font-size:0.875rem;">+91 80 4646 4646</a></div>
+          <div class="office-card reveal"><div class="office-city">Hyderabad</div><div style="color:var(--gold-light);font-size:0.78rem;font-family:var(--font-accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-sm);">Telangana</div><div style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Jubilee Hills, Hyderabad — 500 033</div><a href="tel:+914046464646" style="display:block;margin-top:var(--space-md);color:var(--gold);font-size:0.875rem;">+91 40 4646 4646</a></div>
+          <div class="office-card reveal delay-1"><div class="office-city">Pune</div><div style="color:var(--gold-light);font-size:0.78rem;font-family:var(--font-accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-sm);">Maharashtra</div><div style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Koregaon Park, Pune — 411 001</div><a href="tel:+912046464646" style="display:block;margin-top:var(--space-md);color:var(--gold);font-size:0.875rem;">+91 20 4646 4646</a></div>
+          <div class="office-card reveal delay-2"><div class="office-city">NRI Services</div><div style="color:var(--gold-light);font-size:0.78rem;font-family:var(--font-accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-sm);">Global Desk</div><div style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Available via WhatsApp, Zoom & Email 24×7 for NRI clients worldwide.</div><a href="mailto:nri@luxeestates.in" style="display:block;margin-top:var(--space-md);color:var(--gold);font-size:0.875rem;">nri@luxeestates.in</a></div>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div style="margin-top:var(--space-2xl);border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--glass-border);height:400px;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.7!2d72.8693!3d19.0651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDAzJzU0LjQiTiA3MsKwNTInMDkuNSJF!5e0!3m2!1sen!2sin!4v1690000000000" style="width:100%;height:100%;border:none;filter:invert(90%) hue-rotate(180deg) saturate(0.8) brightness(0.85);" loading="lazy" title="Luxe Estates offices on map" aria-label="Google Maps showing Luxe Estates office locations"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a><a href="about.html" class="footer-bottom-link">About</a></div></div></div></footer>
+<div class="float-btns"><a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></a></div>
+<button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/header.js"></script><script src="js/animations.js"></script>
+<script>
+  document.getElementById('contact-form').addEventListener('submit', e => {
+    e.preventDefault();
+    if(window.LuxeCards) LuxeCards.showToast('✓ Message sent! Our team will respond within 2 hours.');
+    e.target.reset();
+  });
+  document.querySelectorAll('.social-icon-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => { btn.style.color = 'var(--gold)'; btn.style.borderColor = 'var(--gold)'; });
+    btn.addEventListener('mouseleave', () => { btn.style.color = ''; btn.style.borderColor = ''; });
+  });
+</script>
+</body>
+</html>

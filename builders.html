@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Builders in India — Luxe Estates | Premium Real Estate Developers</title>
+  <meta name="description" content="Browse India's top real estate builders and developers. View projects, ratings, and builder profiles of Lodha, DLF, Godrej, Prestige, Sobha and more." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .page-hero { padding: calc(var(--header-h) + var(--space-3xl)) 0 var(--space-3xl); background: linear-gradient(180deg, #050608, var(--bg-secondary)); position: relative; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; opacity: 0.1; }
+    .page-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .builders-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); }
+    .builder-card-full { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); overflow: hidden; transition: all var(--duration-slow) var(--ease-luxury); cursor: none; }
+    .builder-card-full:hover { border-color: rgba(212,175,55,0.3); transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+    .builder-cover { height: 140px; overflow: hidden; position: relative; }
+    .builder-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration-slower) var(--ease-luxury); }
+    .builder-card-full:hover .builder-cover img { transform: scale(1.08); }
+    .builder-cover-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,9,13,0.8), transparent); }
+    .builder-body { padding: var(--space-md); }
+    .builder-avatar { width: 64px; height: 64px; border-radius: var(--radius-md); border: 2px solid rgba(212,175,55,0.3); overflow: hidden; margin-top: -40px; margin-bottom: var(--space-sm); background: var(--bg-secondary); }
+    .builder-avatar img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+    @media (max-width: 1100px) { .builders-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px) { .builders-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 400px) { .builders-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link">Buy</a></div>
+      <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
+      <div class="nav-item"><a href="sell.html" class="nav-link">Sell</a></div>
+      <div class="nav-item"><a href="projects.html" class="nav-link">New Projects</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link">Luxury</a></div>
+      <div class="nav-item"><a href="commercial.html" class="nav-link">Commercial</a></div>
+      <div class="nav-item"><a href="builders.html" class="nav-link active">Builders</a></div>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42"/></svg></button>
+      <a href="login.html" class="header-btn-login">Login</a>
+      <a href="sell.html" class="header-btn-post">+ Post Property</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <button class="mobile-nav-close" id="mobile-nav-close">✕</button>
+  <a href="buy.html" class="mobile-nav-link">Buy Property</a>
+  <a href="builders.html" class="mobile-nav-link">Builders</a>
+  <a href="agents.html" class="mobile-nav-link">Agents</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=60" alt="" aria-hidden="true" /></div>
+    <div class="container" style="position:relative;z-index:2;">
+      <nav class="breadcrumb" style="margin-bottom:var(--space-md);"><a href="index.html">Home</a><span class="sep">›</span><span class="active">Builders</span></nav>
+      <h1 class="page-title">India's <span class="text-gold">Top Builders</span></h1>
+      <p class="page-subtitle">1,200+ verified real estate developers — from ultra-luxury to affordable housing.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <!-- Filter Row -->
+      <div class="flex gap-sm" style="flex-wrap:wrap;margin-bottom:var(--space-xl);">
+        <button class="filter-pill active" data-filter="all" id="bf-all">All Builders</button>
+        <button class="filter-pill" data-filter="luxury" id="bf-luxury">Luxury</button>
+        <button class="filter-pill" data-filter="affordable" id="bf-affordable">Affordable</button>
+        <button class="filter-pill" data-filter="commercial" id="bf-commercial">Commercial</button>
+        <button class="filter-pill" data-filter="township" id="bf-township">Township</button>
+      </div>
+
+      <div class="builders-grid stagger-children">
+
+        <a href="builder-profile.html?id=lodha" class="builder-card-full reveal" id="builder-lodha">
+          <div class="builder-cover"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&q=70" alt="Lodha Group Projects" loading="lazy" /><div class="builder-cover-overlay"></div></div>
+          <div class="builder-body">
+            <div class="builder-avatar"><img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100&q=80" alt="Lodha" loading="lazy" /></div>
+            <div class="builder-name">Lodha Group</div>
+            <div class="builder-tagline">Building no ordinary</div>
+            <div class="builder-stats" style="justify-content:flex-start;margin-top:var(--space-sm);">
+              <div style="margin-right:var(--space-md);"><span class="builder-stat-value">350+</span><span class="builder-stat-label">Projects</span></div>
+              <div><span class="builder-stat-value">4.9★</span><span class="builder-stat-label">Rating</span></div>
+            </div>
+            <div class="flex gap-sm" style="margin-top:var(--space-md);flex-wrap:wrap;">
+              <span class="badge badge-gold">✦ Luxury</span>
+              <span class="badge badge-success">RERA</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="builder-profile.html?id=dlf" class="builder-card-full reveal delay-1" id="builder-dlf">
+          <div class="builder-cover"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=70" alt="DLF Projects" loading="lazy" /><div class="builder-cover-overlay"></div></div>
+          <div class="builder-body">
+            <div class="builder-avatar"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=100&q=80" alt="DLF" loading="lazy" /></div>
+            <div class="builder-name">DLF Limited</div>
+            <div class="builder-tagline">Building India Since 1946</div>
+            <div class="builder-stats" style="justify-content:flex-start;margin-top:var(--space-sm);">
+              <div style="margin-right:var(--space-md);"><span class="builder-stat-value">490+</span><span class="builder-stat-label">Projects</span></div>
+              <div><span class="builder-stat-value">4.8★</span><span class="builder-stat-label">Rating</span></div>
+            </div>
+            <div class="flex gap-sm" style="margin-top:var(--space-md);flex-wrap:wrap;">
+              <span class="badge badge-gold">✦ Legacy</span>
+              <span class="badge badge-success">RERA</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="builder-profile.html?id=godrej" class="builder-card-full reveal delay-2" id="builder-godrej">
+          <div class="builder-cover"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=70" alt="Godrej" loading="lazy" /><div class="builder-cover-overlay"></div></div>
+          <div class="builder-body">
+            <div class="builder-avatar"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=100&q=80" alt="Godrej" loading="lazy" /></div>
+            <div class="builder-name">Godrej Properties</div>
+            <div class="builder-tagline">Good & Green Homes</div>
+            <div class="builder-stats" style="justify-content:flex-start;margin-top:var(--space-sm);">
+              <div style="margin-right:var(--space-md);"><span class="builder-stat-value">200+</span><span class="builder-stat-label">Projects</span></div>
+              <div><span class="builder-stat-value">4.9★</span><span class="builder-stat-label">Rating</span></div>
+            </div>
+            <div class="flex gap-sm" style="margin-top:var(--space-md);flex-wrap:wrap;"><span class="badge badge-gold">✦ Premium</span><span class="badge badge-success">RERA</span></div>
+          </div>
+        </a>
+
+        <a href="builder-profile.html?id=prestige" class="builder-card-full reveal delay-3" id="builder-prestige">
+          <div class="builder-cover"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&q=70" alt="Prestige" loading="lazy" /><div class="builder-cover-overlay"></div></div>
+          <div class="builder-body">
+            <div class="builder-avatar"><img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=100&q=80" alt="Prestige" loading="lazy" /></div>
+            <div class="builder-name">Prestige Group</div>
+            <div class="builder-tagline">The Art of Quality</div>
+            <div class="builder-stats" style="justify-content:flex-start;margin-top:var(--space-sm);">
+              <div style="margin-right:var(--space-md);"><span class="builder-stat-value">280+</span><span class="builder-stat-label">Projects</span></div>
+              <div><span class="builder-stat-value">4.8★</span><span class="builder-stat-label">Rating</span></div>
+            </div>
+            <div class="flex gap-sm" style="margin-top:var(--space-md);flex-wrap:wrap;"><span class="badge badge-gold">✦ Luxury</span><span class="badge badge-success">RERA</span></div>
+          </div>
+        </a>
+
+        <a href="builder-profile.html?id=sobha" class="builder-card-full reveal delay-4" id="builder-sobha">
+          <div class="builder-cover"><img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&q=70" alt="Sobha" loading="lazy" /><div class="builder-cover-overlay"></div></div>
+          <div class="builder-body">
+            <div class="builder-avatar"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=100&q=80" alt="Sobha" loading="lazy" /></div>
+            <div class="builder-name">Sobha Ltd</div>
+            <div class="builder-tagline">Experience is Everything</div>
+            <div class="builder-stats" style="justify-content:flex-start;margin-top:var(--space-sm);">
+              <div style="margin-right:var(--space-md);"><span class="builder-stat-value">150+</span><span class="builder-stat-label">Projects</span></div>
+              <div><span class="builder-stat-value">4.7★</span><span class="builder-stat-label">Rating</span></div>
+            </div>
+            <div class="flex gap-sm" style="margin-top:var(--space-md);flex-wrap:wrap;"><span class="badge badge-gold">✦ Premium</span><span class="badge badge-success">RERA</span></div>
+          </div>
+        </a>
+
+        <a href="builder-profile.html?id=brigade" class="builder-card-full reveal delay-5" id="builder-brigade">
+          <div class="builder-cover"><img src="https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?w=400&q=70" alt="Brigade" loading="lazy" /><div class="builder-cover-overlay"></div></div>
+          <div class="builder-body">
+            <div class="builder-avatar"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=100&q=80" alt="Brigade" loading="lazy" /></div>
+            <div class="builder-name">Brigade Group</div>
+            <div class="builder-tagline">Building a Better Life</div>
+            <div class="builder-stats" style="justify-content:flex-start;margin-top:var(--space-sm);">
+              <div style="margin-right:var(--space-md);"><span class="builder-stat-value">180+</span><span class="builder-stat-label">Projects</span></div>
+              <div><span class="builder-stat-value">4.6★</span><span class="builder-stat-label">Rating</span></div>
+            </div>
+            <div class="flex gap-sm" style="margin-top:var(--space-md);flex-wrap:wrap;"><span class="badge badge-gold">✦ Quality</span><span class="badge badge-success">RERA</span></div>
+          </div>
+        </a>
+
+        <a href="builder-profile.html?id=emaar" class="builder-card-full reveal delay-6" id="builder-emaar">
+          <div class="builder-cover"><img src="https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?w=400&q=70" alt="Emaar" loading="lazy" /><div class="builder-cover-overlay"></div></div>
+          <div class="builder-body">
+            <div class="builder-avatar"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=100&q=80" alt="Emaar" loading="lazy" /></div>
+            <div class="builder-name">Emaar India</div>
+            <div class="builder-tagline">Building Value. Giving Life.</div>
+            <div class="builder-stats" style="justify-content:flex-start;margin-top:var(--space-sm);">
+              <div style="margin-right:var(--space-md);"><span class="builder-stat-value">80+</span><span class="builder-stat-label">Projects</span></div>
+              <div><span class="builder-stat-value">4.8★</span><span class="builder-stat-label">Rating</span></div>
+            </div>
+            <div class="flex gap-sm" style="margin-top:var(--space-md);flex-wrap:wrap;"><span class="badge badge-gold">✦ Global</span><span class="badge badge-success">RERA</span></div>
+          </div>
+        </a>
+
+        <a href="builder-profile.html?id=mahindra" class="builder-card-full reveal delay-7" id="builder-mahindra">
+          <div class="builder-cover"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=70" alt="Mahindra" loading="lazy" /><div class="builder-cover-overlay"></div></div>
+          <div class="builder-body">
+            <div class="builder-avatar"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=100&q=80" alt="Mahindra" loading="lazy" /></div>
+            <div class="builder-name">Mahindra Lifespace</div>
+            <div class="builder-tagline">Inspired by Life</div>
+            <div class="builder-stats" style="justify-content:flex-start;margin-top:var(--space-sm);">
+              <div style="margin-right:var(--space-md);"><span class="builder-stat-value">90+</span><span class="builder-stat-label">Projects</span></div>
+              <div><span class="builder-stat-value">4.5★</span><span class="builder-stat-label">Rating</span></div>
+            </div>
+            <div class="flex gap-sm" style="margin-top:var(--space-md);flex-wrap:wrap;"><span class="badge badge-gold">✦ Sustainable</span><span class="badge badge-success">RERA</span></div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a><a href="contact.html" class="footer-bottom-link">Contact</a></div></div></div></footer>
+<div class="float-btns"><a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></a></div>
+<button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/header.js"></script><script src="js/animations.js"></script><script src="js/cards.js"></script>
+</body>
+</html>

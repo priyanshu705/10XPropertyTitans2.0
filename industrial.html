@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Industrial Real Estate & Warehouses | Luxe Estates</title>
+  <meta name="description" content="Discover premium industrial real estate, factories, logistics parks, and Grade A warehouses across India's top industrial corridors." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .page-hero { padding: calc(var(--header-h) + var(--space-3xl)) 0 var(--space-3xl); background: linear-gradient(180deg, #050608, var(--bg-secondary)); position: relative; }
+    .industrial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); margin-top: var(--space-2xl); }
+    .category-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); margin-bottom: var(--space-2xl); }
+    .cat-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: var(--space-lg); text-align: center; transition: all var(--duration-med) var(--ease-spring); }
+    .cat-card:hover { border-color: rgba(212,175,55,0.4); background: rgba(212,175,55,0.05); transform: translateY(-4px); }
+    .cat-icon { font-size: 2.2rem; margin-bottom: var(--space-sm); }
+    .cat-title { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 4px; }
+    .cat-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+    @media (max-width: 1000px) { .industrial-grid { grid-template-columns: repeat(2, 1fr); } .category-cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .industrial-grid { grid-template-columns: 1fr; } .category-cards { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="commercial.html" class="nav-link">Commercial</a></div>
+      <div class="nav-item"><a href="industrial.html" class="nav-link active">Industrial</a></div>
+      <div class="nav-item"><a href="projects.html" class="nav-link">Projects</a></div>
+      <div class="nav-item"><a href="contact.html" class="nav-link">Contact</a></div>
+    </nav>
+    <div class="header-actions"><button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></button><a href="login.html" class="header-btn-login">Login</a></div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" id="mobile-nav-close">✕</button><a href="commercial.html" class="mobile-nav-link">Commercial</a><a href="industrial.html" class="mobile-nav-link">Industrial</a><a href="contact.html" class="mobile-nav-link">Contact</a></nav>
+
+<main>
+  <div class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom:var(--space-md);"><a href="index.html">Home</a><span class="sep">›</span><span class="active">Industrial</span></nav>
+      <h1 class="page-title">Industrial & <span class="text-gold">Logistics</span></h1>
+      <p class="page-subtitle">Grade A warehouses, factories, and logistics parks in India's prime industrial corridors.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="category-cards reveal">
+        <div class="cat-card"><div class="cat-icon">🏭</div><div class="cat-title">Manufacturing Units</div><div class="cat-desc">Built-to-suit factories & sheds</div></div>
+        <div class="cat-card"><div class="cat-icon">📦</div><div class="cat-title">Grade A Warehouses</div><div class="cat-desc">High-clearance logistics parks</div></div>
+        <div class="cat-card"><div class="cat-icon">⚡</div><div class="cat-title">Cold Storage</div><div class="cat-desc">Temperature-controlled facilities</div></div>
+        <div class="cat-card"><div class="cat-icon">🗺️</div><div class="cat-title">Industrial Land</div><div class="cat-desc">NA plots in MIDC/GIDC zones</div></div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-md);">
+        <div style="font-size:0.9rem;color:var(--text-muted);">Showing <strong style="color:var(--text-primary);">850</strong> industrial properties</div>
+        <select class="sort-select" id="ind-sort"><option>Relevance</option><option>Area: High-Low</option><option>Price: Low-High</option></select>
+      </div>
+
+      <div class="industrial-grid stagger-children">
+        <article class="property-card reveal" data-tilt>
+          <div class="card-image"><img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c1590f?w=600&q=80" alt="Logistics Park" loading="lazy" /><div class="card-badges"><span class="badge badge-gold">✦ Grade A</span></div><div class="card-price-overlay"><div class="card-price-label">Lease Rate</div><div class="card-price">₹25 / sq.ft</div></div></div>
+          <div class="card-glow"></div>
+          <div class="card-body">
+            <h3 class="card-title">Modern Logistics Park — Bhiwandi</h3>
+            <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Bhiwandi Bypass, Mumbai</div>
+            <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>50,000 sq.ft</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>12m Height</strong></div></div>
+          </div>
+          <div class="card-footer"><div style="font-size:0.78rem;color:var(--text-muted);">6 Dock Doors · Fire Sprinklers</div><a href="property-details.html?id=i-001" class="btn btn-gold btn-sm">View</a></div>
+        </article>
+
+        <article class="property-card reveal delay-1" data-tilt>
+          <div class="card-image"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Factory Pune" loading="lazy" /><div class="card-badges"><span class="badge badge-gold">✦ MIDC Approved</span></div><div class="card-price-overlay"><div class="card-price-label">Sale Price</div><div class="card-price">₹18 Cr</div></div></div>
+          <div class="card-glow"></div>
+          <div class="card-body">
+            <h3 class="card-title">Heavy Manufacturing Unit — Chakan</h3>
+            <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Chakan MIDC, Pune</div>
+            <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>2 Acres Plot</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><strong>500 HP Power</strong></div></div>
+          </div>
+          <div class="card-footer"><div style="font-size:0.78rem;color:var(--text-muted);">Ready to Move · EOT Crane</div><a href="property-details.html?id=i-002" class="btn btn-gold btn-sm">View</a></div>
+        </article>
+        
+        <article class="property-card reveal delay-2" data-tilt>
+          <div class="card-image"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Industrial Land" loading="lazy" /><div class="card-badges"><span class="badge badge-gold">✦ NA Land</span></div><div class="card-price-overlay"><div class="card-price-label">Sale Price</div><div class="card-price">₹45 Cr</div></div></div>
+          <div class="card-glow"></div>
+          <div class="card-body">
+            <h3 class="card-title">Prime Industrial Land — NH48</h3>
+            <div class="card-location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>NH48 Highway, Delhi NCR</div>
+            <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>5 Acres</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg><strong>Clear Title</strong></div></div>
+          </div>
+          <div class="card-footer"><div style="font-size:0.78rem;color:var(--text-muted);">Highway Frontage · FSI 1.0</div><a href="property-details.html?id=i-003" class="btn btn-gold btn-sm">View</a></div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a></div></div></div></footer>
+<script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/header.js"></script><script src="js/animations.js"></script><script src="js/cards.js"></script>
+</body>
+</html>

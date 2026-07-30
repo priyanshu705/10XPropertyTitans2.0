@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sky Villa — Bandra West | Luxe Estates</title>
+  <meta name="description" content="5 BHK ultra-luxury sky villa in Bandra West, Mumbai. 4200 sq.ft with panoramic sea views, private pool, and world-class amenities by Lodha Group." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .detail-hero {
+      padding-top: var(--header-h);
+      background: var(--bg-secondary);
+    }
+
+    /* Image Slider */
+    .image-slider {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+      border-radius: 0;
+    }
+
+    .slider-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.7s cubic-bezier(0.23,1,0.32,1);
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 var(--space-lg);
+      pointer-events: none;
+    }
+
+    .slider-btn {
+      width: 52px;
+      height: 52px;
+      background: rgba(7,9,13,0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+      transition: all var(--duration-med) var(--ease-spring);
+    }
+
+    .slider-btn:hover {
+      background: rgba(212,175,55,0.2);
+      border-color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    .slider-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      fill: none;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .slider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      transition: all var(--duration-med) var(--ease-spring);
+    }
+
+    .slider-dot.active {
+      background: var(--gold);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    .slider-count {
+      position: absolute;
+      bottom: 20px;
+      right: var(--space-lg);
+      background: rgba(7,9,13,0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-family: var(--font-accent);
+      z-index: 10;
+    }
+
+    .slider-badges {
+      position: absolute;
+      top: var(--space-lg);
+      left: var(--space-lg);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .slider-actions {
+      position: absolute;
+      top: var(--space-lg);
+      right: var(--space-lg);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .slider-action-btn {
+      width: 44px;
+      height: 44px;
+      background: rgba(7,9,13,0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      transition: all var(--duration-med) var(--ease-spring);
+    }
+
+    .slider-action-btn:hover {
+      background: rgba(212,175,55,0.2);
+      border-color: var(--gold);
+    }
+
+    .slider-action-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    /* Detail Layout */
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+
+    /* Main Content */
+    .detail-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-sm);
+    }
+
+    .detail-price {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: var(--grad-gold-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: var(--space-md);
+    }
+
+    .detail-quick-specs {
+      display: flex;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+      padding: var(--space-md) 0;
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      margin-bottom: var(--space-lg);
+    }
+
+    .quick-spec {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quick-spec-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(212,175,55,0.1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quick-spec-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--gold);
+      fill: none;
+    }
+
+    .quick-spec-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: var(--font-accent);
+    }
+
+    .quick-spec-value {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    /* Section Titles inside detail */
+    .detail-section {
+      margin-bottom: var(--space-2xl);
+    }
+
+    .detail-section-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .detail-section-title::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: var(--grad-gold);
+      border-radius: 2px;
+    }
+
+    /* Amenities Grid */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+    }
+
+    .amenity-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: var(--space-md);
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      text-align: center;
+      transition: all var(--duration-med) var(--ease-spring);
+    }
+
+    .amenity-item:hover {
+      border-color: rgba(212,175,55,0.3);
+      background: rgba(212,175,55,0.05);
+      transform: translateY(-3px);
+    }
+
+    .amenity-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(212,175,55,0.1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .amenity-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--gold);
+      fill: none;
+    }
+
+    .amenity-name {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Spec Table */
+    .spec-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--glass-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: var(--card-bg);
+      gap: var(--space-md);
+    }
+
+    .spec-key {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .spec-val {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: right;
+    }
+
+    /* Nearby */
+    .nearby-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+    }
+
+    .nearby-category {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .nearby-category-title {
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nearby-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--glass-border);
+      font-size: 0.82rem;
+    }
+
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-item-name { color: var(--text-secondary); }
+    .nearby-item-dist { color: var(--gold-light); font-weight: 600; }
+
+    /* Sidebar sticky */
+    .detail-sidebar {
+      position: sticky;
+      top: calc(var(--header-h) + 20px);
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-md);
+    }
+
+    .contact-card-title {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: var(--space-md);
+    }
+
+    .agent-mini {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--glass-border);
+      margin-bottom: var(--space-md);
+    }
+
+    .agent-mini-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(212,175,55,0.3);
+    }
+
+    .agent-mini-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .emi-calc {
+      background: rgba(212,175,55,0.05);
+      border: 1px solid rgba(212,175,55,0.15);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .emi-result {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      text-align: center;
+      padding: var(--space-md) 0;
+    }
+
+    .emi-label {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Virtual Tour */
+    .vr-tour {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      text-align: center;
+      transition: all var(--duration-med);
+    }
+
+    .vr-tour:hover {
+      border-color: rgba(212,175,55,0.3);
+      background: rgba(212,175,55,0.04);
+    }
+
+    @media (max-width: 1100px) {
+      .detail-layout { grid-template-columns: 1fr; }
+      .detail-sidebar { position: static; }
+      .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .image-slider { height: 280px; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .spec-table { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">L</div>
+      <div class="logo-text">
+        <span class="logo-name">Luxe Estates</span>
+        <span class="logo-tagline">Premium Real Estate</span>
+      </div>
+    </a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link active">Buy</a></div>
+      <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
+      <div class="nav-item"><a href="sell.html" class="nav-link">Sell</a></div>
+      <div class="nav-item"><a href="projects.html" class="nav-link">New Projects</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link">Luxury</a></div>
+      <div class="nav-item"><a href="commercial.html" class="nav-link">Commercial</a></div>
+      <div class="nav-item"><a href="builders.html" class="nav-link">Builders</a></div>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2"/></svg></button>
+      <a href="login.html" class="header-btn-login">Login</a>
+      <a href="sell.html" class="header-btn-post">+ Post Property</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <button class="mobile-nav-close" id="mobile-nav-close">✕</button>
+  <a href="buy.html" class="mobile-nav-link">Buy Property</a>
+  <a href="rent.html" class="mobile-nav-link">Rent Property</a>
+  <a href="sell.html" class="mobile-nav-link">Sell Property</a>
+  <a href="luxury.html" class="mobile-nav-link">Luxury</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+</nav>
+
+<main>
+  <!-- Image Slider Hero -->
+  <div class="detail-hero">
+    <div class="image-slider" id="prop-slider">
+      <div class="slider-track" id="slider-track">
+        <div class="slide"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=85" alt="Sky Villa — Main View" /></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1400&q=85" alt="Living Room" loading="lazy" /></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1400&q=85" alt="Master Bedroom" loading="lazy" /></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?w=1400&q=85" alt="Swimming Pool" loading="lazy" /></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1400&q=85" alt="Exterior View" loading="lazy" /></div>
+      </div>
+
+      <div class="slider-badges">
+        <span class="badge badge-gold">✦ Ultra Luxury</span>
+        <span class="badge badge-success">RERA Approved</span>
+        <span class="badge badge-glass">Ready to Move</span>
+      </div>
+
+      <div class="slider-actions">
+        <button class="slider-action-btn" data-wishlist="prop-001" aria-label="Add to Wishlist" id="detail-wish">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </button>
+        <button class="slider-action-btn" data-compare="prop-001" aria-label="Compare" id="detail-compare">
+          <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/></svg>
+        </button>
+        <button class="slider-action-btn" onclick="navigator.share&&navigator.share({title:'Sky Villa Bandra',url:location.href})" aria-label="Share" id="detail-share">
+          <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </button>
+      </div>
+
+      <nav class="slider-nav" aria-label="Image slider navigation">
+        <button class="slider-btn" id="slider-prev" aria-label="Previous image">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="slider-btn" id="slider-next" aria-label="Next image">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </nav>
+
+      <div class="slider-dots" id="slider-dots" role="tablist">
+        <button class="slider-dot active" data-idx="0" aria-label="Image 1" role="tab"></button>
+        <button class="slider-dot" data-idx="1" aria-label="Image 2" role="tab"></button>
+        <button class="slider-dot" data-idx="2" aria-label="Image 3" role="tab"></button>
+        <button class="slider-dot" data-idx="3" aria-label="Image 4" role="tab"></button>
+        <button class="slider-dot" data-idx="4" aria-label="Image 5" role="tab"></button>
+      </div>
+
+      <span class="slider-count" id="slider-count">1 / 5</span>
+    </div>
+  </div>
+
+  <!-- Detail Content -->
+  <section class="section-sm">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="breadcrumb" style="margin-bottom:var(--space-lg);">
+        <a href="index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="buy.html">Buy</a>
+        <span class="sep">›</span>
+        <a href="buy.html?city=mumbai">Mumbai</a>
+        <span class="sep">›</span>
+        <span class="active">Sky Villa — Bandra West</span>
+      </nav>
+
+      <div class="detail-layout">
+
+        <!-- Main Column -->
+        <div>
+          <h1 class="detail-title reveal">Sky Villa — Bandra West, Mumbai</h1>
+
+          <div class="flex-between" style="flex-wrap:wrap;gap:var(--space-md);margin-bottom:var(--space-md);">
+            <div class="detail-price reveal delay-1">₹8.5 Crore Onwards</div>
+            <div class="flex gap-sm">
+              <span class="badge badge-gold">✦ Luxury</span>
+              <span class="badge badge-success">RERA: P51900025302</span>
+            </div>
+          </div>
+
+          <div class="card-location reveal delay-1" style="font-size:1rem;margin-bottom:var(--space-md);">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Bandstand, Bandra West, Mumbai — 400050
+          </div>
+
+          <!-- Quick Specs -->
+          <div class="detail-quick-specs reveal delay-2">
+            <div class="quick-spec">
+              <div class="quick-spec-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+              <div><div class="quick-spec-label">Type</div><div class="quick-spec-value">Sky Villa</div></div>
+            </div>
+            <div class="quick-spec">
+              <div class="quick-spec-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+              <div><div class="quick-spec-label">BHK</div><div class="quick-spec-value">5 BHK</div></div>
+            </div>
+            <div class="quick-spec">
+              <div class="quick-spec-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+              <div><div class="quick-spec-label">Area</div><div class="quick-spec-value">4,200 sq.ft</div></div>
+            </div>
+            <div class="quick-spec">
+              <div class="quick-spec-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+              <div><div class="quick-spec-label">Status</div><div class="quick-spec-value">Ready to Move</div></div>
+            </div>
+            <div class="quick-spec">
+              <div class="quick-spec-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div><div class="quick-spec-label">RERA</div><div class="quick-spec-value">Registered</div></div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="detail-section reveal">
+            <div class="detail-section-title">About This Property</div>
+            <p style="color:var(--text-secondary);line-height:1.9;margin-bottom:var(--space-md);">
+              Welcome to Sky Villa — an architectural masterpiece nestled in the heart of Bandra West, Mumbai's most coveted address. This exclusive 5 BHK ultra-luxury villa offers 4,200 sq.ft of meticulously crafted living space, designed by award-winning architects with an obsessive attention to detail.
+            </p>
+            <p style="color:var(--text-muted);line-height:1.9;margin-bottom:var(--space-md);">
+              Every corner of this sky villa has been designed to evoke a sense of grandeur — from the soaring 12-foot ceilings, Italian marble flooring, to the breathtaking panoramic views of the Arabian Sea. The villa features a private rooftop infinity pool, a fully equipped modular kitchen, and smart home automation throughout.
+            </p>
+            <p style="color:var(--text-muted);line-height:1.9;">
+              The development is RERA registered and by Lodha Group, India's #1 real estate developer. Possession is available immediately. Only 3 exclusive units remain.
+            </p>
+          </div>
+
+          <!-- Amenities -->
+          <div class="detail-section reveal">
+            <div class="detail-section-title">World-Class Amenities</div>
+            <div class="amenities-grid">
+              <div class="amenity-item">
+                <div class="amenity-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+                <div class="amenity-name">Infinity Pool</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+                <div class="amenity-name">Gymnasium</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
+                <div class="amenity-name">Smart Home</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+                <div class="amenity-name">Concierge</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/></svg></div>
+                <div class="amenity-name">Private Elevator</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+                <div class="amenity-name">Club House</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div class="amenity-name">24/7 Security</div>
+              </div>
+              <div class="amenity-item">
+                <div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3m-2 12H9a2 2 0 01-2-2v-9a2 2 0 012-2h11a2 2 0 012 2v9a2 2 0 01-2 2z"/></svg></div>
+                <div class="amenity-name">Home Theatre</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Specifications Table -->
+          <div class="detail-section reveal">
+            <div class="detail-section-title">Property Specifications</div>
+            <div class="spec-table">
+              <div class="spec-row"><span class="spec-key">Property Type</span><span class="spec-val">Sky Villa</span></div>
+              <div class="spec-row"><span class="spec-key">Configuration</span><span class="spec-val">5 BHK + Staff</span></div>
+              <div class="spec-row"><span class="spec-key">Carpet Area</span><span class="spec-val">3,800 sq.ft</span></div>
+              <div class="spec-row"><span class="spec-key">Built-up Area</span><span class="spec-val">4,200 sq.ft</span></div>
+              <div class="spec-row"><span class="spec-key">Total Floors</span><span class="spec-val">42 Floors</span></div>
+              <div class="spec-row"><span class="spec-key">Unit Floor</span><span class="spec-val">38-42 (Duplex)</span></div>
+              <div class="spec-row"><span class="spec-key">Facing</span><span class="spec-val">Sea Facing</span></div>
+              <div class="spec-row"><span class="spec-key">Parking</span><span class="spec-val">4 Reserved</span></div>
+              <div class="spec-row"><span class="spec-key">Age of Property</span><span class="spec-val">New Construction</span></div>
+              <div class="spec-row"><span class="spec-key">Possession</span><span class="spec-val">Ready to Move</span></div>
+              <div class="spec-row"><span class="spec-key">RERA Number</span><span class="spec-val">P51900025302</span></div>
+              <div class="spec-row"><span class="spec-key">Furnishing</span><span class="spec-val">Semi-Furnished</span></div>
+            </div>
+          </div>
+
+          <!-- Nearby -->
+          <div class="detail-section reveal">
+            <div class="detail-section-title">Nearby Places</div>
+            <div class="nearby-grid">
+              <div class="nearby-category">
+                <div class="nearby-category-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                  Schools
+                </div>
+                <div class="nearby-item"><span class="nearby-item-name">St. Stanislaus High School</span><span class="nearby-item-dist">0.3 km</span></div>
+                <div class="nearby-item"><span class="nearby-item-name">Jamnabai Narsee School</span><span class="nearby-item-dist">1.2 km</span></div>
+                <div class="nearby-item"><span class="nearby-item-name">Dhirubhai Ambani Int. School</span><span class="nearby-item-dist">2.4 km</span></div>
+              </div>
+              <div class="nearby-category">
+                <div class="nearby-category-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/></svg>
+                  Hospitals
+                </div>
+                <div class="nearby-item"><span class="nearby-item-name">Holy Family Hospital</span><span class="nearby-item-dist">0.8 km</span></div>
+                <div class="nearby-item"><span class="nearby-item-name">Lilavati Hospital</span><span class="nearby-item-dist">1.5 km</span></div>
+                <div class="nearby-item"><span class="nearby-item-name">Hinduja Hospital</span><span class="nearby-item-dist">2.1 km</span></div>
+              </div>
+              <div class="nearby-category">
+                <div class="nearby-category-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+                  Metro / Transport
+                </div>
+                <div class="nearby-item"><span class="nearby-item-name">Bandra (W) Metro Station</span><span class="nearby-item-dist">0.5 km</span></div>
+                <div class="nearby-item"><span class="nearby-item-name">Bandra Railway Station</span><span class="nearby-item-dist">1.1 km</span></div>
+                <div class="nearby-item"><span class="nearby-item-name">BKC (Business District)</span><span class="nearby-item-dist">3.2 km</span></div>
+              </div>
+              <div class="nearby-category">
+                <div class="nearby-category-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+                  Shopping
+                </div>
+                <div class="nearby-item"><span class="nearby-item-name">Palladium Mall</span><span class="nearby-item-dist">4.2 km</span></div>
+                <div class="nearby-item"><span class="nearby-item-name">Linking Road Market</span><span class="nearby-item-dist">1.8 km</span></div>
+                <div class="nearby-item"><span class="nearby-item-name">Bandra Kurla Complex</span><span class="nearby-item-dist">3.0 km</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="detail-section reveal">
+            <div class="detail-section-title">Location on Map</div>
+            <div style="height:350px;border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--glass-border);">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.3!2d72.8248!3d19.0598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDAzJzM1LjMiTiA3MsKwNDknMjkuMyJF!5e0!3m2!1sen!2sin!4v1690000000000"
+                style="width:100%;height:100%;border:none;filter:invert(90%) hue-rotate(180deg) saturate(0.8) brightness(0.85);"
+                loading="lazy"
+                title="Property location map"
+                aria-label="Map showing property location in Bandra West, Mumbai">
+              </iframe>
+            </div>
+          </div>
+
+        </div><!-- main col -->
+
+        <!-- Sidebar -->
+        <aside class="detail-sidebar">
+
+          <!-- Contact Form -->
+          <div class="contact-card">
+            <div class="contact-card-title">Get More Details</div>
+
+            <div class="agent-mini">
+              <div class="agent-mini-avatar">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Agent Arjun Mehta" loading="lazy" />
+              </div>
+              <div>
+                <div style="font-weight:700;color:var(--text-primary);font-size:0.95rem;">Arjun Mehta</div>
+                <div style="color:var(--gold-light);font-size:0.78rem;">Senior Luxury Consultant</div>
+                <div class="agent-rating" style="justify-content:flex-start;margin:4px 0 0;">
+                  <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                  <span style="font-size:0.72rem;color:var(--text-muted);margin-left:4px;">(128)</span>
+                </div>
+              </div>
+            </div>
+
+            <form id="detail-enquiry-form">
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Your Full Name" required id="enq-name" />
+              </div>
+              <div class="form-group">
+                <input type="tel" class="form-input" placeholder="Mobile Number" required id="enq-phone" />
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-input" placeholder="Email Address" id="enq-email" />
+              </div>
+              <div class="form-group">
+                <select class="form-select" id="enq-purpose">
+                  <option>Purpose of Enquiry</option>
+                  <option>Buy / Investment</option>
+                  <option>NRI Purchase</option>
+                  <option>Site Visit Request</option>
+                  <option>Loan Assistance</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <textarea class="form-textarea" placeholder="Your message (optional)..." rows="3" id="enq-msg"></textarea>
+              </div>
+              <button type="submit" class="btn btn-gold" style="width:100%;margin-bottom:10px;" id="enq-submit">
+                Send Enquiry
+              </button>
+              <a href="tel:+919999988888" class="btn btn-glass" style="width:100%;margin-bottom:10px;" id="enq-call">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.16a16 16 0 006.93 6.93l1.52-1.52a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                Call Now
+              </a>
+              <a href="https://wa.me/919999988888" class="btn" style="width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;" target="_blank" rel="noopener" id="enq-whatsapp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+                WhatsApp
+              </a>
+            </form>
+          </div>
+
+          <!-- EMI Calculator Mini -->
+          <div class="emi-calc">
+            <div style="font-family:var(--font-sans);font-weight:700;font-size:0.9rem;color:var(--text-primary);margin-bottom:var(--space-md);">Quick EMI Estimate</div>
+            <div class="form-group">
+              <label class="form-label">Loan Amount (₹)</label>
+              <input type="number" class="form-input" id="emi-loan" value="60000000" step="100000" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Rate (% p.a.)</label>
+              <input type="number" class="form-input" id="emi-rate" value="8.5" step="0.1" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tenure (Years)</label>
+              <input type="number" class="form-input" id="emi-tenure" value="20" min="1" max="30" />
+            </div>
+            <button class="btn btn-outline" style="width:100%;margin-bottom:var(--space-md);" id="calc-emi">Calculate EMI</button>
+            <div class="emi-result" id="emi-result">₹52,370</div>
+            <div class="emi-label">Estimated Monthly EMI</div>
+            <div style="text-align:center;margin-top:8px;">
+              <a href="calculator.html#emi" style="font-size:0.78rem;color:var(--gold-light);">Full Calculator →</a>
+            </div>
+          </div>
+
+          <!-- Virtual Tour / Brochure -->
+          <div class="vr-tour">
+            <div style="font-size:2rem;margin-bottom:8px;">🥽</div>
+            <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">360° Virtual Tour</div>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:var(--space-md);">Experience this property from your home</p>
+            <button class="btn btn-glass btn-sm" style="width:100%;margin-bottom:8px;" id="vr-btn">Launch Virtual Tour</button>
+            <button class="btn btn-dark btn-sm" style="width:100%;" id="brochure-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Brochure
+            </button>
+          </div>
+
+        </aside>
+
+      </div><!-- detail-layout -->
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="index.html" class="footer-bottom-link">Home</a>
+        <a href="buy.html" class="footer-bottom-link">Buy</a>
+        <a href="contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="float-btns">
+  <a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  </a>
+</div>
+<button id="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<script src="js/utils.js"></script>
+<script src="js/main.js"></script>
+<script src="js/header.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/cards.js"></script>
+<script>
+  // Image Slider
+  (() => {
+    const track  = document.getElementById('slider-track');
+    const dots   = document.querySelectorAll('.slider-dot');
+    const count  = document.getElementById('slider-count');
+    const total  = dots.length;
+    let   current = 0;
+
+    function go(idx) {
+      current = ((idx % total) + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      count.textContent = `${current + 1} / ${total}`;
+    }
+
+    document.getElementById('slider-next').addEventListener('click', () => go(current + 1));
+    document.getElementById('slider-prev').addEventListener('click', () => go(current - 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+
+    // Auto-advance
+    setInterval(() => go(current + 1), 5000);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') go(current + 1);
+      if (e.key === 'ArrowLeft')  go(current - 1);
+    });
+  })();
+
+  // EMI Calculator
+  document.getElementById('calc-emi').addEventListener('click', () => {
+    const loan    = parseFloat(document.getElementById('emi-loan').value);
+    const rate    = parseFloat(document.getElementById('emi-rate').value);
+    const tenure  = parseInt(document.getElementById('emi-tenure').value) * 12;
+    const emi     = LuxeUtils.calcEMI(loan, rate, tenure);
+    document.getElementById('emi-result').textContent = '₹' + Math.round(emi).toLocaleString('en-IN');
+  });
+
+  // Enquiry form
+  document.getElementById('detail-enquiry-form').addEventListener('submit', e => {
+    e.preventDefault();
+    if (window.LuxeCards) LuxeCards.showToast('✓ Enquiry sent! Our agent will call you within 2 hours.');
+    e.target.reset();
+  });
+
+  // Brochure / VR stubs
+  document.getElementById('vr-btn').addEventListener('click', () => {
+    if (window.LuxeCards) LuxeCards.showToast('Virtual tour loading... Please wait.');
+  });
+  document.getElementById('brochure-btn').addEventListener('click', () => {
+    if (window.LuxeCards) LuxeCards.showToast('Brochure download will begin shortly.');
+  });
+</script>
+</body>
+</html>

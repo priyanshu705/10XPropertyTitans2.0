@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Launch Projects — Under Construction Properties | Luxe Estates</title>
+  <meta name="description" content="Explore new launch and under-construction projects from India's top builders. RERA approved, pre-launch prices, and best investment opportunities." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .page-hero { padding: calc(var(--header-h) + var(--space-3xl)) 0 var(--space-3xl); background: linear-gradient(180deg, #050608, var(--bg-secondary)); position: relative; }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); }
+    .project-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--duration-slow) var(--ease-luxury); cursor: none; }
+    .project-card:hover { border-color: rgba(212,175,55,0.3); transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+    .project-image { height: 260px; overflow: hidden; position: relative; }
+    .project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration-slower) var(--ease-luxury); }
+    .project-card:hover .project-image img { transform: scale(1.06); }
+    .project-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,9,13,0.9) 0%, transparent 60%); }
+    .project-badges { position: absolute; top: var(--space-md); left: var(--space-md); display: flex; gap: 6px; flex-wrap: wrap; }
+    .project-price-box { position: absolute; bottom: var(--space-md); left: var(--space-md); }
+    .project-price-label { font-size: 0.65rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em; }
+    .project-price { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 800; color: #fff; }
+    .project-body { padding: var(--space-lg); }
+    .project-title { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .project-completion { font-size: 0.78rem; color: var(--text-muted); margin-bottom: var(--space-sm); }
+    .project-config { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: var(--space-md); }
+    .config-pill { padding: 4px 12px; border: 1px solid var(--glass-border); border-radius: var(--radius-full); font-size: 0.72rem; color: var(--text-secondary); background: rgba(255,255,255,0.04); }
+    .project-footer { display: flex; align-items: center; justify-content: space-between; padding: var(--space-md) var(--space-lg); border-top: 1px solid var(--glass-border); }
+    @media (max-width: 1100px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link">Buy</a></div>
+      <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
+      <div class="nav-item"><a href="sell.html" class="nav-link">Sell</a></div>
+      <div class="nav-item"><a href="projects.html" class="nav-link active">New Projects</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link">Luxury</a></div>
+      <div class="nav-item"><a href="builders.html" class="nav-link">Builders</a></div>
+    </nav>
+    <div class="header-actions"><button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></button><a href="login.html" class="header-btn-login">Login</a><a href="sell.html" class="header-btn-post">+ Post Property</a></div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" id="mobile-nav-close">✕</button><a href="buy.html" class="mobile-nav-link">Buy</a><a href="projects.html" class="mobile-nav-link">New Projects</a><a href="contact.html" class="mobile-nav-link">Contact</a></nav>
+
+<main>
+  <div class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom:var(--space-md);"><a href="index.html">Home</a><span class="sep">›</span><span class="active">New Projects</span></nav>
+      <h1 class="page-title">New Launch <span class="text-gold">Projects</span></h1>
+      <p class="page-subtitle">3,000+ verified new launches from India's top builders — at pre-launch prices.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="flex gap-sm" style="flex-wrap:wrap;margin-bottom:var(--space-xl);">
+        <button class="filter-pill active" id="pf-all">All Projects</button>
+        <button class="filter-pill" id="pf-new">New Launch</button>
+        <button class="filter-pill" id="pf-under">Under Construction</button>
+        <button class="filter-pill" id="pf-ready">Ready to Move</button>
+        <button class="filter-pill" id="pf-luxury">Luxury</button>
+        <button class="filter-pill" id="pf-affordable">Affordable</button>
+        <button class="filter-pill" id="pf-township">Township</button>
+      </div>
+
+      <div class="flex gap-md" style="flex-wrap:wrap;margin-bottom:var(--space-xl);">
+        <select class="form-select" style="width:auto;" id="proj-city" aria-label="Filter by city"><option>All Cities</option><option>Mumbai</option><option>Delhi NCR</option><option>Bangalore</option><option>Hyderabad</option><option>Pune</option><option>Chennai</option></select>
+        <select class="form-select" style="width:auto;" id="proj-builder" aria-label="Filter by builder"><option>All Builders</option><option>Lodha</option><option>DLF</option><option>Godrej</option><option>Prestige</option><option>Sobha</option><option>Brigade</option></select>
+        <select class="form-select" style="width:auto;" id="proj-budget" aria-label="Filter by budget"><option>All Budgets</option><option>Under 1 Cr</option><option>1-3 Cr</option><option>3-5 Cr</option><option>5-10 Cr</option><option>10 Cr+</option></select>
+      </div>
+
+      <div class="projects-grid stagger-children">
+
+        <div class="project-card reveal">
+          <div class="project-image"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=80" alt="World One" loading="lazy" /><div class="project-overlay"></div><div class="project-badges"><span class="badge badge-gold">✦ New Launch</span><span class="badge badge-success">RERA</span></div><div class="project-price-box"><div class="project-price-label">Starting From</div><div class="project-price">₹12 Cr</div></div></div>
+          <div class="project-body">
+            <h3 class="project-title">World One — Tardeo, Mumbai</h3>
+            <div class="project-completion">By Lodha Group · Possession: Dec 2025</div>
+            <div class="project-config"><span class="config-pill">4 BHK</span><span class="config-pill">5 BHK</span><span class="config-pill">6 BHK</span></div>
+            <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>3800–9200 sq.ft</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>117 Floors</strong></div></div>
+          </div>
+          <div class="project-footer"><div class="card-builder"><div class="card-builder-logo">LH</div><span class="card-builder-name">Lodha Group</span></div><a href="property-details.html?id=p-001" class="btn btn-gold btn-sm" id="pview-001">View Project</a></div>
+        </div>
+
+        <div class="project-card reveal delay-1">
+          <div class="project-image"><img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=700&q=80" alt="DLF One Midtown" loading="lazy" /><div class="project-overlay"></div><div class="project-badges"><span class="badge badge-gold">✦ Luxury</span><span class="badge badge-success">RERA</span></div><div class="project-price-box"><div class="project-price-label">Starting From</div><div class="project-price">₹8.5 Cr</div></div></div>
+          <div class="project-body">
+            <h3 class="project-title">DLF One Midtown — Moti Nagar, Delhi</h3>
+            <div class="project-completion">By DLF Limited · Possession: Mar 2026</div>
+            <div class="project-config"><span class="config-pill">3 BHK</span><span class="config-pill">4 BHK</span></div>
+            <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>2400–3800 sq.ft</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>53 Floors</strong></div></div>
+          </div>
+          <div class="project-footer"><div class="card-builder"><div class="card-builder-logo">DL</div><span class="card-builder-name">DLF Limited</span></div><a href="property-details.html?id=p-002" class="btn btn-gold btn-sm" id="pview-002">View Project</a></div>
+        </div>
+
+        <div class="project-card reveal delay-2">
+          <div class="project-image"><img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=700&q=80" alt="Prestige Finsbury" loading="lazy" /><div class="project-overlay"></div><div class="project-badges"><span class="badge badge-gold">✦ Pre-Launch</span></div><div class="project-price-box"><div class="project-price-label">Starting From</div><div class="project-price">₹2.8 Cr</div></div></div>
+          <div class="project-body">
+            <h3 class="project-title">Prestige Finsbury Park — Whitefield</h3>
+            <div class="project-completion">By Prestige Group · Possession: Jun 2027</div>
+            <div class="project-config"><span class="config-pill">2 BHK</span><span class="config-pill">3 BHK</span><span class="config-pill">4 BHK</span></div>
+            <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>1400–3200 sq.ft</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>38 Floors</strong></div></div>
+          </div>
+          <div class="project-footer"><div class="card-builder"><div class="card-builder-logo">PR</div><span class="card-builder-name">Prestige Group</span></div><a href="property-details.html?id=p-003" class="btn btn-gold btn-sm" id="pview-003">View Project</a></div>
+        </div>
+
+        <div class="project-card reveal delay-3">
+          <div class="project-image"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=700&q=80" alt="Godrej Reserve" loading="lazy" /><div class="project-overlay"></div><div class="project-badges"><span class="badge badge-gold">✦ Ultra Luxury</span><span class="badge badge-success">RERA</span></div><div class="project-price-box"><div class="project-price-label">Starting From</div><div class="project-price">₹6 Cr</div></div></div>
+          <div class="project-body">
+            <h3 class="project-title">Godrej Reserve — Kandivali East</h3>
+            <div class="project-completion">By Godrej Properties · Possession: Dec 2026</div>
+            <div class="project-config"><span class="config-pill">3 BHK</span><span class="config-pill">4 BHK</span><span class="config-pill">5 BHK</span></div>
+            <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>1800–5200 sq.ft</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>32 Floors</strong></div></div>
+          </div>
+          <div class="project-footer"><div class="card-builder"><div class="card-builder-logo">GS</div><span class="card-builder-name">Godrej Properties</span></div><a href="property-details.html?id=p-004" class="btn btn-gold btn-sm" id="pview-004">View Project</a></div>
+        </div>
+
+        <div class="project-card reveal delay-4">
+          <div class="project-image"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" alt="Sobha Neopolis" loading="lazy" /><div class="project-overlay"></div><div class="project-badges"><span class="badge badge-gold">✦ Premium</span></div><div class="project-price-box"><div class="project-price-label">Starting From</div><div class="project-price">₹1.8 Cr</div></div></div>
+          <div class="project-body">
+            <h3 class="project-title">Sobha Neopolis — Panathur, Bangalore</h3>
+            <div class="project-completion">By Sobha Ltd · Possession: Dec 2025</div>
+            <div class="project-config"><span class="config-pill">2 BHK</span><span class="config-pill">3 BHK</span></div>
+            <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>1200–2200 sq.ft</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>28 Floors</strong></div></div>
+          </div>
+          <div class="project-footer"><div class="card-builder"><div class="card-builder-logo">SO</div><span class="card-builder-name">Sobha Ltd</span></div><a href="property-details.html?id=p-005" class="btn btn-gold btn-sm" id="pview-005">View Project</a></div>
+        </div>
+
+        <div class="project-card reveal delay-5">
+          <div class="project-image"><img src="https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?w=700&q=80" alt="Emaar Marbella" loading="lazy" /><div class="project-overlay"></div><div class="project-badges"><span class="badge badge-gold">✦ Golf Township</span><span class="badge badge-success">RERA</span></div><div class="project-price-box"><div class="project-price-label">Starting From</div><div class="project-price">₹4.2 Cr</div></div></div>
+          <div class="project-body">
+            <h3 class="project-title">Emaar Marbella — Golf Course Road</h3>
+            <div class="project-completion">By Emaar India · Possession: Mar 2026</div>
+            <div class="project-config"><span class="config-pill">3 BHK</span><span class="config-pill">4 BHK</span><span class="config-pill">Villa</span></div>
+            <div class="card-specs"><div class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg><strong>2100–8500 sq.ft</strong></div><div class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><strong>Premium Township</strong></div></div>
+          </div>
+          <div class="project-footer"><div class="card-builder"><div class="card-builder-logo">EM</div><span class="card-builder-name">Emaar India</span></div><a href="property-details.html?id=p-006" class="btn btn-gold btn-sm" id="pview-006">View Project</a></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a><a href="builders.html" class="footer-bottom-link">Builders</a></div></div></div></footer>
+<div class="float-btns"><a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></a></div>
+<button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/header.js"></script><script src="js/animations.js"></script><script src="js/cards.js"></script>
+</body>
+</html>

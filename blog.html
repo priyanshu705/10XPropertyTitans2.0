@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real Estate Blog — Market Insights & Luxury Living | Luxe Estates</title>
+  <meta name="description" content="Expert insights on luxury real estate market trends, investment guides, home buying tips, NRI property advice, and architecture reviews from Luxe Estates." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .page-hero { padding: calc(var(--header-h) + var(--space-3xl)) 0 var(--space-3xl); background: linear-gradient(180deg, #050608, var(--bg-secondary)); }
+    .blog-layout { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-2xl); align-items: start; }
+    .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); }
+    .blog-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--duration-slow) var(--ease-luxury); cursor: none; }
+    .blog-card:hover { border-color: rgba(212,175,55,0.3); transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+    .blog-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.5fr 1fr; }
+    .blog-cover { overflow: hidden; }
+    .blog-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration-slower) var(--ease-luxury); }
+    .blog-card:hover .blog-cover img { transform: scale(1.05); }
+    .blog-card:not(.featured) .blog-cover { height: 220px; }
+    .blog-card.featured .blog-cover { height: 100%; min-height: 280px; }
+    .blog-content { padding: var(--space-lg); display: flex; flex-direction: column; justify-content: space-between; }
+    .blog-cat { font-family: var(--font-accent); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--space-sm); }
+    .blog-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; color: var(--text-primary); line-height: 1.4; margin-bottom: var(--space-sm); transition: color var(--duration-fast); }
+    .blog-title:hover { color: var(--gold-light); }
+    .blog-card.featured .blog-title { font-size: 1.6rem; }
+    .blog-excerpt { color: var(--text-muted); font-size: 0.875rem; line-height: 1.7; margin-bottom: var(--space-md); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .blog-meta { display: flex; align-items: center; justify-content: space-between; padding-top: var(--space-sm); border-top: 1px solid var(--glass-border); }
+    .blog-author { display: flex; align-items: center; gap: 8px; }
+    .blog-author-img { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; }
+    .blog-author-img img { width: 100%; height: 100%; object-fit: cover; }
+    .blog-date { font-size: 0.72rem; color: var(--text-muted); }
+    .blog-sidebar-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: var(--space-lg); margin-bottom: var(--space-lg); }
+    .sidebar-title { font-family: var(--font-accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--space-md); }
+    .recent-post { display: flex; gap: var(--space-sm); padding: 10px 0; border-bottom: 1px solid var(--glass-border); }
+    .recent-post:last-child { border-bottom: none; }
+    .recent-thumb { width: 60px; height: 60px; border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; }
+    .recent-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    @media (max-width: 1100px) { .blog-layout { grid-template-columns: 1fr; } .blog-card.featured { grid-column: auto; display: block; } .blog-card.featured .blog-cover { height: 220px; } }
+    @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link">Buy</a></div>
+      <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link">Luxury</a></div>
+      <div class="nav-item"><a href="builders.html" class="nav-link">Builders</a></div>
+      <div class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></div>
+      <div class="nav-item"><a href="about.html" class="nav-link">About</a></div>
+    </nav>
+    <div class="header-actions"><button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></button><a href="login.html" class="header-btn-login">Login</a></div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" id="mobile-nav-close">✕</button><a href="buy.html" class="mobile-nav-link">Buy</a><a href="blog.html" class="mobile-nav-link">Blog</a><a href="contact.html" class="mobile-nav-link">Contact</a></nav>
+
+<main>
+  <div class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom:var(--space-md);"><a href="index.html">Home</a><span class="sep">›</span><span class="active">Blog</span></nav>
+      <h1 class="page-title">Real Estate <span class="text-gold">Insights</span></h1>
+      <p class="page-subtitle">Expert analysis, market trends, and luxury living guides curated for India's discerning homeowners.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <!-- Category Filter -->
+      <div class="flex gap-sm" style="flex-wrap:wrap;margin-bottom:var(--space-xl);">
+        <button class="filter-pill active" id="blog-all">All Articles</button>
+        <button class="filter-pill" id="blog-market">Market Trends</button>
+        <button class="filter-pill" id="blog-invest">Investment</button>
+        <button class="filter-pill" id="blog-nri">NRI Corner</button>
+        <button class="filter-pill" id="blog-luxury">Luxury Living</button>
+        <button class="filter-pill" id="blog-legal">Legal & Finance</button>
+        <button class="filter-pill" id="blog-design">Architecture</button>
+      </div>
+
+      <div class="blog-layout">
+        <div>
+          <div class="blog-grid">
+
+            <!-- Featured Post -->
+            <div class="blog-card featured reveal">
+              <div class="blog-cover"><img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&q=80" alt="Mumbai Real Estate 2025" loading="eager" /></div>
+              <div class="blog-content">
+                <div>
+                  <div class="blog-cat">Market Analysis</div>
+                  <a href="blog-post.html?id=mumbai-2025"><h2 class="blog-title">Mumbai Real Estate 2025: Why Ultra-Luxury Is Defying All Economic Gravity</h2></a>
+                  <p class="blog-excerpt">Despite global headwinds and rising interest rates, Mumbai's luxury real estate market posted its strongest-ever quarter in Q1 2025. Here's what's driving demand for ₹10 Cr+ properties among India's new-age HNIs, tech billionaires, and global NRIs.</p>
+                </div>
+                <div class="blog-meta">
+                  <div class="blog-author">
+                    <div class="blog-author-img"><img src="https://images.unsplash.com/photo-1560250097-0dc05ae19c9a?w=100&q=80" alt="Rahul Sharma" loading="lazy" /></div>
+                    <div><div style="font-size:0.82rem;font-weight:700;color:var(--text-primary);">Rahul Sharma</div><div class="blog-date">July 28, 2025 · 8 min read</div></div>
+                  </div>
+                  <a href="blog-post.html?id=mumbai-2025" class="btn btn-gold btn-sm" id="bpost-001">Read More</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Regular Posts -->
+            <div class="blog-card reveal delay-1">
+              <div class="blog-cover"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80" alt="NRI Investment Guide" loading="lazy" /></div>
+              <div class="blog-content">
+                <div>
+                  <div class="blog-cat">NRI Corner</div>
+                  <a href="blog-post.html?id=nri-guide-2025"><h3 class="blog-title">The Complete NRI Property Purchase Guide — 2025 Edition</h3></a>
+                  <p class="blog-excerpt">FEMA regulations, RBI guidelines, repatriation rules, and the best cities for NRI investment in 2025.</p>
+                </div>
+                <div class="blog-meta">
+                  <div class="blog-author">
+                    <div class="blog-author-img"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80" alt="Priya Nair" loading="lazy" /></div>
+                    <div><div style="font-size:0.82rem;font-weight:700;color:var(--text-primary);">Priya Nair</div><div class="blog-date">July 22, 2025 · 12 min</div></div>
+                  </div>
+                  <a href="blog-post.html?id=nri-guide-2025" class="btn btn-glass btn-sm" id="bpost-002">Read</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-card reveal delay-2">
+              <div class="blog-cover"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Stamp Duty India" loading="lazy" /></div>
+              <div class="blog-content">
+                <div>
+                  <div class="blog-cat">Legal & Finance</div>
+                  <a href="blog-post.html?id=stamp-duty-2025"><h3 class="blog-title">Stamp Duty Rates Across India in 2025 — State-by-State Guide</h3></a>
+                  <p class="blog-excerpt">Maharashtra, Delhi, Karnataka, Telangana — comprehensive stamp duty guide updated for 2025 with female buyer concessions.</p>
+                </div>
+                <div class="blog-meta">
+                  <div class="blog-author">
+                    <div class="blog-author-img"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Vikram Singh" loading="lazy" /></div>
+                    <div><div style="font-size:0.82rem;font-weight:700;color:var(--text-primary);">Vikram Singh</div><div class="blog-date">July 18, 2025 · 10 min</div></div>
+                  </div>
+                  <a href="blog-post.html?id=stamp-duty-2025" class="btn btn-glass btn-sm" id="bpost-003">Read</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-card reveal delay-3">
+              <div class="blog-cover"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="Gurgaon Luxury Boom" loading="lazy" /></div>
+              <div class="blog-content">
+                <div>
+                  <div class="blog-cat">Investment</div>
+                  <a href="blog-post.html?id=gurgaon-boom"><h3 class="blog-title">Why Gurgaon's Golf Course Road Is India's Hottest Investment in 2025</h3></a>
+                  <p class="blog-excerpt">Return on investment analysis, rental yield data, and why HNIs are putting mega-crores into this 12km stretch.</p>
+                </div>
+                <div class="blog-meta">
+                  <div class="blog-author">
+                    <div class="blog-author-img"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80" alt="Rohit Sharma" loading="lazy" /></div>
+                    <div><div style="font-size:0.82rem;font-weight:700;color:var(--text-primary);">Rohit Sharma</div><div class="blog-date">July 14, 2025 · 7 min</div></div>
+                  </div>
+                  <a href="blog-post.html?id=gurgaon-boom" class="btn btn-glass btn-sm" id="bpost-004">Read</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-card reveal delay-4">
+              <div class="blog-cover"><img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80" alt="Luxury Interior Trends" loading="lazy" /></div>
+              <div class="blog-content">
+                <div>
+                  <div class="blog-cat">Luxury Living</div>
+                  <a href="blog-post.html?id=interior-trends-2025"><h3 class="blog-title">Inside India's Most Expensive Homes — Interior Trends 2025</h3></a>
+                  <p class="blog-excerpt">From Italian marble to smart home ecosystems — what the ultra-rich are putting inside their ₹50 Cr+ properties.</p>
+                </div>
+                <div class="blog-meta">
+                  <div class="blog-author">
+                    <div class="blog-author-img"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Ananya Kapoor" loading="lazy" /></div>
+                    <div><div style="font-size:0.82rem;font-weight:700;color:var(--text-primary);">Ananya Kapoor</div><div class="blog-date">July 10, 2025 · 6 min</div></div>
+                  </div>
+                  <a href="blog-post.html?id=interior-trends-2025" class="btn btn-glass btn-sm" id="bpost-005">Read</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside>
+          <div class="blog-sidebar-card reveal delay-2">
+            <div class="sidebar-title">Search Articles</div>
+            <div class="input-wrap"><svg class="input-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" class="form-input" placeholder="Search..." id="blog-search" /></div>
+          </div>
+
+          <div class="blog-sidebar-card reveal delay-3">
+            <div class="sidebar-title">Popular Categories</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <a href="#" style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--glass-border);font-size:0.875rem;color:var(--text-muted);text-decoration:none;transition:color var(--duration-fast);" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--text-muted)'">Market Trends <span style="color:var(--gold);">42</span></a>
+              <a href="#" style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--glass-border);font-size:0.875rem;color:var(--text-muted);" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--text-muted)'">NRI Corner <span style="color:var(--gold);">38</span></a>
+              <a href="#" style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--glass-border);font-size:0.875rem;color:var(--text-muted);" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--text-muted)'">Investment Guide <span style="color:var(--gold);">55</span></a>
+              <a href="#" style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--glass-border);font-size:0.875rem;color:var(--text-muted);" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--text-muted)'">Luxury Living <span style="color:var(--gold);">29</span></a>
+              <a href="#" style="display:flex;justify-content:space-between;padding:8px 0;font-size:0.875rem;color:var(--text-muted);" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--text-muted)'">Legal & Finance <span style="color:var(--gold);">47</span></a>
+            </div>
+          </div>
+
+          <div class="blog-sidebar-card reveal delay-4">
+            <div class="sidebar-title">Recent Articles</div>
+            <div>
+              <div class="recent-post"><div class="recent-thumb"><img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=100&q=70" alt="" loading="lazy" /></div><div><a href="blog-post.html?id=mumbai-2025" style="font-size:0.82rem;font-weight:700;color:var(--text-primary);line-height:1.4;display:block;margin-bottom:4px;">Mumbai Luxury Market 2025</a><div class="blog-date">July 28, 2025</div></div></div>
+              <div class="recent-post"><div class="recent-thumb"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=100&q=70" alt="" loading="lazy" /></div><div><a href="blog-post.html?id=nri-guide-2025" style="font-size:0.82rem;font-weight:700;color:var(--text-primary);line-height:1.4;display:block;margin-bottom:4px;">NRI Property Guide 2025</a><div class="blog-date">July 22, 2025</div></div></div>
+              <div class="recent-post"><div class="recent-thumb"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=100&q=70" alt="" loading="lazy" /></div><div><a href="blog-post.html?id=gurgaon-boom" style="font-size:0.82rem;font-weight:700;color:var(--text-primary);line-height:1.4;display:block;margin-bottom:4px;">Gurgaon Investment 2025</a><div class="blog-date">July 14, 2025</div></div></div>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="blog-sidebar-card reveal delay-5" style="background:rgba(212,175,55,0.04);border-color:rgba(212,175,55,0.15);">
+            <div class="sidebar-title">Newsletter</div>
+            <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;margin-bottom:var(--space-md);">Get luxury real estate insights delivered to your inbox every week.</p>
+            <form id="newsletter-form">
+              <input type="email" class="form-input" placeholder="your@email.com" required id="newsletter-email" style="margin-bottom:8px;" />
+              <button type="submit" class="btn btn-gold" style="width:100%;" id="newsletter-submit">Subscribe</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a><a href="contact.html" class="footer-bottom-link">Contact</a></div></div></div></footer>
+<div class="float-btns"><a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></a></div>
+<button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/header.js"></script><script src="js/animations.js"></script>
+<script>
+  document.getElementById('newsletter-form').addEventListener('submit', e => {
+    e.preventDefault();
+    if(window.LuxeCards) LuxeCards.showToast('✓ Subscribed! You\'ll receive luxury real estate insights every week.');
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

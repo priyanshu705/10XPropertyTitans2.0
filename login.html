@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Luxe Estates | Access Your Premium Dashboard</title>
+  <meta name="description" content="Login to your Luxe Estates account to manage wishlist, track enquiries, and access exclusive off-market luxury properties." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .auth-page { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+    .auth-visual { position: relative; overflow: hidden; }
+    .auth-visual img { width: 100%; height: 100%; object-fit: cover; }
+    .auth-visual-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(7,9,13,0.3), rgba(7,9,13,0.1)); }
+    .auth-visual-content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--space-2xl); z-index: 2; }
+    .auth-form-side { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: var(--space-3xl) var(--space-2xl); background: var(--bg-primary); }
+    .auth-box { width: 100%; max-width: 440px; }
+    .auth-logo-mark { width: 60px; height: 60px; border-radius: var(--radius-lg); background: var(--grad-gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.8rem; font-weight: 900; color: #0D0D0D; margin-bottom: var(--space-xl); }
+    .auth-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+    .auth-subtitle { color: var(--text-muted); margin-bottom: var(--space-2xl); font-size: 0.9rem; }
+    .auth-divider { display: flex; align-items: center; gap: var(--space-md); margin: var(--space-lg) 0; }
+    .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+    .auth-divider span { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .social-auth-btn { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); width: 100%; padding: 12px; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); background: rgba(255,255,255,0.04); font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); transition: all var(--duration-med) var(--ease-spring); margin-bottom: 8px; }
+    .social-auth-btn:hover { border-color: rgba(212,175,55,0.3); background: rgba(212,175,55,0.05); color: var(--text-primary); }
+    .password-eye { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); cursor: none; }
+    @media (max-width: 900px) { .auth-page { grid-template-columns: 1fr; } .auth-visual { display: none; } .auth-form-side { padding: var(--space-xl) var(--space-lg); } }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<div class="auth-page">
+
+  <!-- Visual Side -->
+  <div class="auth-visual">
+    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=85" alt="Luxury Property" />
+    <div class="auth-visual-overlay"></div>
+    <div class="auth-visual-content">
+      <div style="margin-bottom:var(--space-xl);">
+        <a href="index.html" class="logo" style="text-decoration:none;">
+          <div class="logo-icon">L</div>
+          <div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div>
+        </a>
+      </div>
+      <div style="max-width:420px;">
+        <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:800;color:#fff;margin-bottom:var(--space-md);">Access India's Most <span class="text-gold">Exclusive Properties</span></h2>
+        <p style="color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:var(--space-xl);">Sign in to your Luxe Estates account to access your wishlist, track enquiries, and discover unlisted luxury properties available only to members.</p>
+        <div class="flex gap-lg" style="flex-wrap:wrap;">
+          <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:800;color:var(--gold);">50K+</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Listings</div></div>
+          <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:800;color:var(--gold);">₹12K Cr+</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Transacted</div></div>
+          <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:800;color:var(--gold);">4.9 ★</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Side -->
+  <div class="auth-form-side">
+    <div class="auth-box">
+      <a href="index.html" class="auth-logo-mark">L</a>
+
+      <!-- Tab: Login / Register -->
+      <div class="flex gap-sm" style="margin-bottom:var(--space-2xl);">
+        <button class="filter-pill active" id="tab-login" onclick="switchAuth('login')">Login</button>
+        <button class="filter-pill" id="tab-register" onclick="switchAuth('register')">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="auth-login">
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Login to your Luxe Estates dashboard</p>
+
+        <form id="login-form">
+          <div class="form-group">
+            <label class="form-label" for="login-phone">Mobile Number / Email</label>
+            <div class="input-wrap">
+              <svg class="input-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.16a16 16 0 006.93 6.93l1.52-1.52a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <input type="text" class="form-input" id="login-phone" placeholder="+91 XXXXX XXXXX or email@domain.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="login-pass" style="display:flex;justify-content:space-between;"><span>Password</span><a href="#" style="color:var(--gold-light);font-size:0.78rem;" id="forgot-pw">Forgot Password?</a></label>
+            <div style="position:relative;">
+              <input type="password" class="form-input" id="login-pass" placeholder="Enter your password" required />
+              <button type="button" class="password-eye" id="toggle-pass" aria-label="Toggle password visibility">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-gold btn-lg" style="width:100%;margin-bottom:var(--space-sm);" id="login-btn">Login to Account</button>
+          <a href="index.html" class="btn btn-glass" style="width:100%;display:flex;align-items:center;justify-content:center;" id="otp-btn">Login with OTP</a>
+        </form>
+
+        <div class="auth-divider"><span>or continue with</span></div>
+
+        <button class="social-auth-btn" id="google-auth">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.27 9.77a7.1 7.1 0 000 4.46l-3.58 2.76A11.95 11.95 0 010 12c0-1.97.48-3.82 1.3-5.46l3.97 3.23z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.94-2.9l-3.88-3a7.1 7.1 0 01-10.79-3.33l-3.58 2.76A12 12 0 0012 24z"/><path fill="#FBBC05" d="M5.27 14.23A7.1 7.1 0 014.97 12c0-.77.12-1.52.3-2.23L1.3 6.54A12 12 0 000 12c0 1.93.45 3.75 1.3 5.36l3.97-3.13z"/><path fill="#4285F4" d="M12 4.89c1.83 0 3.47.63 4.76 1.87l3.57-3.57A12 12 0 0012 0 12 12 0 001.3 6.54l3.97 3.23A7.1 7.1 0 0112 4.89z"/></svg>
+          Continue with Google
+        </button>
+        <button class="social-auth-btn" id="apple-auth">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Continue with Apple
+        </button>
+
+        <div style="text-align:center;margin-top:var(--space-lg);font-size:0.82rem;color:var(--text-muted);">
+          Don't have an account? <button onclick="switchAuth('register')" style="color:var(--gold-light);font-weight:600;font-size:0.82rem;" id="go-register">Register Free</button>
+        </div>
+      </div>
+
+      <!-- Register Form -->
+      <div id="auth-register" style="display:none;">
+        <h1 class="auth-title">Create Account</h1>
+        <p class="auth-subtitle">Join 50,000+ premium property seekers</p>
+
+        <form id="register-form">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="reg-fname">First Name</label>
+              <input type="text" class="form-input" id="reg-fname" placeholder="First name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-lname">Last Name</label>
+              <input type="text" class="form-input" id="reg-lname" placeholder="Last name" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">Mobile Number</label>
+            <input type="tel" class="form-input" id="reg-phone" placeholder="+91 XXXXX XXXXX" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address</label>
+            <input type="email" class="form-input" id="reg-email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-pass">Password</label>
+            <input type="password" class="form-input" id="reg-pass" placeholder="Min. 8 characters" required minlength="8" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-role">I am a</label>
+            <select class="form-select" id="reg-role" required>
+              <option value="">Select</option>
+              <option>Buyer</option>
+              <option>Seller / Owner</option>
+              <option>Agent / Broker</option>
+              <option>Investor</option>
+              <option>NRI</option>
+            </select>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:var(--space-lg);">
+            <input type="checkbox" id="terms-agree" required style="margin-top:2px;accent-color:var(--gold);" />
+            <label for="terms-agree" style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">I agree to the <a href="#" style="color:var(--gold-light);">Terms of Service</a> and <a href="#" style="color:var(--gold-light);">Privacy Policy</a>. I consent to receive property recommendations via SMS and WhatsApp.</label>
+          </div>
+          <button type="submit" class="btn btn-gold btn-lg" style="width:100%;" id="register-btn">Create Free Account</button>
+        </form>
+
+        <div style="text-align:center;margin-top:var(--space-lg);font-size:0.82rem;color:var(--text-muted);">
+          Already registered? <button onclick="switchAuth('login')" style="color:var(--gold-light);font-weight:600;font-size:0.82rem;" id="go-login">Login Here</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function switchAuth(tab) {
+    const isLogin = tab === 'login';
+    document.getElementById('auth-login').style.display = isLogin ? 'block' : 'none';
+    document.getElementById('auth-register').style.display = isLogin ? 'none' : 'block';
+    document.getElementById('tab-login').classList.toggle('active', isLogin);
+    document.getElementById('tab-register').classList.toggle('active', !isLogin);
+  }
+
+  document.getElementById('toggle-pass').addEventListener('click', () => {
+    const input = document.getElementById('login-pass');
+    input.type = input.type === 'password' ? 'text' : 'password';
+  });
+
+  document.getElementById('login-form').addEventListener('submit', e => {
+    e.preventDefault();
+    window.location.href = 'index.html';
+  });
+
+  document.getElementById('register-form').addEventListener('submit', e => {
+    e.preventDefault();
+    if(window.LuxeCards) LuxeCards.showToast('✓ Account created! Welcome to Luxe Estates.');
+    setTimeout(() => window.location.href = 'index.html', 2000);
+  });
+
+  document.getElementById('forgot-pw').addEventListener('click', e => {
+    e.preventDefault();
+    if(window.LuxeCards) LuxeCards.showToast('Password reset link sent to your registered email.');
+  });
+
+  ['google-auth', 'apple-auth'].forEach(id => {
+    document.getElementById(id).addEventListener('click', () => {
+      if(window.LuxeCards) LuxeCards.showToast('Social login coming soon!');
+    });
+  });
+</script>
+</body>
+</html>

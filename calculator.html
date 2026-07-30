@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Calculators — EMI, Area, Stamp Duty | Luxe Estates</title>
+  <meta name="description" content="Free real estate calculators: EMI Calculator, Home Loan Calculator, Area Converter, Stamp Duty Calculator. Plan your luxury property investment smartly." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .page-hero { padding: calc(var(--header-h) + var(--space-3xl)) 0 var(--space-3xl); background: linear-gradient(180deg, #050608, var(--bg-secondary)); }
+    .calc-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: var(--space-2xl); }
+    .calc-tab { padding: 12px 28px; border-radius: var(--radius-full); border: 1px solid var(--glass-border); background: rgba(255,255,255,0.04); font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600; color: var(--text-muted); transition: all var(--duration-med) var(--ease-spring); }
+    .calc-tab.active { background: var(--grad-gold); color: #0D0D0D; border-color: transparent; box-shadow: 0 4px 16px rgba(212,175,55,0.3); }
+    .calc-tab:hover:not(.active) { color: var(--gold-light); border-color: var(--gold); }
+    .calc-panel { display: none; }
+    .calc-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: start; }
+    .calc-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: var(--space-xl); }
+    .calc-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-lg); }
+    .calc-result-box { background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.04)); border: 1px solid rgba(212,175,55,0.2); border-radius: var(--radius-lg); padding: var(--space-lg); margin-top: var(--space-lg); text-align: center; }
+    .calc-result-label { font-family: var(--font-accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--space-sm); }
+    .calc-result-value { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 800; background: var(--grad-gold-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .calc-breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-md); }
+    .calc-break-item { text-align: center; padding: var(--space-sm); background: rgba(255,255,255,0.04); border-radius: var(--radius-sm); border: 1px solid var(--glass-border); }
+    .calc-break-value { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; }
+    .calc-break-label { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+    @media (max-width: 900px) { .calc-panel.active { grid-template-columns: 1fr; } .calc-breakdown { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <nav class="primary-nav">
+      <div class="nav-item"><a href="buy.html" class="nav-link">Buy</a></div>
+      <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
+      <div class="nav-item"><a href="luxury.html" class="nav-link">Luxury</a></div>
+      <div class="nav-item"><a href="builders.html" class="nav-link">Builders</a></div>
+      <div class="nav-item"><a href="calculator.html" class="nav-link active">Calculators</a></div>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></button>
+      <a href="login.html" class="header-btn-login">Login</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav"><button class="mobile-nav-close" id="mobile-nav-close">✕</button><a href="buy.html" class="mobile-nav-link">Buy</a><a href="calculator.html" class="mobile-nav-link">Calculators</a><a href="contact.html" class="mobile-nav-link">Contact</a></nav>
+
+<main>
+  <div class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" style="margin-bottom:var(--space-md);"><a href="index.html">Home</a><span class="sep">›</span><span class="active">Calculators</span></nav>
+      <h1 class="page-title" id="emi">Property <span class="text-gold">Calculators</span></h1>
+      <p class="page-subtitle">Smart tools to help you plan your luxury real estate investment.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="calc-tabs">
+        <button class="calc-tab active" data-calc="emi" id="ctab-emi">💰 EMI Calculator</button>
+        <button class="calc-tab" data-calc="area" id="ctab-area">📐 Area Converter</button>
+        <button class="calc-tab" data-calc="stamp" id="ctab-stamp">📄 Stamp Duty</button>
+        <button class="calc-tab" data-calc="afford" id="ctab-afford">🏠 Affordability</button>
+      </div>
+
+      <!-- EMI Calculator -->
+      <div class="calc-panel active" id="calc-emi" role="tabpanel">
+        <div class="calc-card reveal">
+          <div class="calc-title">EMI Calculator</div>
+          <div class="form-group">
+            <label class="form-label" for="emi-principal">Loan Amount (₹)</label>
+            <input type="range" class="range-slider" id="emi-principal-range" min="500000" max="500000000" step="100000" value="50000000" />
+            <input type="number" class="form-input" id="emi-principal" value="50000000" style="margin-top:8px;" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="emi-int">Interest Rate (% per annum)</label>
+            <input type="range" class="range-slider" id="emi-rate-range" min="5" max="20" step="0.1" value="8.5" />
+            <input type="number" class="form-input" id="emi-int" value="8.5" step="0.1" style="margin-top:8px;" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="emi-yrs">Loan Tenure (Years)</label>
+            <input type="range" class="range-slider" id="emi-tenure-range" min="1" max="30" step="1" value="20" />
+            <input type="number" class="form-input" id="emi-yrs" value="20" min="1" max="30" style="margin-top:8px;" />
+          </div>
+          <button class="btn btn-gold" style="width:100%;" id="emi-calc-btn">Calculate EMI</button>
+        </div>
+
+        <div class="calc-card reveal delay-2">
+          <div class="calc-title">Loan Summary</div>
+          <div class="calc-result-box">
+            <div class="calc-result-label">Monthly EMI</div>
+            <div class="calc-result-value" id="emi-monthly">₹43,592</div>
+          </div>
+          <div class="calc-breakdown">
+            <div class="calc-break-item">
+              <div class="calc-break-value" id="emi-total-amount">₹1.05 Cr</div>
+              <div class="calc-break-label">Total Amount</div>
+            </div>
+            <div class="calc-break-item">
+              <div class="calc-break-value" id="emi-principal-display">₹50 L</div>
+              <div class="calc-break-label">Principal</div>
+            </div>
+            <div class="calc-break-item">
+              <div class="calc-break-value" id="emi-interest-total">₹54.6 L</div>
+              <div class="calc-break-label">Total Interest</div>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--space-lg);">
+            <div style="font-family:var(--font-accent);font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:var(--space-md);">Payment Breakdown</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px;"><span style="color:var(--text-muted);">Principal</span><span style="color:var(--text-primary);" id="emi-principal-pct">47.8%</span></div>
+                <div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;"><div id="emi-principal-bar" style="height:100%;width:47.8%;background:var(--grad-gold);border-radius:3px;transition:width 0.7s ease;"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px;"><span style="color:var(--text-muted);">Interest</span><span style="color:var(--gold-light);" id="emi-interest-pct">52.2%</span></div>
+                <div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;"><div id="emi-interest-bar" style="height:100%;width:52.2%;background:linear-gradient(135deg,#B08D57,#E5C07B);border-radius:3px;transition:width 0.7s ease;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--space-lg);padding-top:var(--space-md);border-top:1px solid var(--glass-border);">
+            <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.7;">* EMI calculated at flat interest rate. Actual EMI may vary based on bank policies and processing fees.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Area Converter -->
+      <div class="calc-panel" id="calc-area" role="tabpanel">
+        <div class="calc-card reveal">
+          <div class="calc-title" id="area">Area Converter</div>
+          <div class="form-group">
+            <label class="form-label" for="area-from-val">Enter Value</label>
+            <input type="number" class="form-input" id="area-from-val" value="1000" placeholder="Enter area value" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="area-from-unit">From Unit</label>
+            <select class="form-select" id="area-from-unit">
+              <option value="sqft">Square Feet (sq.ft)</option>
+              <option value="sqm">Square Meters (sq.m)</option>
+              <option value="sqyd">Square Yards (sq.yd)</option>
+              <option value="acre">Acres</option>
+              <option value="hectare">Hectares</option>
+              <option value="bigha">Bigha</option>
+              <option value="guntha">Guntha</option>
+            </select>
+          </div>
+          <button class="btn btn-gold" style="width:100%;margin-top:var(--space-sm);" id="area-convert-btn">Convert</button>
+        </div>
+        <div class="calc-card reveal delay-2">
+          <div class="calc-title">Conversion Results</div>
+          <div class="calc-result-box" style="margin-bottom:var(--space-md);">
+            <div class="calc-result-label">Input Value</div>
+            <div class="calc-result-value" id="area-result-display">1,000 sq.ft</div>
+          </div>
+          <div id="area-results" style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;justify-content:space-between;padding:12px;background:rgba(255,255,255,0.04);border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+              <span style="color:var(--text-muted);font-size:0.875rem;">Square Meters</span>
+              <span style="color:var(--text-primary);font-weight:700;" id="conv-sqm">92.9 sq.m</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px;background:rgba(255,255,255,0.04);border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+              <span style="color:var(--text-muted);font-size:0.875rem;">Square Yards</span>
+              <span style="color:var(--text-primary);font-weight:700;" id="conv-sqyd">111.1 sq.yd</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px;background:rgba(255,255,255,0.04);border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+              <span style="color:var(--text-muted);font-size:0.875rem;">Acres</span>
+              <span style="color:var(--gold-light);font-weight:700;" id="conv-acre">0.023 Acres</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px;background:rgba(255,255,255,0.04);border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+              <span style="color:var(--text-muted);font-size:0.875rem;">Hectares</span>
+              <span style="color:var(--text-primary);font-weight:700;" id="conv-hectare">0.0093 Ha</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px;background:rgba(255,255,255,0.04);border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+              <span style="color:var(--text-muted);font-size:0.875rem;">Bigha (Pucca)</span>
+              <span style="color:var(--text-primary);font-weight:700;" id="conv-bigha">0.037 Bigha</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stamp Duty -->
+      <div class="calc-panel" id="calc-stamp" role="tabpanel">
+        <div class="calc-card reveal">
+          <div class="calc-title" id="stamp">Stamp Duty Calculator</div>
+          <div class="form-group">
+            <label class="form-label" for="sd-state">State</label>
+            <select class="form-select" id="sd-state">
+              <option value="mh">Maharashtra</option>
+              <option value="dl">Delhi</option>
+              <option value="ka">Karnataka</option>
+              <option value="hr">Haryana</option>
+              <option value="ts">Telangana</option>
+              <option value="tn">Tamil Nadu</option>
+              <option value="gj">Gujarat</option>
+              <option value="up">Uttar Pradesh</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sd-price">Property Value (₹)</label>
+            <input type="number" class="form-input" id="sd-price" value="10000000" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sd-gender">Buyer Gender</label>
+            <select class="form-select" id="sd-gender">
+              <option value="male">Male</option>
+              <option value="female">Female (Concession applicable)</option>
+              <option value="joint">Joint (Male + Female)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sd-type">Property Type</label>
+            <select class="form-select" id="sd-type">
+              <option value="residential">Residential</option>
+              <option value="commercial">Commercial</option>
+            </select>
+          </div>
+          <button class="btn btn-gold" style="width:100%;margin-top:var(--space-sm);" id="sd-calc-btn">Calculate Stamp Duty</button>
+        </div>
+        <div class="calc-card reveal delay-2">
+          <div class="calc-title">Stamp Duty Estimate</div>
+          <div class="calc-result-box">
+            <div class="calc-result-label">Total Stamp Duty + Registration</div>
+            <div class="calc-result-value" id="sd-result">₹6,00,000</div>
+          </div>
+          <div class="calc-breakdown" style="margin-top:var(--space-md);">
+            <div class="calc-break-item"><div class="calc-break-value" id="sd-duty">₹5,00,000</div><div class="calc-break-label">Stamp Duty (5%)</div></div>
+            <div class="calc-break-item"><div class="calc-break-value" id="sd-reg">₹30,000</div><div class="calc-break-label">Registration (0.3%)</div></div>
+            <div class="calc-break-item"><div class="calc-break-value" id="sd-misc">₹70,000</div><div class="calc-break-label">Other Charges</div></div>
+          </div>
+          <div style="margin-top:var(--space-lg);padding:var(--space-md);background:rgba(212,175,55,0.05);border-radius:var(--radius-sm);border:1px solid rgba(212,175,55,0.1);">
+            <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.7;">⚠️ Rates are indicative and may change. Please verify with the sub-registrar office before transaction. Rates effective as of 2025.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Affordability Calculator -->
+      <div class="calc-panel" id="calc-afford" role="tabpanel">
+        <div class="calc-card reveal">
+          <div class="calc-title">Affordability Calculator</div>
+          <div class="form-group">
+            <label class="form-label" for="aff-income">Monthly Income (₹)</label>
+            <input type="number" class="form-input" id="aff-income" value="500000" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="aff-obligations">Monthly Obligations (₹)</label>
+            <input type="number" class="form-input" id="aff-obligations" value="50000" placeholder="Car loan, credit card EMIs etc." />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="aff-down">Down Payment Available (₹)</label>
+            <input type="number" class="form-input" id="aff-down" value="2000000" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="aff-rate">Expected Interest Rate (%)</label>
+            <input type="number" class="form-input" id="aff-rate" value="8.5" step="0.1" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="aff-tenure">Preferred Tenure (Years)</label>
+            <select class="form-select" id="aff-tenure">
+              <option value="10">10 Years</option>
+              <option value="15">15 Years</option>
+              <option value="20" selected>20 Years</option>
+              <option value="25">25 Years</option>
+              <option value="30">30 Years</option>
+            </select>
+          </div>
+          <button class="btn btn-gold" style="width:100%;" id="aff-calc-btn">Calculate Affordability</button>
+        </div>
+        <div class="calc-card reveal delay-2">
+          <div class="calc-title">You Can Afford</div>
+          <div class="calc-result-box">
+            <div class="calc-result-label">Maximum Property Value</div>
+            <div class="calc-result-value" id="aff-result">₹1.82 Cr</div>
+          </div>
+          <div class="calc-breakdown" style="margin-top:var(--space-md);">
+            <div class="calc-break-item"><div class="calc-break-value" id="aff-loan">₹1.62 Cr</div><div class="calc-break-label">Max Loan</div></div>
+            <div class="calc-break-item"><div class="calc-break-value" id="aff-emi">₹1,40,000</div><div class="calc-break-label">Monthly EMI</div></div>
+            <div class="calc-break-item"><div class="calc-break-value" id="aff-down-disp">₹20 L</div><div class="calc-break-label">Down Payment</div></div>
+          </div>
+          <div style="margin-top:var(--space-lg);">
+            <a href="buy.html" class="btn btn-gold" style="width:100%;margin-bottom:8px;" id="aff-browse">Browse Properties in Your Budget</a>
+            <a href="contact.html" class="btn btn-glass" style="width:100%;" id="aff-loan-advice">Get Loan Advice</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a><a href="contact.html" class="footer-bottom-link">Contact</a></div></div></div></footer>
+<div class="float-btns"><a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></a></div>
+<button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/header.js"></script><script src="js/animations.js"></script><script src="js/cards.js"></script>
+<script>
+  // Tab switching
+  const calcTabs = document.querySelectorAll('.calc-tab');
+  const calcPanels = document.querySelectorAll('.calc-panel');
+
+  calcTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      calcTabs.forEach(t => t.classList.remove('active'));
+      calcPanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const panel = document.getElementById('calc-' + tab.getAttribute('data-calc'));
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // EMI Calculator
+  function calcEMIFull() {
+    const p = parseFloat(document.getElementById('emi-principal').value || 50000000);
+    const r = parseFloat(document.getElementById('emi-int').value || 8.5);
+    const n = parseInt(document.getElementById('emi-yrs').value || 20) * 12;
+    const emi = LuxeUtils.calcEMI(p, r, n);
+    const total = emi * n;
+    const interest = total - p;
+    const pPct = ((p / total) * 100).toFixed(1);
+    const iPct = ((interest / total) * 100).toFixed(1);
+
+    document.getElementById('emi-monthly').textContent = '₹' + Math.round(emi).toLocaleString('en-IN');
+    document.getElementById('emi-total-amount').textContent = '₹' + LuxeUtils.formatINR(total).replace('₹', '');
+    document.getElementById('emi-principal-display').textContent = LuxeUtils.formatINR(p);
+    document.getElementById('emi-interest-total').textContent = LuxeUtils.formatINR(interest);
+    document.getElementById('emi-principal-pct').textContent = pPct + '%';
+    document.getElementById('emi-interest-pct').textContent = iPct + '%';
+    document.getElementById('emi-principal-bar').style.width = pPct + '%';
+    document.getElementById('emi-interest-bar').style.width = iPct + '%';
+  }
+
+  document.getElementById('emi-calc-btn').addEventListener('click', calcEMIFull);
+
+  // Range sync
+  ['principal', 'rate', 'tenure'].forEach(name => {
+    const range = document.getElementById('emi-' + (name === 'rate' ? 'rate' : name === 'tenure' ? 'tenure' : name) + '-range');
+    const input = document.getElementById(name === 'principal' ? 'emi-principal' : name === 'rate' ? 'emi-int' : 'emi-yrs');
+    if (range && input) {
+      range.addEventListener('input', () => { input.value = range.value; });
+      input.addEventListener('input', () => { range.value = input.value; });
+    }
+  });
+
+  // Area Converter
+  const areaConversions = { sqft: 1, sqm: 10.764, sqyd: 1.196, acre: 43560, hectare: 107639, bigha: 27000, guntha: 1089 };
+  document.getElementById('area-convert-btn').addEventListener('click', () => {
+    const val = parseFloat(document.getElementById('area-from-val').value || 1000);
+    const from = document.getElementById('area-from-unit').value;
+    const inSqft = val / (areaConversions[from] / areaConversions.sqft);
+    const actualSqft = val * (areaConversions.sqft / (areaConversions[from] / areaConversions.sqft));
+
+    // Convert val from unit to sqft first
+    const sqftVal = from === 'sqft' ? val : val * areaConversions[from];
+    document.getElementById('area-result-display').textContent = val.toLocaleString() + ' ' + from;
+    document.getElementById('conv-sqm').textContent = (sqftVal / areaConversions.sqm).toFixed(2) + ' sq.m';
+    document.getElementById('conv-sqyd').textContent = (sqftVal / areaConversions.sqyd).toFixed(2) + ' sq.yd';
+    document.getElementById('conv-acre').textContent = (sqftVal / areaConversions.acre).toFixed(4) + ' Acres';
+    document.getElementById('conv-hectare').textContent = (sqftVal / areaConversions.hectare).toFixed(4) + ' Ha';
+    document.getElementById('conv-bigha').textContent = (sqftVal / areaConversions.bigha).toFixed(4) + ' Bigha';
+  });
+
+  // Stamp Duty
+  const stampRates = { mh: { residential: { male: 5, female: 4 }, commercial: { male: 6, female: 6 } }, dl: { residential: { male: 6, female: 4 }, commercial: { male: 6, female: 6 } }, ka: { residential: { male: 5, female: 5 }, commercial: { male: 5, female: 5 } }, hr: { residential: { male: 7, female: 5 }, commercial: { male: 7, female: 7 } }, ts: { residential: { male: 4, female: 4 }, commercial: { male: 5, female: 5 } }, tn: { residential: { male: 7, female: 7 }, commercial: { male: 7, female: 7 } }, gj: { residential: { male: 4.9, female: 4.9 }, commercial: { male: 4.9, female: 4.9 } }, up: { residential: { male: 7, female: 6 }, commercial: { male: 7, female: 7 } } };
+
+  document.getElementById('sd-calc-btn').addEventListener('click', () => {
+    const state = document.getElementById('sd-state').value;
+    const price = parseFloat(document.getElementById('sd-price').value || 10000000);
+    const gender = document.getElementById('sd-gender').value === 'joint' ? 'male' : document.getElementById('sd-gender').value;
+    const type = document.getElementById('sd-type').value;
+    const rate = (stampRates[state]?.[type]?.[gender] || 5) / 100;
+    const duty = price * rate;
+    const reg = price * 0.003;
+    const misc = 50000;
+    const total = duty + reg + misc;
+    document.getElementById('sd-result').textContent = LuxeUtils.formatINR(total);
+    document.getElementById('sd-duty').textContent = LuxeUtils.formatINR(duty);
+    document.getElementById('sd-reg').textContent = LuxeUtils.formatINR(reg);
+    document.getElementById('sd-misc').textContent = LuxeUtils.formatINR(misc);
+  });
+
+  // Affordability
+  document.getElementById('aff-calc-btn').addEventListener('click', () => {
+    const income = parseFloat(document.getElementById('aff-income').value || 500000);
+    const obligations = parseFloat(document.getElementById('aff-obligations').value || 50000);
+    const down = parseFloat(document.getElementById('aff-down').value || 2000000);
+    const rate = parseFloat(document.getElementById('aff-rate').value || 8.5);
+    const tenure = parseInt(document.getElementById('aff-tenure').value || 20) * 12;
+    const maxEMI = (income - obligations) * 0.4;
+    const r = rate / 12 / 100;
+    const maxLoan = r === 0 ? maxEMI * tenure : (maxEMI * (Math.pow(1 + r, tenure) - 1)) / (r * Math.pow(1 + r, tenure));
+    const maxProp = maxLoan + down;
+    document.getElementById('aff-result').textContent = LuxeUtils.formatINR(maxProp);
+    document.getElementById('aff-loan').textContent = LuxeUtils.formatINR(maxLoan);
+    document.getElementById('aff-emi').textContent = LuxeUtils.formatINR(maxEMI);
+    document.getElementById('aff-down-disp').textContent = LuxeUtils.formatINR(down);
+  });
+
+  calcEMIFull();
+</script>
+</body>
+</html>
