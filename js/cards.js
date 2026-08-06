@@ -1,5 +1,5 @@
 /* ============================================================
-   LUXE ESTATES — 3D Cards JS
+   10X PROPERTY TITANS — 3D Cards JS
    Mouse Tilt, Glow, Magnetic Buttons
    ============================================================ */
 
@@ -116,9 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.toggle('active', added);
 
       if (!added && !LuxeUtils.compare.has(id)) {
-        // Was removed
+        showToast('Removed from compare list', 'info');
       } else if (!added) {
         showToast('Maximum 4 properties can be compared', 'warning');
+      } else {
+        showToast('Added to compare! Full comparison feature coming soon.', 'info');
       }
     });
   });

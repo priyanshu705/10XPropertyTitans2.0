@@ -1,5 +1,5 @@
 /* ============================================================
-   LUXE ESTATES — Main JS
+   10X PROPERTY TITANS — Main JS
    Loader, Cursor, Particles, Scroll Progress, Back to Top
    ============================================================ */
 

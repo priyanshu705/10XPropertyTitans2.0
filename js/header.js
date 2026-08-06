@@ -1,5 +1,5 @@
 /* ============================================================
-   LUXE ESTATES — Header JS
+   10X PROPERTY TITANS — Header JS
    Sticky, Mega Menu, Mobile Nav, Scroll Behavior
    ============================================================ */
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sell Your Property — Get Maximum Price | Luxe Estates</title>
-  <meta name="description" content="Sell your property at the best price with Luxe Estates. Post free listing, get 50,000+ genuine buyers, AI pricing insights, and dedicated relationship manager." />
+  <title>Sell Your Property — Get Maximum Price | 10X Property Titans</title>
+  <meta name="description" content="Sell your property at the best price with 10X Property Titans. Post free listing, get 50,000+ genuine buyers, AI pricing insights, and dedicated relationship manager in South Gujarat." />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/components.css" />
@@ -23,6 +23,18 @@
     @media (max-width: 1000px) { .sell-steps { grid-template-columns: repeat(2, 1fr); } .sell-features { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px) { .sell-steps { grid-template-columns: 1fr 1fr; } .sell-features { grid-template-columns: 1fr; } }
   </style>
+  <link rel="canonical" href="https://10xpropertytitans.com/sell.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "10X Property Titans",
+    "url": "https://10xpropertytitans.com/sell.html",
+    "logo": "https://10xpropertytitans.com/assets/logo.png",
+    "description": "South Gujarat's No.1 Premium Real Estate Advisory and Investment Intelligence Platform.",
+    "telephone": "+919737077860"
+  }
+  </script>
 </head>
 <body>
 <div class="noise-overlay"></div>
@@ -31,7 +43,7 @@
 <div id="scroll-progress"></div>
 <header id="site-header">
   <div class="header-inner">
-    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div></a>
+    <a href="index.html" class="logo"><div class="logo-icon">L</div><div class="logo-text"><span class="logo-name">10X Property Titans</span><span class="logo-tagline">Premium Real Estate</span></div></a>
     <nav class="primary-nav">
       <div class="nav-item"><a href="buy.html" class="nav-link">Buy</a></div>
       <div class="nav-item"><a href="rent.html" class="nav-link">Rent</a></div>
@@ -70,33 +82,36 @@
           </div>
         </div>
         <div class="reveal delay-3">
-          <!-- Quick Post Card -->
+          <!-- Quick Valuation Card -->
           <div class="sell-form-card">
             <div style="font-family:var(--font-serif);font-size:1.4rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-lg);">Get Free Property Valuation</div>
-            <form id="valuation-form">
+            <form id="valuation-form" data-crm-form-id="03ec9cd8-24b6-479c-a6c4-f9830ac0b34a" data-crm-form-name="Property Valuation" data-crm-sub-account="bed6f2a0-c6d7-4462-a381-ff5bcff0680f" data-crm-api-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vciIsImlzcyI6InN1cGFiYXNlIn0.CJ12IdcxndQO5Ptx2zFbJpE39RwK9bBAi8QkUKqbcIs">
+              <input type="hidden" name="lead_source" value="Sell Property" />
+              <input type="hidden" name="tags" value="Seller Lead" />
+              <input type="hidden" name="pipeline_stage" value="Seller Pipeline" />
               <div class="form-group">
-                <input type="text" class="form-input" placeholder="Your Name" required id="val-name" />
+                <input type="text" class="form-input" placeholder="Your Name" required id="val-name" name="name" />
               </div>
               <div class="form-group">
-                <input type="tel" class="form-input" placeholder="Mobile Number" required id="val-phone" />
+                <input type="tel" class="form-input" placeholder="Mobile Number" required id="val-phone" name="phone" />
               </div>
               <div class="form-group">
-                <select class="form-select" id="val-city" required>
+                <select class="form-select" id="val-city" name="city" required>
                   <option value="">Select City</option>
-                  <option>Mumbai</option>
-                  <option>Delhi NCR</option>
-                  <option>Bangalore</option>
-                  <option>Hyderabad</option>
-                  <option>Pune</option>
-                  <option>Chennai</option>
-                  <option>Kolkata</option>
+                  <option>Vapi</option>
+                  <option>Silvassa</option>
+                  <option>Daman</option>
+                  <option>Valsad</option>
+                  <option>Umbergaon</option>
+                  <option>Bhilad</option>
+                  <option>Sarigam</option>
                 </select>
               </div>
               <div class="form-group">
-                <input type="text" class="form-input" placeholder="Locality / Area" id="val-locality" />
+                <input type="text" class="form-input" placeholder="Locality / Area" id="val-locality" name="locality" />
               </div>
               <div class="form-group">
-                <select class="form-select" id="val-type" required>
+                <select class="form-select" id="val-type" name="property_type" required>
                   <option value="">Property Type</option>
                   <option>Apartment</option>
                   <option>Villa</option>
@@ -107,7 +122,7 @@
                 </select>
               </div>
               <div style="display:flex;gap:8px;">
-                <select class="form-select" style="flex:1;" id="val-bhk">
+                <select class="form-select" style="flex:1;" id="val-bhk" name="bhk">
                   <option value="">BHK</option>
                   <option>1 BHK</option>
                   <option>2 BHK</option>
@@ -115,7 +130,7 @@
                   <option>4 BHK</option>
                   <option>5+ BHK</option>
                 </select>
-                <input type="number" class="form-input" style="flex:1;" placeholder="Area (sq.ft)" id="val-area" />
+                <input type="number" class="form-input" style="flex:1;" placeholder="Area (sq.ft)" id="val-area" name="area" />
               </div>
               <button type="submit" class="btn btn-gold" style="width:100%;margin-top:var(--space-md);" id="val-submit">Get Free Valuation</button>
             </form>
@@ -151,118 +166,523 @@
         </div>
         <div class="sell-step reveal delay-3">
           <div class="sell-step-num">4</div>
-          <h3 style="font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Close & Celebrate</h3>
-          <p style="color:var(--text-muted);font-size:0.875rem;line-height:1.7;">Finalize the deal with full legal & documentation support from our expert team.</p>
+          <h3 style="font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;">Close &amp; Celebrate</h3>
+          <p style="color:var(--text-muted);font-size:0.875rem;line-height:1.7;">Finalize the deal with full legal &amp; documentation support from our expert team.</p>
         </div>
       </div>
 
       <!-- Why Sell With Us -->
       <div class="section-header" style="margin-top:var(--space-2xl);">
         <div class="section-label reveal" style="justify-content:center;">Why Choose Us</div>
-        <h2 class="section-title reveal delay-1">Why India's Elite <span class="text-gold">Trust Us</span></h2>
+        <h2 class="section-title reveal delay-1">Why South Gujarat's Elite <span class="text-gold">Trust Us</span></h2>
       </div>
 
       <div class="sell-features">
-        <div class="sell-feature reveal"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Verified Buyers Only</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">All buyers on Luxe Estates are KYC-verified HNI clients — no time-wasters.</p></div></div>
+        <div class="sell-feature reveal"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Verified Buyers Only</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">All buyers on 10X Property Titans are KYC-verified HNI clients — no time-wasters.</p></div></div>
         <div class="sell-feature reveal delay-1"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Sell 3x Faster</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Our AI-powered matching connects you with serious buyers in under 48 hours.</p></div></div>
         <div class="sell-feature reveal delay-2"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Best Price Guarantee</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Our pricing experts analyze 500+ data points to ensure maximum property value.</p></div></div>
         <div class="sell-feature reveal"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Dedicated Manager</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">A personal relationship manager handles everything from listing to registration.</p></div></div>
         <div class="sell-feature reveal delay-1"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Professional Photography</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">Free professional photo shoot, 3D floor plans, and virtual tour for all premium listings.</p></div></div>
-        <div class="sell-feature reveal delay-2"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Legal & Documentation</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">End-to-end legal support, title verification, and agreement drafting at zero extra cost.</p></div></div>
+        <div class="sell-feature reveal delay-2"><div class="sell-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div><div><div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Legal &amp; Documentation</div><p style="color:var(--text-muted);font-size:0.82rem;line-height:1.7;">End-to-end legal support, title verification, and agreement drafting at zero extra cost.</p></div></div>
       </div>
 
     </div>
   </section>
 
-  <!-- Post Property Form -->
+  <!-- ── POST PROPERTY CRM FORM ─────────────────────────────── -->
   <section class="section" id="post-property" style="background:var(--bg-secondary);">
     <div class="container">
       <div class="section-header">
         <div class="section-label reveal" style="justify-content:center;">Free Listing</div>
         <h2 class="section-title reveal delay-1">Post Your <span class="text-gold">Property</span></h2>
+        <p class="section-subtitle reveal delay-2" style="text-align:center;max-width:560px;margin:0 auto;">Fill in the details below. Our expert team will contact you within 2 hours.</p>
       </div>
-
-      <div style="max-width:800px;margin:0 auto;">
-        <div class="sell-form-card reveal">
-          <form id="post-property-form">
-            <div class="grid-2">
-              <div class="form-group">
-                <label class="form-label" for="pp-owner">Owner Name *</label>
-                <input type="text" class="form-input" required id="pp-owner" placeholder="Full name" />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="pp-phone">Mobile *</label>
-                <input type="tel" class="form-input" required id="pp-phone" placeholder="+91 XXXXX XXXXX" />
-              </div>
-            </div>
-            <div class="grid-2">
-              <div class="form-group">
-                <label class="form-label" for="pp-email">Email</label>
-                <input type="email" class="form-input" id="pp-email" placeholder="your@email.com" />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="pp-ptype">Property Type *</label>
-                <select class="form-select" required id="pp-ptype">
-                  <option value="">Select</option>
-                  <option>Apartment</option>
-                  <option>Villa</option>
-                  <option>Penthouse</option>
-                  <option>Plot</option>
-                  <option>Farm House</option>
-                  <option>Commercial Office</option>
-                  <option>Retail Space</option>
-                </select>
-              </div>
-            </div>
-            <div class="grid-2">
-              <div class="form-group">
-                <label class="form-label" for="pp-city">City *</label>
-                <input type="text" class="form-input" required id="pp-city" placeholder="Mumbai, Delhi, etc." />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="pp-locality">Locality *</label>
-                <input type="text" class="form-input" required id="pp-locality" placeholder="Bandra West, DLF Phase 5..." />
-              </div>
-            </div>
-            <div class="grid-2">
-              <div class="form-group">
-                <label class="form-label" for="pp-area">Area (sq.ft) *</label>
-                <input type="number" class="form-input" required id="pp-area" placeholder="e.g. 2500" />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="pp-price">Expected Price (₹) *</label>
-                <input type="number" class="form-input" required id="pp-price" placeholder="e.g. 15000000" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="pp-description">Property Description</label>
-              <textarea class="form-textarea" id="pp-description" rows="4" placeholder="Describe your property — unique features, renovation, view, nearby landmarks..."></textarea>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Upload Photos (max 20)</label>
-              <div style="border:2px dashed rgba(212,175,55,0.3);border-radius:var(--radius-md);padding:var(--space-2xl);text-align:center;background:rgba(212,175,55,0.03);cursor:pointer;" id="photo-upload-zone">
-                <div style="font-size:2rem;margin-bottom:8px;">📷</div>
-                <div style="color:var(--text-muted);font-size:0.875rem;">Drag & drop photos here, or <span style="color:var(--gold);">click to browse</span></div>
-                <div style="font-size:0.72rem;color:var(--text-muted);margin-top:4px;">JPG, PNG, WEBP — max 10MB each</div>
-                <input type="file" id="pp-photos" accept="image/*" multiple style="display:none;" />
-              </div>
-            </div>
-            <button type="submit" class="btn btn-gold btn-lg" style="width:100%;" id="pp-submit">Submit Property Listing</button>
-          </form>
-        </div>
+      <div style="max-width:720px;margin:0 auto;">
+        <!-- WEB-SELL-001 CRM Form Mount Point -->
+        <div id="su-form-post-properties-mscv2zie"></div>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>Luxe Estates</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a><a href="buy.html" class="footer-bottom-link">Buy</a><a href="contact.html" class="footer-bottom-link">Contact</a></div></div></div></footer>
-<div class="float-btns"><a href="https://wa.me/919999988888" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></a></div>
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copyright">© 2025 <strong>10X Property Titans</strong>. All rights reserved.</div><div class="footer-bottom-links"><a href="index.html" class="footer-bottom-link">Home</a><a href="buy.html" class="footer-bottom-link">Buy</a><a href="contact.html" class="footer-bottom-link">Contact</a></div></div></div></footer>
+<div class="float-btns"><a href="https://wa.me/91" class="float-btn float-btn-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></a></div>
 <button id="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
-<script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/header.js"></script><script src="js/animations.js"></script>
+
+<script src="js/utils.js"></script>
+<script src="js/main.js"></script>
+<script src="js/header.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/crm-forms.js"></script>
+
+<!-- ══════════════════════════════════════════════════════════════
+     10X PROPERTY TITANS — FORM DESIGN SYSTEM
+     Component : WEB-SELL-001  |  Post Property
+     Form ID   : 00f954f2-1dae-4b3e-a667-714d94643b14
+     Sub Acct  : bed6f2a0-c6d7-4462-a381-ff5bcff0680f
+══════════════════════════════════════════════════════════════ -->
 <script>
-  document.getElementById('photo-upload-zone').addEventListener('click', () => document.getElementById('pp-photos').click());
-  document.getElementById('valuation-form').addEventListener('submit', e => { e.preventDefault(); if(window.LuxeCards)LuxeCards.showToast('✓ Valuation request received! Our expert will call you in 2 hours.'); e.target.reset(); });
-  document.getElementById('post-property-form').addEventListener('submit', e => { e.preventDefault(); if(window.LuxeCards)LuxeCards.showToast('✓ Property listed successfully! ID: LE' + Date.now().toString().slice(-6)); e.target.reset(); });
+(function () {
+  /* ── 0. COUNTRY TABLE ───────────────────────────────────────── */
+  var COUNTRIES = [
+    {code:"AF",name:"Afghanistan",dial:"+93"},{code:"AL",name:"Albania",dial:"+355"},
+    {code:"DZ",name:"Algeria",dial:"+213"},{code:"AR",name:"Argentina",dial:"+54"},
+    {code:"AU",name:"Australia",dial:"+61"},{code:"AT",name:"Austria",dial:"+43"},
+    {code:"BD",name:"Bangladesh",dial:"+880"},{code:"BE",name:"Belgium",dial:"+32"},
+    {code:"BR",name:"Brazil",dial:"+55"},{code:"BG",name:"Bulgaria",dial:"+359"},
+    {code:"KH",name:"Cambodia",dial:"+855"},{code:"CA",name:"Canada",dial:"+1"},
+    {code:"CL",name:"Chile",dial:"+56"},{code:"CN",name:"China",dial:"+86"},
+    {code:"CO",name:"Colombia",dial:"+57"},{code:"HR",name:"Croatia",dial:"+385"},
+    {code:"CZ",name:"Czech Republic",dial:"+420"},{code:"DK",name:"Denmark",dial:"+45"},
+    {code:"EG",name:"Egypt",dial:"+20"},{code:"FI",name:"Finland",dial:"+358"},
+    {code:"FR",name:"France",dial:"+33"},{code:"DE",name:"Germany",dial:"+49"},
+    {code:"GH",name:"Ghana",dial:"+233"},{code:"GR",name:"Greece",dial:"+30"},
+    {code:"HK",name:"Hong Kong",dial:"+852"},{code:"HU",name:"Hungary",dial:"+36"},
+    {code:"IN",name:"India",dial:"+91"},{code:"ID",name:"Indonesia",dial:"+62"},
+    {code:"IE",name:"Ireland",dial:"+353"},{code:"IL",name:"Israel",dial:"+972"},
+    {code:"IT",name:"Italy",dial:"+39"},{code:"JP",name:"Japan",dial:"+81"},
+    {code:"JO",name:"Jordan",dial:"+962"},{code:"KZ",name:"Kazakhstan",dial:"+7"},
+    {code:"KE",name:"Kenya",dial:"+254"},{code:"KW",name:"Kuwait",dial:"+965"},
+    {code:"LB",name:"Lebanon",dial:"+961"},{code:"MY",name:"Malaysia",dial:"+60"},
+    {code:"MV",name:"Maldives",dial:"+960"},{code:"MX",name:"Mexico",dial:"+52"},
+    {code:"MA",name:"Morocco",dial:"+212"},{code:"NP",name:"Nepal",dial:"+977"},
+    {code:"NL",name:"Netherlands",dial:"+31"},{code:"NZ",name:"New Zealand",dial:"+64"},
+    {code:"NG",name:"Nigeria",dial:"+234"},{code:"NO",name:"Norway",dial:"+47"},
+    {code:"OM",name:"Oman",dial:"+968"},{code:"PK",name:"Pakistan",dial:"+92"},
+    {code:"PH",name:"Philippines",dial:"+63"},{code:"PL",name:"Poland",dial:"+48"},
+    {code:"PT",name:"Portugal",dial:"+351"},{code:"QA",name:"Qatar",dial:"+974"},
+    {code:"RO",name:"Romania",dial:"+40"},{code:"RU",name:"Russia",dial:"+7"},
+    {code:"SA",name:"Saudi Arabia",dial:"+966"},{code:"SG",name:"Singapore",dial:"+65"},
+    {code:"ZA",name:"South Africa",dial:"+27"},{code:"KR",name:"South Korea",dial:"+82"},
+    {code:"ES",name:"Spain",dial:"+34"},{code:"LK",name:"Sri Lanka",dial:"+94"},
+    {code:"SE",name:"Sweden",dial:"+46"},{code:"CH",name:"Switzerland",dial:"+41"},
+    {code:"TW",name:"Taiwan",dial:"+886"},{code:"TH",name:"Thailand",dial:"+66"},
+    {code:"TR",name:"Turkey",dial:"+90"},{code:"AE",name:"United Arab Emirates",dial:"+971"},
+    {code:"GB",name:"United Kingdom",dial:"+44"},{code:"US",name:"United States",dial:"+1"},
+    {code:"VN",name:"Vietnam",dial:"+84"},{code:"ZW",name:"Zimbabwe",dial:"+263"}
+  ];
+
+  /* ── 1. INJECT SCOPED CSS ───────────────────────────────────── */
+  var style = document.createElement('style');
+  style.textContent = [
+    '#su-form-post-properties-mscv2zie{',
+      '--xf-gold:#D4AF37;--xf-gold2:#F0D060;--xf-bg:var(--card-bg,#111318);',
+      '--xf-bdr:var(--glass-border,rgba(212,175,55,0.15));--xf-txt:var(--text-primary,#F5F0E8);',
+      '--xf-mut:var(--text-muted,#8A8070);--xf-err:#FF4D4D;--xf-ok:#22C55E;',
+      '--xf-r:var(--radius-lg,16px);--xf-f:var(--font-body,"Inter",sans-serif);',
+      'font-family:var(--xf-f);color:var(--xf-txt);width:100%;box-sizing:border-box;',
+    '}',
+    '#su-form-post-properties-mscv2zie *,#su-form-post-properties-mscv2zie *::before,#su-form-post-properties-mscv2zie *::after{box-sizing:border-box;}',
+    /* card */
+    '.xf-card{background:var(--xf-bg);border:1px solid var(--xf-bdr);border-radius:var(--xf-r);padding:40px;position:relative;overflow:visible;}',
+    '.xf-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--xf-gold),transparent);opacity:.6;}',
+    /* rows */
+    '.xf-row{display:grid;gap:16px;margin-bottom:16px;}',
+    '.xf-r2{grid-template-columns:1fr 1fr;}',
+    '.xf-r1{grid-template-columns:1fr;}',
+    /* field */
+    '.xf-fld{display:flex;flex-direction:column;gap:6px;}',
+    '.xf-lbl{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--xf-mut);}',
+    '.xf-lbl .xf-req{color:var(--xf-gold);margin-left:2px;}',
+    /* inputs */
+    '.xf-inp,.xf-sel{width:100%;padding:14px 16px;background:rgba(255,255,255,.03);border:1px solid var(--xf-bdr);border-radius:10px;color:var(--xf-txt);font-family:var(--xf-f);font-size:.92rem;outline:none;transition:border-color .2s,box-shadow .2s;appearance:none;-webkit-appearance:none;}',
+    '.xf-inp::placeholder{color:var(--xf-mut);}',
+    '.xf-inp:focus,.xf-sel:focus{border-color:rgba(212,175,55,.6);box-shadow:0 0 0 3px rgba(212,175,55,.08);}',
+    '.xf-inp.xf-bad,.xf-sel.xf-bad,.xf-pw.xf-bad{border-color:var(--xf-err)!important;box-shadow:0 0 0 3px rgba(255,77,77,.1)!important;}',
+    /* error msg */
+    '.xf-emsg{font-size:.73rem;color:var(--xf-err);display:none;margin-top:2px;}',
+    '.xf-emsg.on{display:block;}',
+    /* phone */
+    '.xf-pw{display:flex;border:1px solid var(--xf-bdr);border-radius:10px;overflow:visible;background:rgba(255,255,255,.03);transition:border-color .2s,box-shadow .2s;position:relative;}',
+    '.xf-pw:focus-within{border-color:rgba(212,175,55,.6);box-shadow:0 0 0 3px rgba(212,175,55,.08);}',
+    '.xf-fb{display:flex;align-items:center;gap:6px;padding:0 12px;border:none;border-right:1px solid var(--xf-bdr);background:transparent;color:var(--xf-txt);font-size:.85rem;cursor:pointer;white-space:nowrap;min-width:88px;border-radius:10px 0 0 10px;transition:background .2s;}',
+    '.xf-fb:hover{background:rgba(212,175,55,.06);}',
+    '.xf-fi{width:22px;height:15px;object-fit:cover;border-radius:2px;}',
+    '.xf-pn{flex:1;padding:14px;background:transparent;border:none;color:var(--xf-txt);font-family:var(--xf-f);font-size:.92rem;outline:none;}',
+    '.xf-pn::placeholder{color:var(--xf-mut);}',
+    /* country drop */
+    '.xf-cd{position:absolute;top:calc(100% + 6px);left:0;z-index:99999;background:#1A1C22;border:1px solid var(--xf-bdr);border-radius:12px;width:280px;max-height:280px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);}',
+    '.xf-cd.open{display:flex;}',
+    '.xf-cs{padding:10px 14px;background:transparent;border:none;border-bottom:1px solid var(--xf-bdr);color:var(--xf-txt);font-size:.85rem;outline:none;font-family:var(--xf-f);width:100%;}',
+    '.xf-cs::placeholder{color:var(--xf-mut);}',
+    '.xf-cl{overflow-y:auto;flex:1;list-style:none;margin:0;padding:6px 0;}',
+    '.xf-ci{display:flex;align-items:center;gap:10px;padding:9px 14px;cursor:pointer;font-size:.84rem;transition:background .15s;}',
+    '.xf-ci:hover{background:rgba(212,175,55,.08);}',
+    '.xf-ci img{width:20px;height:13px;object-fit:cover;border-radius:2px;flex-shrink:0;}',
+    '.xf-ci span{color:var(--xf-mut);margin-left:auto;font-size:.76rem;}',
+    /* select wrap */
+    '.xf-sw{position:relative;}',
+    '.xf-sw::after{content:"";position:absolute;right:14px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--xf-mut);pointer-events:none;}',
+    '.xf-sel{padding-right:36px;cursor:pointer;}',
+    '.xf-sel option{background:#1A1C22;color:var(--xf-txt);}',
+    /* submit */
+    '.xf-btn{width:100%;padding:16px 24px;margin-top:8px;background:linear-gradient(135deg,#D4AF37,#F0D060,#B8960C);border:none;border-radius:10px;color:#0D0D0D;font-family:var(--xf-f);font-size:1rem;font-weight:700;letter-spacing:.04em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(212,175,55,.3);}',
+    '.xf-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,175,55,.45);}',
+    '.xf-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}',
+    /* spinner */
+    '.xf-sp{width:18px;height:18px;border:2px solid rgba(0,0,0,.2);border-top-color:#0D0D0D;border-radius:50%;animation:xf-spin .7s linear infinite;display:none;}',
+    '.xf-btn.sending .xf-sp{display:block;}',
+    '@keyframes xf-spin{to{transform:rotate(360deg);}}',
+    /* error banner */
+    '.xf-eb{display:none;background:rgba(255,77,77,.1);border:1px solid rgba(255,77,77,.3);border-radius:10px;padding:14px 16px;margin-bottom:20px;color:var(--xf-err);font-size:.88rem;line-height:1.5;}',
+    '.xf-eb.on{display:block;}',
+    /* success */
+    '.xf-ok-wrap{display:none;text-align:center;padding:60px 24px;animation:xf-fi .6s ease forwards;}',
+    '.xf-ok-wrap.on{display:block;}',
+    '@keyframes xf-fi{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}',
+    '.xf-ck{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(212,175,55,.15),rgba(212,175,55,.05));border:2px solid var(--xf-gold);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;animation:xf-pop .5s cubic-bezier(.34,1.56,.64,1) .2s both;}',
+    '@keyframes xf-pop{from{transform:scale(.4);opacity:0;}to{transform:scale(1);opacity:1;}}',
+    '.xf-ck svg{width:36px;height:36px;stroke:var(--xf-gold);}',
+    '.xf-ot{font-size:1.4rem;font-weight:700;color:var(--xf-txt);margin-bottom:10px;font-family:var(--font-serif,"Cormorant Garamond",serif);}',
+    '.xf-om{color:var(--xf-mut);font-size:.95rem;line-height:1.7;}',
+    /* responsive */
+    '@media(max-width:640px){.xf-card{padding:22px 16px;}.xf-r2{grid-template-columns:1fr;}}'
+  ].join('');
+  document.head.appendChild(style);
+
+  /* ── 2. BUILD HTML ──────────────────────────────────────────── */
+  var root = document.getElementById('su-form-post-properties-mscv2zie');
+  if (!root) return;
+
+  root.innerHTML =
+    '<div class="xf-card">' +
+      '<div class="xf-eb" id="xfs-eb"></div>' +
+      '<form id="xfs-form" novalidate autocomplete="off">' +
+
+        /* Row 1 — Name + Phone */
+        '<div class="xf-row xf-r2">' +
+          '<div class="xf-fld"><label class="xf-lbl" for="xfs-sl">Name</label>' +
+            '<input class="xf-inp" type="text" id="xfs-sl" name="single_line" placeholder="Name" />' +
+            '<div class="xf-emsg" id="xfe-sl"></div></div>' +
+          '<div class="xf-fld"><label class="xf-lbl" for="xfs-pn">Phone <span class="xf-req">*</span></label>' +
+            '<div class="xf-pw" id="xfs-pw">' +
+              '<button type="button" class="xf-fb" id="xfs-fb" aria-label="Select country" aria-haspopup="listbox" aria-expanded="false">' +
+                '<img class="xf-fi" id="xfs-fi" src="https://purecatamphetamine.github.io/country-flag-icons/3x2/IN.svg" alt="IN" />' +
+                '<span id="xfs-dc">+91</span>' +
+                '<svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8A8070" stroke-width="1.5" stroke-linecap="round"/></svg>' +
+              '</button>' +
+              '<div class="xf-cd" id="xfs-cd" role="listbox">' +
+                '<input class="xf-cs" type="text" id="xfs-cs" placeholder="Search country..." />' +
+                '<ul class="xf-cl" id="xfs-cl"></ul>' +
+              '</div>' +
+              '<input class="xf-pn" type="tel" id="xfs-pn" placeholder="Phone number" />' +
+            '</div>' +
+            '<div class="xf-emsg" id="xfe-pn"></div></div>' +
+        '</div>' +
+
+        /* Row 2 — Email + City */
+        '<div class="xf-row xf-r2">' +
+          '<div class="xf-fld"><label class="xf-lbl" for="xfs-em">Email <span class="xf-req">*</span></label>' +
+            '<input class="xf-inp" type="email" id="xfs-em" name="email" placeholder="you@company.com" />' +
+            '<div class="xf-emsg" id="xfe-em"></div></div>' +
+          '<div class="xf-fld"><label class="xf-lbl" for="xfs-cy">City</label>' +
+            '<div class="xf-sw"><select class="xf-sel" id="xfs-cy" name="dropdown">' +
+              '<option value="">Select City</option>' +
+              '<option value="option_1">Vapi</option>' +
+              '<option value="option_2">Silvassa</option>' +
+              '<option value="option_3">Daman</option>' +
+              '<option value="option_4">Valsad</option>' +
+              '<option value="option_5">Umbergaon</option>' +
+              '<option value="option_6">Bhilad</option>' +
+              '<option value="option_7">Sarigam</option>' +
+            '</select></div>' +
+            '<div class="xf-emsg" id="xfe-cy"></div></div>' +
+        '</div>' +
+
+        /* Row 3 — Locality + Property Type */
+        '<div class="xf-row xf-r2">' +
+          '<div class="xf-fld"><label class="xf-lbl" for="xfs-lo">Locality / Area</label>' +
+            '<input class="xf-inp" type="text" id="xfs-lo" name="single_line_3" placeholder="Locality /Area" />' +
+            '<div class="xf-emsg" id="xfe-lo"></div></div>' +
+          '<div class="xf-fld"><label class="xf-lbl" for="xfs-pt">Property Type</label>' +
+            '<div class="xf-sw"><select class="xf-sel" id="xfs-pt" name="dropdown_2">' +
+              '<option value="">Property Type</option>' +
+              '<option value="option_1">Apartments</option>' +
+              '<option value="option_2">Villa</option>' +
+              '<option value="option_3">Commercial</option>' +
+              '<option value="option_4">Pent House</option>' +
+              '<option value="option_5">Farmhouse</option>' +
+            '</select></div>' +
+            '<div class="xf-emsg" id="xfe-pt"></div></div>' +
+        '</div>' +
+
+        /* Row 4 — BHK + Area */
+        '<div class="xf-row xf-r2">' +
+          '<div class="xf-fld"><label class="xf-lbl" for="xfs-bh">BHK</label>' +
+            '<div class="xf-sw"><select class="xf-sel" id="xfs-bh" name="dropdown_3">' +
+              '<option value="">BHK</option>' +
+              '<option value="option_1">1 BHK</option>' +
+              '<option value="option_2">2 BHK</option>' +
+              '<option value="option_3">3 BHK</option>' +
+              '<option value="option_4">4 BHK</option>' +
+              '<option value="option_5">5+ BHK</option>' +
+            '</select></div>' +
+            '<div class="xf-emsg" id="xfe-bh"></div></div>' +
+          '<div class="xf-fld"><label class="xf-lbl" for="xfs-ar">Area (Sq. Feet)</label>' +
+            '<input class="xf-inp" type="text" id="xfs-ar" name="single_line_4" placeholder="Area (Sq feet)" />' +
+            '<div class="xf-emsg" id="xfe-ar"></div></div>' +
+        '</div>' +
+
+        /* Submit */
+        '<div class="xf-row xf-r1" style="margin-bottom:0;">' +
+          '<button type="submit" class="xf-btn" id="xfs-sub">' +
+            '<div class="xf-sp"></div>' +
+            '<span id="xfs-lbl">Post Property &mdash; Get Contacted</span>' +
+          '</button>' +
+        '</div>' +
+
+      '</form>' +
+
+      /* Success */
+      '<div class="xf-ok-wrap" id="xfs-ok">' +
+        '<div class="xf-ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>' +
+        '<div class="xf-ot">Property Submitted!</div>' +
+        '<div class="xf-om" id="xfs-msg">Thank you for your submission!</div>' +
+      '</div>' +
+
+    '</div>';
+
+  /* ── 3. REFS ────────────────────────────────────────────────── */
+  var form     = document.getElementById('xfs-form');
+  var subBtn   = document.getElementById('xfs-sub');
+  var subLbl   = document.getElementById('xfs-lbl');
+  var errBnr   = document.getElementById('xfs-eb');
+  var okWrap   = document.getElementById('xfs-ok');
+  var okMsg    = document.getElementById('xfs-msg');
+  var flagBtn  = document.getElementById('xfs-fb');
+  var flagImg  = document.getElementById('xfs-fi');
+  var dialEl   = document.getElementById('xfs-dc');
+  var phoneWrp = document.getElementById('xfs-pw');
+  var phoneNum = document.getElementById('xfs-pn');
+  var drop     = document.getElementById('xfs-cd');
+  var srch     = document.getElementById('xfs-cs');
+  var list     = document.getElementById('xfs-cl');
+
+  /* ── 4. COUNTRY PICKER ──────────────────────────────────────── */
+  var selCntry = {code:'IN', name:'India', dial:'+91'};
+  var dropOpen = false;
+
+  function flagSrc(cc) {
+    return 'https://purecatamphetamine.github.io/country-flag-icons/3x2/' + cc.toUpperCase() + '.svg';
+  }
+
+  function buildList(q) {
+    var h = '';
+    var lq = (q || '').toLowerCase();
+    for (var i = 0; i < COUNTRIES.length; i++) {
+      var c = COUNTRIES[i];
+      if (!lq || c.name.toLowerCase().indexOf(lq) !== -1 || c.code.toLowerCase().indexOf(lq) !== -1 || c.dial.indexOf(lq) !== -1) {
+        h += '<li class="xf-ci" data-code="' + c.code + '" data-dial="' + c.dial + '" data-name="' + c.name + '" role="option" tabindex="0">' +
+             '<img src="' + flagSrc(c.code) + '" alt="' + c.code + '" />' + c.name + '<span>' + c.dial + '</span></li>';
+      }
+    }
+    list.innerHTML = h;
+    var items = list.querySelectorAll('.xf-ci');
+    for (var j = 0; j < items.length; j++) {
+      (function(it) {
+        function pick() { chooseCntry(it.getAttribute('data-code'), it.getAttribute('data-name'), it.getAttribute('data-dial')); }
+        it.addEventListener('click', pick);
+        it.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') pick(); });
+      })(items[j]);
+    }
+  }
+
+  function chooseCntry(code, name, dial) {
+    selCntry = {code: code, name: name, dial: dial};
+    flagImg.src = flagSrc(code); flagImg.alt = code;
+    dialEl.textContent = dial;
+    closeDrop();
+  }
+
+  function openDrop() {
+    dropOpen = true; drop.classList.add('open');
+    flagBtn.setAttribute('aria-expanded', 'true');
+    srch.value = ''; buildList('');
+    setTimeout(function() { srch.focus(); }, 40);
+  }
+
+  function closeDrop() {
+    dropOpen = false; drop.classList.remove('open');
+    flagBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  flagBtn.addEventListener('click', function(e) { e.stopPropagation(); dropOpen ? closeDrop() : openDrop(); });
+  srch.addEventListener('input', function() { buildList(srch.value); });
+  drop.addEventListener('click', function(e) { e.stopPropagation(); });
+  document.addEventListener('click', function() { if (dropOpen) closeDrop(); });
+
+  buildList('');
+
+  /* ── 5. GEO-IP ──────────────────────────────────────────────── */
+  function setCntryCode(cc) {
+    for (var i = 0; i < COUNTRIES.length; i++) {
+      if (COUNTRIES[i].code === cc.toUpperCase()) {
+        chooseCntry(COUNTRIES[i].code, COUNTRIES[i].name, COUNTRIES[i].dial);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function geo3() {
+    fetch('https://ipwho.is/').then(function(r){return r.json();})
+    .then(function(d){if(d&&d.country_code)setCntryCode(d.country_code);}).catch(function(){});
+  }
+  function geo2() {
+    fetch('https://ipapi.co/json/').then(function(r){return r.json();})
+    .then(function(d){if(d&&d.country_code){if(!setCntryCode(d.country_code))geo3();}else{geo3();}}).catch(function(){geo3();});
+  }
+  fetch('https://get.geojs.io/v1/ip/country.json').then(function(r){return r.json();})
+  .then(function(d){if(d&&d.country){setCntryCode(d.country);}else{geo2();}}).catch(function(){geo2();});
+
+  /* ── 6. VALIDATION ──────────────────────────────────────────── */
+  function markBad(id, msg) {
+    var el = document.getElementById(id);
+    var em = document.getElementById('xfe-' + id.replace('xfs-',''));
+    if (el) el.classList.add('xf-bad');
+    if (em) { em.textContent = msg; em.classList.add('on'); }
+  }
+  function markOk(id) {
+    var el = document.getElementById(id);
+    var em = document.getElementById('xfe-' + id.replace('xfs-',''));
+    if (el) el.classList.remove('xf-bad');
+    if (em) { em.textContent = ''; em.classList.remove('on'); }
+  }
+
+  /* clear on type */
+  var allInputs = form.querySelectorAll('.xf-inp,.xf-sel,.xf-pn');
+  for (var k = 0; k < allInputs.length; k++) {
+    (function(inp) {
+      inp.addEventListener('input',  function(){ inp.classList.remove('xf-bad'); });
+      inp.addEventListener('change', function(){ inp.classList.remove('xf-bad'); });
+    })(allInputs[k]);
+  }
+
+  function validate() {
+    var ok = true; var first = null;
+
+    /* phone */
+    phoneWrp.classList.remove('xf-bad');
+    document.getElementById('xfe-pn').textContent = '';
+    document.getElementById('xfe-pn').classList.remove('on');
+    var pv = phoneNum.value.replace(/\D/g,'');
+    if (!pv || pv.length < 5) {
+      phoneWrp.classList.add('xf-bad');
+      var pem = document.getElementById('xfe-pn');
+      pem.textContent = 'Please enter a valid phone number.'; pem.classList.add('on');
+      if (!first) first = phoneWrp;
+      ok = false;
+    }
+
+    /* email */
+    markOk('xfs-em');
+    var ev = document.getElementById('xfs-em').value.trim();
+    if (!ev || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ev)) {
+      markBad('xfs-em','Please enter a valid email address.');
+      if (!first) first = document.getElementById('xfs-em');
+      ok = false;
+    }
+
+    if (first) first.scrollIntoView({behavior:'smooth',block:'center'});
+    return ok;
+  }
+
+  /* ── 7. UTM HELPERS ─────────────────────────────────────────── */
+  function utmp(p) {
+    try { return (new URLSearchParams(window.location.search)).get(p)||''; } catch(e){ return ''; }
+  }
+
+  function trackingData() {
+    var now = new Date();
+    return {
+      lead_source:'Website', form_name:'Post Property Form',
+      page_name:'Sell Property', page_category:'Seller Lead',
+      landing_url:window.location.href, page_title:document.title||'',
+      referrer:document.referrer||'',
+      submission_time:now.toISOString(),
+      browser:navigator.userAgent||'',
+      device_type:/Mobi|Android/i.test(navigator.userAgent)?'Mobile':'Desktop',
+      screen_resolution:window.screen?window.screen.width+'x'+window.screen.height:'',
+      utm_source:utmp('utm_source'), utm_medium:utmp('utm_medium'),
+      utm_campaign:utmp('utm_campaign'), utm_content:utmp('utm_content'),
+      utm_term:utmp('utm_term'), gclid:utmp('gclid'),
+      fbclid:utmp('fbclid'), msclkid:utmp('msclkid')
+    };
+  }
+
+  /* ── 8. SUBMIT ──────────────────────────────────────────────── */
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    errBnr.classList.remove('on');
+    if (!validate()) return;
+
+    var answers = {};
+    answers['single_line']   = document.getElementById('xfs-sl').value.trim();
+    answers['phone']         = selCntry.dial + phoneNum.value.replace(/\D/g,'');
+    answers['email']         = document.getElementById('xfs-em').value.trim();
+    answers['dropdown']      = document.getElementById('xfs-cy').value;
+    answers['single_line_3'] = document.getElementById('xfs-lo').value.trim();
+    answers['dropdown_2']    = document.getElementById('xfs-pt').value;
+    answers['dropdown_3']    = document.getElementById('xfs-bh').value;
+    answers['single_line_4'] = document.getElementById('xfs-ar').value.trim();
+
+    var td = trackingData();
+    for (var k in td) { if (td.hasOwnProperty(k)) answers[k] = td[k]; }
+
+    var payload = {
+      subAccountId: 'bed6f2a0-c6d7-4462-a381-ff5bcff0680f',
+      formId:       '00f954f2-1dae-4b3e-a667-714d94643b14',
+      answers:      answers,
+      meta: { referrer: document.referrer, landingPage: window.location.href }
+    };
+
+    /* in-flight */
+    subBtn.disabled = true; subBtn.classList.add('sending');
+    subLbl.textContent = 'Sending\u2026';
+
+    fetch('https://myappzbackend.com/functions/v1/form-api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIn0.CJ12IdcxndQO5Ptx2zFbJpE39RwK9bBAi8QkUKqbcIs'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(res) {
+      if (res.success && res.redirect) {
+        if (res.redirect_target === 'top') { window.top.location.href = res.redirect; }
+        else { window.location.href = res.redirect; }
+        return;
+      }
+      if (res.success) {
+        form.style.transition = 'opacity .4s';
+        form.style.opacity = '0';
+        setTimeout(function() {
+          form.style.display = 'none';
+          okMsg.textContent = res.message || 'Thank you for your submission!';
+          okWrap.classList.add('on');
+        }, 360);
+        return;
+      }
+      errBnr.textContent = res.error || 'Something went wrong. Please try again.';
+      errBnr.classList.add('on');
+      errBnr.scrollIntoView({behavior:'smooth',block:'nearest'});
+      resetBtn();
+    })
+    .catch(function() {
+      errBnr.textContent = 'Network error. Please check your connection and try again.';
+      errBnr.classList.add('on');
+      resetBtn();
+    });
+  });
+
+  function resetBtn() {
+    subBtn.disabled = false; subBtn.classList.remove('sending');
+    subLbl.textContent = 'Post Property \u2014 Get Contacted';
+  }
+
+})();
 </script>
 </body>
 </html>

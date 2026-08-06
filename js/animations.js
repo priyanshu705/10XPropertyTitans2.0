@@ -1,5 +1,5 @@
 /* ============================================================
-   LUXE ESTATES — Animations JS
+   10X PROPERTY TITANS — Animations JS
    Scroll Reveal, Counters, Parallax
    ============================================================ */
 

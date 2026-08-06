@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login — Luxe Estates | Access Your Premium Dashboard</title>
-  <meta name="description" content="Login to your Luxe Estates account to manage wishlist, track enquiries, and access exclusive off-market luxury properties." />
+  <title>Login — 10X Property Titans | Premium Real Estate Advisory</title>
+  <meta name="description" content="Login to your 10X Property Titans account to track investments, manage your portfolio, and access exclusive luxury properties in Vapi, Silvassa, and Daman." />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/components.css" />
@@ -29,6 +29,18 @@
     .password-eye { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); cursor: none; }
     @media (max-width: 900px) { .auth-page { grid-template-columns: 1fr; } .auth-visual { display: none; } .auth-form-side { padding: var(--space-xl) var(--space-lg); } }
   </style>
+  <link rel="canonical" href="https://10xpropertytitans.com/login.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "10X Property Titans",
+    "url": "https://10xpropertytitans.com/login.html",
+    "logo": "https://10xpropertytitans.com/assets/logo.png",
+    "description": "South Gujarat's No.1 Premium Real Estate Advisory and Investment Intelligence Platform.",
+    "telephone": "+919737077860"
+  }
+  </script>
 </head>
 <body>
 <div class="noise-overlay"></div>
@@ -45,12 +57,12 @@
       <div style="margin-bottom:var(--space-xl);">
         <a href="index.html" class="logo" style="text-decoration:none;">
           <div class="logo-icon">L</div>
-          <div class="logo-text"><span class="logo-name">Luxe Estates</span><span class="logo-tagline">Premium Real Estate</span></div>
+          <div class="logo-text"><span class="logo-name">10X Property Titans</span><span class="logo-tagline">Real Estate Advisory</span></div>
         </a>
       </div>
       <div style="max-width:420px;">
-        <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:800;color:#fff;margin-bottom:var(--space-md);">Access India's Most <span class="text-gold">Exclusive Properties</span></h2>
-        <p style="color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:var(--space-xl);">Sign in to your Luxe Estates account to access your wishlist, track enquiries, and discover unlisted luxury properties available only to members.</p>
+        <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:800;color:#fff;margin-bottom:var(--space-md);">Access South Gujarat's <span class="text-gold">Exclusive Properties</span></h2>
+        <p style="color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:var(--space-xl);">Sign in to your 10X Property Titans account to access your portfolio, track investments, and discover unlisted luxury properties available only to private clients.</p>
         <div class="flex gap-lg" style="flex-wrap:wrap;">
           <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:800;color:var(--gold);">50K+</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Listings</div></div>
           <div style="text-align:center;"><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:800;color:var(--gold);">₹12K Cr+</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Transacted</div></div>
@@ -74,7 +86,7 @@
       <!-- Login Form -->
       <div id="auth-login">
         <h1 class="auth-title">Welcome Back</h1>
-        <p class="auth-subtitle">Login to your Luxe Estates dashboard</p>
+        <p class="auth-subtitle">Login to your 10X Property Titans dashboard</p>
 
         <form id="login-form">
           <div class="form-group">
@@ -85,7 +97,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="login-pass" style="display:flex;justify-content:space-between;"><span>Password</span><a href="#" style="color:var(--gold-light);font-size:0.78rem;" id="forgot-pw">Forgot Password?</a></label>
+            <label class="form-label" for="login-pass" style="display:flex;justify-content:space-between;"><span>Password</span><a href="#" style="color:var(--gold-light);font-size:0.78rem;" id="forgot-pw" onclick="event.preventDefault(); if(window.LuxeCards) LuxeCards.showToast('Password reset coming soon...');">Forgot Password?</a></label>
             <div style="position:relative;">
               <input type="password" class="form-input" id="login-pass" placeholder="Enter your password" required />
               <button type="button" class="password-eye" id="toggle-pass" aria-label="Toggle password visibility">
@@ -118,32 +130,34 @@
         <h1 class="auth-title">Create Account</h1>
         <p class="auth-subtitle">Join 50,000+ premium property seekers</p>
 
-        <form id="register-form">
+        <form id="register-form" data-crm-form-id="03ec9cd8-24b6-479c-a6c4-f9830ac0b34a" data-crm-form-name="Registration" data-crm-sub-account="bed6f2a0-c6d7-4462-a381-ff5bcff0680f" data-crm-api-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vciIsImlzcyI6InN1cGFiYXNlIn0.CJ12IdcxndQO5Ptx2zFbJpE39RwK9bBAi8QkUKqbcIs" data-crm-success-msg="✓ Account created! Welcome to 10X Property Titans.">
+          <input type="hidden" name="lead_source" value="Registration" />
+          <input type="hidden" name="pipeline_stage" value="New Lead" />
           <div class="grid-2">
             <div class="form-group">
               <label class="form-label" for="reg-fname">First Name</label>
-              <input type="text" class="form-input" id="reg-fname" placeholder="First name" required />
+              <input type="text" class="form-input" id="reg-fname" name="first_name" placeholder="First name" required />
             </div>
             <div class="form-group">
               <label class="form-label" for="reg-lname">Last Name</label>
-              <input type="text" class="form-input" id="reg-lname" placeholder="Last name" required />
+              <input type="text" class="form-input" id="reg-lname" name="last_name" placeholder="Last name" required />
             </div>
           </div>
           <div class="form-group">
             <label class="form-label" for="reg-phone">Mobile Number</label>
-            <input type="tel" class="form-input" id="reg-phone" placeholder="+91 XXXXX XXXXX" required />
+            <input type="tel" class="form-input" id="reg-phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
           </div>
           <div class="form-group">
             <label class="form-label" for="reg-email">Email Address</label>
-            <input type="email" class="form-input" id="reg-email" placeholder="your@email.com" required />
+            <input type="email" class="form-input" id="reg-email" name="email" placeholder="your@email.com" required />
           </div>
           <div class="form-group">
             <label class="form-label" for="reg-pass">Password</label>
-            <input type="password" class="form-input" id="reg-pass" placeholder="Min. 8 characters" required minlength="8" />
+            <input type="password" class="form-input" id="reg-pass" name="password" placeholder="Min. 8 characters" required minlength="8" />
           </div>
           <div class="form-group">
             <label class="form-label" for="reg-role">I am a</label>
-            <select class="form-select" id="reg-role" required>
+            <select class="form-select" id="reg-role" name="role" required>
               <option value="">Select</option>
               <option>Buyer</option>
               <option>Seller / Owner</option>
@@ -154,7 +168,7 @@
           </div>
           <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:var(--space-lg);">
             <input type="checkbox" id="terms-agree" required style="margin-top:2px;accent-color:var(--gold);" />
-            <label for="terms-agree" style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">I agree to the <a href="#" style="color:var(--gold-light);">Terms of Service</a> and <a href="#" style="color:var(--gold-light);">Privacy Policy</a>. I consent to receive property recommendations via SMS and WhatsApp.</label>
+            <label for="terms-agree" style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">I agree to the <a href="#" style="color:var(--gold-light);" onclick="event.preventDefault(); if(window.LuxeCards) LuxeCards.showToast('Terms coming soon...');">Terms of Service</a> and <a href="#" style="color:var(--gold-light);" onclick="event.preventDefault(); if(window.LuxeCards) LuxeCards.showToast('Privacy Policy coming soon...');">Privacy Policy</a>. I consent to receive property recommendations via SMS and WhatsApp.</label>
           </div>
           <button type="submit" class="btn btn-gold btn-lg" style="width:100%;" id="register-btn">Create Free Account</button>
         </form>
@@ -171,6 +185,7 @@
 
 <script src="js/utils.js"></script>
 <script src="js/main.js"></script>
+<script src="js/crm-forms.js"></script>
 <script>
   function switchAuth(tab) {
     const isLogin = tab === 'login';
@@ -190,11 +205,7 @@
     window.location.href = 'index.html';
   });
 
-  document.getElementById('register-form').addEventListener('submit', e => {
-    e.preventDefault();
-    if(window.LuxeCards) LuxeCards.showToast('✓ Account created! Welcome to Luxe Estates.');
-    setTimeout(() => window.location.href = 'index.html', 2000);
-  });
+
 
   document.getElementById('forgot-pw').addEventListener('click', e => {
     e.preventDefault();

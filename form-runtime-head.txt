@@ -1,0 +1,20 @@
+﻿(function(){
+  'use strict';
+
+  /* A second identical <script src> tag (multiple forms on a page) just re-scans. */
+  if (window.__suFormRuntime) { try { window.__suFormRuntime.scan(); } catch (e) {} return; }
+
+  var STYLE_ID = 'su-form-runtime-styles';
+  var CSS = [
+    /* Card + all colors are driven by --su-* variables baked on each container
+       (computed from the form's builder theme, with auto dark/light contrast).
+       The fallbacks keep the old light look for any embed without the vars. */
+    '.su-form{box-sizing:border-box;background-color:var(--su-card-bg,transparent);background-image:var(--su-card-bg-img,none);color:var(--su-text,#111827);font-size:var(--su-form-font-size,14px);border-radius:var(--su-card-radius,0);box-shadow:var(--su-card-shadow,none);border:var(--su-card-border-w,0) solid var(--su-card-border,transparent);padding:var(--su-card-pad,0)}',
+    '.su-form *{box-sizing:border-box}',
+    '.su-form .su-field{margin-bottom:var(--su-field-gap,16px)}',
+    '.su-form .su-label{display:block;font-size:var(--su-label-font-size,14px);font-weight:var(--su-label-font-weight,500);font-family:var(--su-label-font-family,inherit);margin-bottom:6px;color:var(--su-label,#374151)}',
+    '.su-form .su-req{color:var(--su-req,#ef4444)}',
+    '.su-form .su-input,.su-form .su-textarea,.su-form .su-select{width:100%;padding:9px 12px;border:1.5px solid var(--su-input-border,#d1d5db);border-radius:var(--su-input-radius,6px);font-size:var(--su-input-font-size,14px);font-family:var(--su-input-font-family,inherit);outline:none;background:var(--su-input-bg,#fff);color:var(--su-input-text,#111827);transition:border-color .15s,box-shadow .15s}',
+    '.su-form .su-input::placeholder,.su-form .su-textarea::placeholder{color:var(--su-placeholder,#9ca3af);opacity:1}',
+    '.su-form .su-input:focus,.su-form .su-textarea:focus,.su-form .su-select:focus{border-color:var(--su-focus,var(--su-primary,#6366f1));box-shadow:0 0 0 3px var(--su-primary-weak,rgba(99,102,241,.15))}',
+

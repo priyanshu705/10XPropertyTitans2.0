@@ -325,6 +325,11 @@
   box-shadow: 0 8px 24px rgba(212,175,55,0.5);
 }
 
+/* Hide site login CTA when platform uses external authentication
+   Removing the visible login button keeps header layout stable while
+   removing a redundant action for public sites. */
+.header-btn-login { display: none !important; }
+
 /* ── Mobile Hamburger ─────────────────────────────────────── */
 .hamburger {
   display: none;

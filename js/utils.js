@@ -1,5 +1,5 @@
 /* ============================================================
-   LUXE ESTATES — Utility Functions
+   10X PROPERTY TITANS — Utility Functions
    ============================================================ */
 
 'use strict';

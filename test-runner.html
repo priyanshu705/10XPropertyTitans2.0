@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Test Runner</title>
+</head>
+<body>
+  <h1>API Test Results</h1>
+  <pre id="output">Running tests...</pre>
+  
+  <script>
+    async function runTests() {
+      const output = document.getElementById('output');
+      const results = [];
+      const apiUrl = 'https://myappzbackend.com/functions/v1/form-api';
+      const defaultHeaders = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vciIsImlzcyI6InN1cGFiYXNlIn0.CJ12IdcxndQO5Ptx2zFbJpE39RwK9bBAi8QkUKqbcIs'
+      };
+
+      const formsToTest = [
+        { name: "Homepage Newsletter", source: "Homepage", payload: { email: "test-home-news@example.com", first_name: "Test", last_name: "User", phone: "9999999990" } },
+        { name: "Property Valuation", source: "Sell Property", payload: { email: "test-sell@example.com", first_name: "Test", phone: "9999999991", address: "123 Test St" } },
+        { name: "Registration", source: "Registration", payload: { email: "test-reg@example.com", first_name: "Test", last_name: "Reg", phone: "9999999992", role: "Buyer" } },
+        { name: "Wishlist Enquiry", source: "Wishlist", payload: { email: "test-wish@example.com", name: "Test Wishlist", phone: "9999999993" } },
+        { name: "Brochure Download", source: "Property Details", payload: { email: "test-brochure@example.com", name: "Test Brochure", phone: "9999999994" } }
+      ];
+
+      for (const form of formsToTest) {
+        const bodyData = {
+          form_id: '03ec9cd8-24b6-479c-a6c4-f9830ac0b34a',
+          form_name: form.name,
+          sub_account_id: 'bed6f2a0-c6d7-4462-a381-ff5bcff0680f',
+          answers: form.payload,
+          tracking: {
+            landingUrl: "http://localhost/test",
+            referrer: "",
+            currentPage: "/test",
+            pageTitle: "Test Runner",
+            timestamp: new Date().toISOString(),
+            browser: "Test Browser",
+            deviceType: "Desktop",
+            utmSource: "test", utmMedium: "test", utmCampaign: "test",
+            lead_source: form.source
+          }
+        };
+
+        try {
+          const reqTime = Date.now();
+          const res = await fetch(apiUrl, {
+            method: 'POST',
+            headers: defaultHeaders,
+            body: JSON.stringify(bodyData)
+          });
+          const timeTaken = Date.now() - reqTime;
+          let json = {};
+          try { json = await res.json(); } catch(e) { json = { error: "Failed to parse JSON" }; }
+          
+          results.push({
+            formName: form.name,
+            status: res.status,
+            timeMs: timeTaken,
+            requestBody: bodyData,
+            responseBody: json
+          });
+        } catch (e) {
+          results.push({
+            formName: form.name,
+            error: e.message
+          });
+        }
+      }
+
+      // Add a failure case test (missing email/phone if backend enforces it, or missing form_id)
+      try {
+        const res = await fetch(apiUrl, {
+          method: 'POST',
+          headers: defaultHeaders,
+          body: JSON.stringify({
+            form_id: '03ec9cd8-24b6-479c-a6c4-f9830ac0b34a',
+            form_name: 'Empty Form Test',
+            sub_account_id: 'bed6f2a0-c6d7-4462-a381-ff5bcff0680f',
+            answers: {}, // Empty
+            tracking: {}
+          })
+        });
+        const json = await res.json().catch(e => ({}));
+        results.push({ formName: 'Empty Form Test (Expected Fail)', status: res.status, responseBody: json });
+      } catch (e) {
+        results.push({ formName: 'Empty Form Test (Expected Fail)', error: e.message });
+      }
+
+      output.textContent = JSON.stringify(results, null, 2);
+    }
+    
+    runTests();
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /* ============================================================
-   LUXE ESTATES — Search & Filter JS
+   10X PROPERTY TITANS — Search & Filter JS
    ============================================================ */
 
 'use strict';
@@ -18,15 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Location Autocomplete ───────────────────────────── */
   const locationInputs = document.querySelectorAll('[data-location-search]');
   const suggestions = [
-    'Mumbai, Maharashtra', 'Pune, Maharashtra', 'Delhi NCR',
-    'Bangalore, Karnataka', 'Hyderabad, Telangana', 'Chennai, Tamil Nadu',
-    'Kolkata, West Bengal', 'Ahmedabad, Gujarat', 'Gurgaon, Haryana',
-    'Noida, Uttar Pradesh', 'Navi Mumbai', 'Thane, Maharashtra',
-    'Bandra West, Mumbai', 'Andheri, Mumbai', 'Powai, Mumbai',
-    'Whitefield, Bangalore', 'Electronic City, Bangalore', 'Koramangala, Bangalore',
-    'Jubilee Hills, Hyderabad', 'HITEC City, Hyderabad',
-    'Sector 54, Gurgaon', 'DLF Phase 5, Gurgaon',
-    'Sector 150, Noida', 'Greater Noida West'
+    'Vapi East, Vapi', 'Vapi West, Vapi', 'Chala, Vapi', 'Gunjan, Vapi',
+    'Silvassa City, Dadra & Nagar Haveli', 'Samarvarni, Silvassa', 'Tokarkhada, Silvassa',
+    'Nani Daman, Daman', 'Moti Daman, Daman', 'Varkund, Daman',
+    'Bhilad, Gujarat', 'Sarigam, Gujarat', 'Umbergaon, Gujarat',
+    'Valsad City', 'Tithal, Valsad'
   ];
 
   locationInputs.forEach(input => {
